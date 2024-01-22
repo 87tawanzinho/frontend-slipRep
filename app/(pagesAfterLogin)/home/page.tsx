@@ -121,7 +121,7 @@ function PageHome() {
                           className={`w-1/3 lg:w-1/4 overflow-auto hover:bg-opacity-20 
                           hover:text-black  cursor-pointer ${
                             bill.paid
-                              ? "hover: bg-black hover:text-white"
+                              ? "hover:bg-black hover:text-white"
                               : "hover:bg-sky-400"
                           }  `}
                           onClick={() => {
