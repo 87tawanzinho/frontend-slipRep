@@ -4,16 +4,17 @@ import MyExpenses from "../components/MyExpenses";
 import ItensExpenses from "../components/ItensExpenses";
 import IncomeBills from "../datas/incomeBills";
 import { format, isToday, parseISO } from "date-fns";
-import { fetchDataAndSetBills } from "../datas/takeBills";
+import { fetchDataAndSetBills } from "../datas/BillFunctions/takeBills";
 import { BiDownArrowAlt } from "react-icons/bi";
 import { FaDeleteLeft } from "react-icons/fa6";
 import { CiWarning } from "react-icons/ci";
-import { removeBill } from "../datas/removeBill";
+import { removeBill } from "../datas/BillFunctions/removeBill";
 import Loading from "../loading";
 import { useRouter } from "next/navigation";
 import Slips from "../components/slips";
 import HowWorksThis from "../components/HowWorksTotal";
 import { ImInfo } from "react-icons/im";
+import { changePaidBill } from "../datas/BillFunctions/paidBill";
 
 function PageHome() {
   const [bills, setBills] = useState<myBills[]>([]);
@@ -110,8 +111,10 @@ function PageHome() {
                   {bills.length > 0 ? (
                     bills.map((bill, index) => (
                       <div
-                        className="flex justify-between
-                         items-center mt-2 text-[13px] border p-1  rounded  "
+                        className={`flex justify-between
+                         items-center mt-2 text-[13px] border p-1  rounded  ${
+                           bill.paid && "bg-green-300 transition-all"
+                         } `}
                         key={bill._id}
                       >
                         <div
@@ -139,7 +142,16 @@ function PageHome() {
                           )}
                         </div>
 
-                        <div className="w-1/3 lg:w-1/4 flex justify-end gap-1  items-center  overflow-auto hover:bg-green-300 cursor-pointer ">
+                        <div
+                          onClick={() =>
+                            changePaidBill(
+                              bill._id,
+                              fetchDataAndSetBills,
+                              setBills
+                            )
+                          }
+                          className="w-1/3 lg:w-1/4 flex justify-end gap-1  items-center  overflow-auto hover:bg-green-300 cursor-pointer "
+                        >
                           <p className="text-red-700    ">R$ {bill.price}</p>
                           <FaDeleteLeft
                             size={20}
@@ -191,5 +203,6 @@ export interface myBills {
   date: string;
   _id: number;
   warn: string;
+  paid: boolean;
   observation?: string;
 }

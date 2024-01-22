@@ -1,6 +1,6 @@
 import { instance } from "@/app/axios/instance";
 import { Dispatch, SetStateAction } from "react";
-import { myBills } from "../home/page";
+import { myBills } from "../../home/page";
 
 export const removeBill = async (
   id: number,
