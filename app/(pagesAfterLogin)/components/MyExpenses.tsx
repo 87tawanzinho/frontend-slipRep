@@ -97,8 +97,8 @@ function MyExpenses({ text, span, income, setData }: Expenses) {
       {openInput && (
         <PageWrapper>
           <div className="flex flex-col lg:flex-row justify-between items-center  p-2 ">
-            <div className="flex flex-col gap-2">
-              <p className="font-sans text-sm w-60 ">
+            <div className="flex flex-col gap-3">
+              <p className="font-sans text-[13px] w-60 ">
                 Defina uma renda mensal para poder se{" "}
                 <span className="italic">organizar</span>.. quanto você quer
                 gastar por mês?
@@ -130,11 +130,11 @@ function MyExpenses({ text, span, income, setData }: Expenses) {
               )}
             </div>
 
-            <div className="flex flex-col items-center justify-center  mr-4">
+            <div className="flex flex-col items-center justify-center  mr-0 lg:mr-4 ">
               <GiMoneyStack size={80} />
-              <p className="text-[12px] w-60  ">
+              <p className="text-[12px] w-60   ">
                 Sua saúde financeira é muito importante, por tanto, lembre-se de
-                guardar uma parte do que você ganha todos os meses
+                guardar uma parte do que você ganha todos os meses.
               </p>
             </div>
           </div>
