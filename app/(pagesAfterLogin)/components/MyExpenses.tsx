@@ -96,7 +96,7 @@ function MyExpenses({ text, span, income, setData }: Expenses) {
       )}
       {openInput && (
         <PageWrapper>
-          <div className="flex flex-col lg:flex-row justify-between gap-24  items-center  p-2 ">
+          <div className="flex flex-col lg:flex-row  justify-normal lg:justify-between gap-2 lg:gap-24  items-center  p-2 ">
             <div className="flex flex-col gap-3">
               <p className="font-sans text-[13px] w-60 ">
                 Defina uma renda mensal para poder se{" "}
