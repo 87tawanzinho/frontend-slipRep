@@ -9,6 +9,11 @@ import { PageWrapperModal } from "../emotion/page-wrapperModal";
 import { PageWrapper } from "../emotion/page-wrapper";
 import Image from "next/image";
 import invoice from "@/public/invoice.png";
+import { BsFillTrashFill, BsTrash2 } from "react-icons/bs";
+import { PiTrashSimpleThin } from "react-icons/pi";
+import { FiTrash } from "react-icons/fi";
+import { removeSlip } from "../datas/SlipFunctions/removeSlip";
+import { format, parseISO } from "date-fns";
 function Slips() {
   const [info, setInfo] = useState(false);
   const [openNew, setOpenNew] = useState(false);
@@ -52,10 +57,24 @@ function Slips() {
             {data.map((item, index) => (
               <PageWrapper key={item._id}>
                 <div className="flex flex-col justify-center border-2 font-bold p-4 h-full  gap-2 hover:bg-opacity-10 transition-all  hover:bg-black">
-                  <Image src={invoice} alt="fatura" className="mb-4" />
+                  <div className="flex justify-between">
+                    <Image src={invoice} alt="fatura" className="mb-4" />
+                    <FiTrash
+                      onClick={() =>
+                        removeSlip(
+                          item._id,
+                          fetchDataAndSetSlips,
+                          data,
+                          setData
+                        )
+                      }
+                      size={20}
+                      className="  text-black  rounded-full cursor-pointer hover:opacity-40"
+                    />
+                  </div>
 
                   <p>Nome: {item.name}</p>
-                  <p>Data: {item.date}</p>
+                  <p>Data: {format(parseISO(item.date), "dd/MM/yyyy ", {})}</p>
                   <p className="">Preço: R${item.price}</p>
                   <div className="flex gap-2 items-center ">
                     <p>Código:</p>
@@ -89,10 +108,11 @@ function Slips() {
 
 export default Slips;
 
-interface mySlips {
+export interface mySlips {
   code: string;
   price: number;
   name: string;
   date: string;
+  warn: string;
   _id: number;
 }

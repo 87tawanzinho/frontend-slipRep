@@ -75,8 +75,14 @@ function PageHome() {
                     <div key={bill._id}>
                       {isToday(parseISO(bill.date)) ? (
                         <PageWrapper>
-                          <div className="flex  font-bold text-sm justify-between items-center text-gray-800 px-2">
-                            <div className="flex justify-between items-center w-full ">
+                          <div
+                            className={` flex  font-bold text-sm justify-between items-center text-gray-800 px-2`}
+                          >
+                            <div
+                              className={` ${
+                                bill.paid && "bg-green-300 line-through"
+                              } flex justify-between items-center w-full  `}
+                            >
                               <p className="w-1/3 overflow-auto">{bill.name}</p>
                               <p className="flex justify-center w-1/3">
                                 {format(parseISO(bill.date), "dd/MM/yyyy ", {})}
@@ -118,7 +124,8 @@ function PageHome() {
                         <div
                           className={`flex justify-between
                          items-center mt-2 text-[15px] border p-1  rounded  ${
-                           bill.paid && "bg-green-300 transition-all"
+                           bill.paid &&
+                           "bg-green-300 transition-all line-through"
                          } `}
                           key={bill._id}
                         >
@@ -191,7 +198,7 @@ function PageHome() {
                     ))
                   ) : (
                     <PageWrapper>
-                      <p>Ainda não há nada aqui</p>
+                      <p className="mt-4">Ainda não há nada aqui</p>
                     </PageWrapper>
                   )}
                 </>

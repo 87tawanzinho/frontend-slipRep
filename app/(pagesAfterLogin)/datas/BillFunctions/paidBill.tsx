@@ -8,8 +8,8 @@ export const changePaidBill = async (
   setBills: Dispatch<SetStateAction<myBills[]>>
 ) => {
   try {
-    const userName = localStorage.getItem("name");
-    await instance.put(`paidBillOrNo/${userName}`, { id });
+    const name = localStorage.getItem("name");
+    await instance.put(`paidBillOrNo/${name}`, { id });
     fetchDataAndSetBills(setBills);
   } catch (error) {
     console.log(error);
