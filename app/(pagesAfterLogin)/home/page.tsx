@@ -12,12 +12,15 @@ import { removeBill } from "../datas/removeBill";
 import Loading from "../loading";
 import { useRouter } from "next/navigation";
 import Slips from "../components/slips";
+import HowWorksThis from "../components/HowWorksTotal";
+import { ImInfo } from "react-icons/im";
 
 function PageHome() {
   const [bills, setBills] = useState<myBills[]>([]);
   const [incomeBill, setIncomeBill] = useState<number>(0);
   const [name, setName] = useState<string>("");
   const [warning, setWarning] = useState(false);
+  const [info, setInfo] = useState(false);
   const router = useRouter();
   const [loading, setLoading] = useState(true);
   useEffect(() => {
@@ -88,25 +91,45 @@ function PageHome() {
                 <>
                   <div className=" py-4  flex gap-2 items-center">
                     Contas Gerais <BiDownArrowAlt />
+                    <ImInfo
+                      className="cursor-pointer hover:opacity-75"
+                      onClick={() => setInfo(!info)}
+                    />
+                  </div>
+
+                  {info && (
+                    <p className="py-4">
+                      <HowWorksThis text="Neste espaço, você encontrará uma tabela com todos os itens que você cadastrou. Aqui, é possível acompanhar detalhes de cada um deles. Para obter mais informações, basta clicar sobre o nome do item. Se desejar marcar um item como pago, clique no preço correspondente. Todos os valores serão automaticamente deduzidos de sua renda, proporcionando uma visão clara do total mensal." />
+                    </p>
+                  )}
+                  <div className="flex justify-between font-bold text-[14px] border-2 p-2 rounded border-gray-500">
+                    <p>Nome</p>
+                    <p>Data</p>
+                    <p>Preço</p>
                   </div>
                   {bills.length > 0 ? (
-                    bills.map((bill) => (
+                    bills.map((bill, index) => (
                       <div
                         className="flex justify-between
-                         items-center mt-2 text-sm   "
+                         items-center mt-2 text-[13px] border p-1  rounded  "
                         key={bill._id}
                       >
                         <div
-                          className="w-1/3 lg:w-1/4 overflow-auto hover:bg-opacity-20
+                          className="w-1/3 lg:w-1/4 overflow-auto hover:bg-opacity-20 
                           hover:text-black hover:bg-sky-400 cursor-pointer  "
                           onClick={() => {
                             setWarning(true);
                             router.push(`home/${bill._id}?name=${name}`);
                           }}
                         >
-                          <p className="border-b-2 shadow-lg">{bill.name}</p>
+                          <p className=" flex gap-2 ">
+                            <span className="font-bold text-sm">
+                              {index + 1}
+                            </span>
+                            {bill.name}
+                          </p>
                         </div>
-                        <div className="flex justify-center overflow-auto">
+                        <div className="flex justify-center overflow-auto ">
                           {!bill.warn ? (
                             <p>
                               {format(parseISO(bill.date), "dd/MM/yyyy ", {})}
@@ -116,7 +139,7 @@ function PageHome() {
                           )}
                         </div>
 
-                        <div className="w-1/3 lg:w-1/4 flex justify-end gap-1  items-center  overflow-auto ">
+                        <div className="w-1/3 lg:w-1/4 flex justify-end gap-1  items-center  overflow-auto hover:bg-green-300 cursor-pointer ">
                           <p className="text-red-700    ">R$ {bill.price}</p>
                           <FaDeleteLeft
                             size={20}

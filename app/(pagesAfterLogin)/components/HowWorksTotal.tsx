@@ -24,7 +24,7 @@ function HowWorksThis({
   return (
     <PageWrapper>
       <div>
-        <div className="border-zinc-400 border w-auto lg:w-80 p-2 rounded shadow-md  text-zinc-400 text-sm">
+        <div className="border-zinc-400 border w-auto lg:w-[600px] p-2 rounded shadow-md  text-zinc-400 text-sm">
           <p>{text}</p>
         </div>
       </div>
