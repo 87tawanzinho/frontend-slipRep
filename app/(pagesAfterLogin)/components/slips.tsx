@@ -20,8 +20,8 @@ function Slips() {
     fetchDataAndSetSlips(setData);
   }, []);
   return (
-    <div className="px-4   custom:px-32  lg:px-60 pb-4">
-      <div className="mt-20 p-4 w-full  rounded-2xl lg:w-1/3 flex flex-col   bg-white max-h-[40rem] overflow-auto    ">
+    <div className="px-4   custom:px-32  lg:px-60 pb-4 ">
+      <div className="mt-20 p-4 w-full  rounded-2xl lg:w-1/3 flex flex-col bg-white    max-h-[40rem] overflow-auto    ">
         {" "}
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center gap-2">
@@ -51,7 +51,7 @@ function Slips() {
           <div className="flex flex-col overflow-x-auto h-full">
             {data.map((item, index) => (
               <PageWrapper key={item._id}>
-                <div className="flex flex-col justify-center border-2 font-bold p-4 h-full  gap-2">
+                <div className="flex flex-col justify-center border-2 font-bold p-4 h-full  gap-2 hover:bg-opacity-10 transition-all  hover:bg-black">
                   <Image src={invoice} alt="fatura" className="mb-4" />
 
                   <p>Nome: {item.name}</p>

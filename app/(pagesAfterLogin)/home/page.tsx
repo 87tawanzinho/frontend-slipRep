@@ -123,11 +123,11 @@ function PageHome() {
                           key={bill._id}
                         >
                           <div
-                            className={`w-1/3 lg:w-1/4 overflow-y-auto hover:bg-opacity-20  hover:transition-all
+                            className={`w-1/3 lg:w-1/4 overflow-y-auto   hover:transition-all
                           hover:text-black  cursor-pointer ${
                             !bill.paid
-                              ? "hover:bg-black hover:text-white"
-                              : "hover:bg-sky-400"
+                              ? "hover:bg-sky-400 hover:text-white"
+                              : "hover:bg-white"
                           }  `}
                             onClick={() => {
                               setWarning(true);
@@ -161,8 +161,8 @@ function PageHome() {
                             }
                             className={`w-1/3 lg:w-1/4 flex justify-end gap-1  items-center  overflow-auto cursor-pointer ${
                               !bill.paid
-                                ? " hover:bg-green-300"
-                                : " hover:bg-red-300"
+                                ? " hover:bg-green-400 "
+                                : " hover:bg-red-400"
                             } `}
                           >
                             <p className="text-red-700 ">R$ {bill.price}</p>
