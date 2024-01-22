@@ -132,7 +132,7 @@ function MyExpenses({ text, span, income, setData }: Expenses) {
 
             <div className="flex flex-col items-center justify-center text-center   ">
               <GiMoneyStack size={80} />
-              <p className="text-[13px] w-96   ">
+              <p className="text-[13px] lg:w-96 break-words w-full   ">
                 Sua saúde financeira é muito importante, por tanto, lembre-se de
                 guardar uma parte do que você ganha todos os meses.
               </p>
