@@ -15,6 +15,8 @@ import Slips from "../components/slips";
 import HowWorksThis from "../components/HowWorksTotal";
 import { ImInfo } from "react-icons/im";
 import { changePaidBill } from "../datas/BillFunctions/paidBill";
+import { PageWrapper } from "../emotion/page-wrapper";
+import { PageWrapperModal } from "../emotion/page-wrapperModal";
 
 function PageHome() {
   const [bills, setBills] = useState<myBills[]>([]);
@@ -72,17 +74,19 @@ function PageHome() {
                   {bills.map((bill) => (
                     <div key={bill._id}>
                       {isToday(parseISO(bill.date)) ? (
-                        <div className="flex  font-bold text-sm justify-between items-center text-gray-800 px-2">
-                          <div className="flex justify-between items-center w-full ">
-                            <p className="w-1/3 overflow-auto">{bill.name}</p>
-                            <p className="flex justify-center w-1/3">
-                              {format(parseISO(bill.date), "dd/MM/yyyy ", {})}
-                            </p>
-                            <p className="flex justify-end w-1/3">
-                              R${bill.price}
-                            </p>
+                        <PageWrapper>
+                          <div className="flex  font-bold text-sm justify-between items-center text-gray-800 px-2">
+                            <div className="flex justify-between items-center w-full ">
+                              <p className="w-1/3 overflow-auto">{bill.name}</p>
+                              <p className="flex justify-center w-1/3">
+                                {format(parseISO(bill.date), "dd/MM/yyyy ", {})}
+                              </p>
+                              <p className="flex justify-end w-1/3">
+                                R${bill.price}
+                              </p>
+                            </div>
                           </div>
-                        </div>
+                        </PageWrapper>
                       ) : null}
                     </div>
                   ))}
@@ -110,81 +114,85 @@ function PageHome() {
                   </div>
                   {bills.length > 0 ? (
                     bills.map((bill, index) => (
-                      <div
-                        className={`flex justify-between
+                      <PageWrapperModal key={bill._id}>
+                        <div
+                          className={`flex justify-between
                          items-center mt-2 text-[13px] border p-1  rounded  ${
                            bill.paid && "bg-green-300 transition-all"
                          } `}
-                        key={bill._id}
-                      >
-                        <div
-                          className={`w-1/3 lg:w-1/4 overflow-auto hover:bg-opacity-20  hover:transition-all
+                          key={bill._id}
+                        >
+                          <div
+                            className={`w-1/3 lg:w-1/4 overflow-y-auto hover:bg-opacity-20  hover:transition-all
                           hover:text-black  cursor-pointer ${
                             !bill.paid
                               ? "hover:bg-black hover:text-white"
                               : "hover:bg-sky-400"
                           }  `}
-                          onClick={() => {
-                            setWarning(true);
-                            router.push(`home/${bill._id}?name=${name}`);
-                          }}
-                        >
-                          <p className=" flex gap-2 ">
-                            <span className="font-bold text-sm">
-                              {index + 1}
-                            </span>
-                            {bill.name}
-                          </p>
-                        </div>
-                        <div className="flex justify-center overflow-auto ">
-                          {!bill.warn ? (
-                            <p>
-                              {format(parseISO(bill.date), "dd/MM/yyyy ", {})}
-                            </p>
-                          ) : (
-                            <p className="text-sm">{bill.warn}</p>
-                          )}
-                        </div>
-
-                        <div
-                          onClick={() =>
-                            changePaidBill(
-                              bill._id,
-                              fetchDataAndSetBills,
-                              setBills
-                            )
-                          }
-                          className={`w-1/3 lg:w-1/4 flex justify-end gap-1  items-center  overflow-auto cursor-pointer ${
-                            !bill.paid
-                              ? " hover:bg-green-300"
-                              : " hover:bg-red-300"
-                          } `}
-                        >
-                          <p className="text-red-700    ">R$ {bill.price}</p>
-                          <FaDeleteLeft
-                            size={20}
-                            className="cursor-pointer hover:opacity-75 transition-all   "
                             onClick={() => {
-                              removeBill(
+                              setWarning(true);
+                              router.push(`home/${bill._id}?name=${name}`);
+                            }}
+                          >
+                            <p className=" flex gap-2 ">
+                              <span className="font-bold text-sm">
+                                {index + 1}
+                              </span>
+                              {bill.name}
+                            </p>
+                          </div>
+                          <div className="flex justify-center overflow-auto ">
+                            {!bill.warn ? (
+                              <p>
+                                {format(parseISO(bill.date), "dd/MM/yyyy ", {})}
+                              </p>
+                            ) : (
+                              <p className="text-sm">{bill.warn}</p>
+                            )}
+                          </div>
+
+                          <div
+                            onClick={() =>
+                              changePaidBill(
                                 bill._id,
                                 fetchDataAndSetBills,
-                                bills,
                                 setBills
-                              );
-                            }}
-                          />
-                        </div>
-                        {warning && (
-                          <div className="fixed h-screen w-full bg-black bg-opacity-20 top-0 left-0">
-                            <div>
-                              <Loading />
-                            </div>
+                              )
+                            }
+                            className={`w-1/3 lg:w-1/4 flex justify-end gap-1  items-center  overflow-auto cursor-pointer ${
+                              !bill.paid
+                                ? " hover:bg-green-300"
+                                : " hover:bg-red-300"
+                            } `}
+                          >
+                            <p className="text-red-700 ">R$ {bill.price}</p>
+                            <FaDeleteLeft
+                              size={20}
+                              className="cursor-pointer hover:opacity-75 transition-all   "
+                              onClick={() => {
+                                removeBill(
+                                  bill._id,
+                                  fetchDataAndSetBills,
+                                  bills,
+                                  setBills
+                                );
+                              }}
+                            />
                           </div>
-                        )}
-                      </div>
+                          {warning && (
+                            <div className="fixed h-screen w-full bg-black bg-opacity-20 top-0 left-0">
+                              <div>
+                                <Loading />
+                              </div>
+                            </div>
+                          )}
+                        </div>
+                      </PageWrapperModal>
                     ))
                   ) : (
-                    <p>Ainda não há nada aqui</p>
+                    <PageWrapper>
+                      <p>Ainda não há nada aqui</p>
+                    </PageWrapper>
                   )}
                 </>
               }

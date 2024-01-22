@@ -65,7 +65,7 @@ function MyExpenses({ text, span, income, setData }: Expenses) {
   };
 
   return (
-    <div className="bg-white w-11/12 lg:w-7/12 rounded-2xl mt-10 p-2 lg:p-12">
+    <div className="bg-white w-11/12 lg:w-auto rounded-2xl mt-10 p-2 lg:p-12">
       {!openInput && (
         <PageWrapper>
           <div className="text-sm lg:text-lg  flex flex-col lg:flex-row gap-2 items-center">
@@ -96,7 +96,7 @@ function MyExpenses({ text, span, income, setData }: Expenses) {
       )}
       {openInput && (
         <PageWrapper>
-          <div className="flex flex-col lg:flex-row justify-between items-center  p-2 ">
+          <div className="flex flex-col lg:flex-row justify-between gap-24  items-center  p-2 ">
             <div className="flex flex-col gap-3">
               <p className="font-sans text-[13px] w-60 ">
                 Defina uma renda mensal para poder se{" "}
@@ -130,9 +130,9 @@ function MyExpenses({ text, span, income, setData }: Expenses) {
               )}
             </div>
 
-            <div className="flex flex-col items-center justify-center  mr-0 lg:mr-4 ">
+            <div className="flex flex-col items-center justify-center text-center   ">
               <GiMoneyStack size={80} />
-              <p className="text-[12px] w-60   ">
+              <p className="text-[13px] w-96   ">
                 Sua saúde financeira é muito importante, por tanto, lembre-se de
                 guardar uma parte do que você ganha todos os meses.
               </p>
