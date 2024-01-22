@@ -64,7 +64,7 @@ function PageHome() {
             <ItensExpenses
               type="Bills"
               payToday={
-                <div className="rounded-2xl mb-10 border-b-4 box-green border-green-100 pb-4">
+                <div className="rounded-2xl mb-10 border-b-4 box-green pb-4">
                   <p className="flex gap-2 items-center mb-4 font-bold">
                     {" "}
                     <CiWarning size={40} className="text-black" /> Contas para
@@ -107,7 +107,7 @@ function PageHome() {
                       <HowWorksThis text="Neste espaço, você encontrará uma tabela com todos os itens que você cadastrou. Aqui, é possível acompanhar detalhes de cada um deles. Para obter mais informações, basta clicar sobre o nome do item. Se desejar marcar um item como pago, clique no preço correspondente. Todos os valores serão automaticamente deduzidos de sua renda, proporcionando uma visão clara do total mensal." />
                     </p>
                   )}
-                  <div className="flex justify-between font-bold text-[14px] border-2 p-2 rounded border-gray-500">
+                  <div className="flex justify-between font-bold text-[16px] border-2 p-2 rounded border-gray-500">
                     <p>Nome</p>
                     <p>Data</p>
                     <p>Preço</p>
@@ -117,7 +117,7 @@ function PageHome() {
                       <PageWrapperModal key={bill._id}>
                         <div
                           className={`flex justify-between
-                         items-center mt-2 text-[13px] border p-1  rounded  ${
+                         items-center mt-2 text-[15px] border p-1  rounded  ${
                            bill.paid && "bg-green-300 transition-all"
                          } `}
                           key={bill._id}

@@ -51,17 +51,18 @@ function Slips() {
           <div className="flex flex-col overflow-x-auto h-full">
             {data.map((item, index) => (
               <PageWrapper key={item._id}>
-                <div className="flex flex-col justify-center items-center border-2 p-4 h-full  w-full gap-2">
+                <div className="flex flex-col justify-center border-2 font-bold p-4 h-full  gap-2">
                   <Image src={invoice} alt="fatura" className="mb-4" />
 
                   <p>Nome: {item.name}</p>
                   <p>Data: {item.date}</p>
                   <p className="">Preço: R${item.price}</p>
-                  <div>
+                  <div className="flex gap-2 items-center ">
                     <p>Código:</p>
+                    <p className="w-32 overflow-auto border-2 rounded">
+                      {item.code}
+                    </p>
                   </div>
-
-                  <p className="w-32 overflow-auto p-2">{item.code}</p>
                 </div>
               </PageWrapper>
             ))}

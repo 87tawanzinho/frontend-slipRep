@@ -39,7 +39,7 @@ html:hover,
 }
 
 .box-green {
-  box-shadow: 0 10px 30px rgba(102, 167, 72, 0.7);
+  box-shadow: 0 10px 30px rgba(22, 22, 22, 0.7);
 }
 
 @keyframes heartbeat {
