@@ -118,9 +118,9 @@ function PageHome() {
                         key={bill._id}
                       >
                         <div
-                          className={`w-1/3 lg:w-1/4 overflow-auto hover:bg-opacity-20 
+                          className={`w-1/3 lg:w-1/4 overflow-auto hover:bg-opacity-20  hover:transition-all
                           hover:text-black  cursor-pointer ${
-                            bill.paid
+                            !bill.paid
                               ? "hover:bg-black hover:text-white"
                               : "hover:bg-sky-400"
                           }  `}
@@ -155,7 +155,7 @@ function PageHome() {
                             )
                           }
                           className={`w-1/3 lg:w-1/4 flex justify-end gap-1  items-center  overflow-auto cursor-pointer ${
-                            bill.paid
+                            !bill.paid
                               ? " hover:bg-green-300"
                               : " hover:bg-red-300"
                           } `}
@@ -175,7 +175,7 @@ function PageHome() {
                           />
                         </div>
                         {warning && (
-                          <div className="absolute h-screen w-full bg-black bg-opacity-20 top-0 left-0">
+                          <div className="fixed h-screen w-full bg-black bg-opacity-20 top-0 left-0">
                             <div>
                               <Loading />
                             </div>
