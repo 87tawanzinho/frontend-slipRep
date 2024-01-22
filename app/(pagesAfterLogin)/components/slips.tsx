@@ -4,7 +4,7 @@ import { ImInfo } from "react-icons/im";
 import HowWorksThis from "./HowWorksTotal";
 import { FaPlus } from "react-icons/fa6";
 import Modal, { newPay } from "../Modal";
-import { fetchDataAndSetSlips } from "../datas/takeSlips";
+import { fetchDataAndSetSlips } from "../datas/BillFunctions/takeSlips";
 
 function Slips() {
   const [info, setInfo] = useState(false);

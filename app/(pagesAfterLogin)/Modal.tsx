@@ -5,8 +5,8 @@ import { PageWrapper } from "./emotion/page-wrapper";
 import HowWorksThis from "./components/HowWorksTotal";
 import { MdDone } from "react-icons/md";
 import { instance } from "../axios/instance";
-import { fetchDataAndSetBills } from "./datas/takeBills";
-import { fetchDataAndSetSlips } from "./datas/takeSlips";
+import { fetchDataAndSetBills } from "./datas/BillFunctions/takeBills";
+import { fetchDataAndSetSlips } from "./datas/BillFunctions/takeSlips";
 
 interface ModalProps {
   setopenNew: React.Dispatch<React.SetStateAction<boolean>>;

@@ -6,7 +6,7 @@ import { MdModeEditOutline } from "react-icons/md";
 import { MdDone } from "react-icons/md";
 import { justName } from "../datas/name";
 import { IoMdAddCircleOutline } from "react-icons/io";
-import { fetchDataAndSetBills } from "../datas/takeBills";
+import { fetchDataAndSetBills } from "../datas/BillFunctions/takeBills";
 import { PageWrapper } from "../emotion/page-wrapper";
 import { PageWrapperModal } from "../emotion/page-wrapperModal";
 import { IoCheckmark } from "react-icons/io5";
