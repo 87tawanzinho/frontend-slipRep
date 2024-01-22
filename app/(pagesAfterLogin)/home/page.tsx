@@ -118,8 +118,10 @@ function PageHome() {
                         key={bill._id}
                       >
                         <div
-                          className="w-1/3 lg:w-1/4 overflow-auto hover:bg-opacity-20 
-                          hover:text-black hover:bg-sky-400 cursor-pointer  "
+                          className={`w-1/3 lg:w-1/4 overflow-auto hover:bg-opacity-20 
+                          hover:text-black  cursor-pointer ${
+                            bill.paid ? "hover: bg-black" : "hover:bg-sky-400"
+                          }  `}
                           onClick={() => {
                             setWarning(true);
                             router.push(`home/${bill._id}?name=${name}`);
@@ -150,7 +152,11 @@ function PageHome() {
                               setBills
                             )
                           }
-                          className="w-1/3 lg:w-1/4 flex justify-end gap-1  items-center  overflow-auto hover:bg-green-300 cursor-pointer "
+                          className={`w-1/3 lg:w-1/4 flex justify-end gap-1  items-center  overflow-auto cursor-pointer ${
+                            bill.paid
+                              ? " hover:bg-green-300"
+                              : " hover:bg-red-300"
+                          } `}
                         >
                           <p className="text-red-700    ">R$ {bill.price}</p>
                           <FaDeleteLeft
