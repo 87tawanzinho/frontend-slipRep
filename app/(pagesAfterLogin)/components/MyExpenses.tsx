@@ -14,6 +14,9 @@ import { CgClose } from "react-icons/cg";
 import { ImInfo } from "react-icons/im";
 import HowWorksThis from "./HowWorksTotal";
 import Modal, { newPay } from "../Modal";
+import { FaRightLeft } from "react-icons/fa6";
+import { TbMoneybag } from "react-icons/tb";
+import { GiMoneyStack } from "react-icons/gi";
 interface Expenses {
   text: string;
   span?: ReactNode;
@@ -93,35 +96,47 @@ function MyExpenses({ text, span, income, setData }: Expenses) {
       )}
       {openInput && (
         <PageWrapper>
-          <div className="flex flex-col gap-4  ">
-            <p className="font-sans text-sm w-60">
-              Defina uma renda mensal para poder se{" "}
-              <span className="italic">organizar</span>.. quanto você quer
-              gastar por mês?
-            </p>
-            <input
-              type="number"
-              placeholder="Nova renda mensal"
-              className="h-8 bg-gray-100 rounded-lg w-60"
-              onChange={(e) => setValue(e.target.value)}
-            />
-            <div className="flex gap-2 items-center">
-              <button
-                className=" rounded-full bg-sky-400 text-white hover:bg-sky-300 "
-                onClick={handleChangeNumberIncomeOrTickets}
-              >
-                <IoCheckmark size={24} />
-              </button>
-              <button
-                className=" rounded-full bg-rose-400 text-white hover:bg-rose-300"
-                onClick={() => setOpenInput(false)}
-              >
-                <CgClose size={24} />
-              </button>
+          <div className="flex flex-col lg:flex-row justify-between items-center  p-2 ">
+            <div className="flex flex-col gap-2">
+              <p className="font-sans text-sm w-60 ">
+                Defina uma renda mensal para poder se{" "}
+                <span className="italic">organizar</span>.. quanto você quer
+                gastar por mês?
+              </p>
+              <input
+                type="number"
+                placeholder="Nova renda mensal"
+                className="h-8 bg-gray-100 rounded-lg w-60"
+                onChange={(e) => setValue(e.target.value)}
+              />
+              <div className="flex gap-2 items-center">
+                <button
+                  className=" rounded-full bg-sky-400 text-white hover:bg-sky-300 "
+                  onClick={handleChangeNumberIncomeOrTickets}
+                >
+                  <IoCheckmark size={24} />
+                </button>
+                <button
+                  className=" rounded-full bg-rose-400 text-white hover:bg-rose-300"
+                  onClick={() => setOpenInput(false)}
+                >
+                  <CgClose size={24} />
+                </button>
+              </div>
+              {warningIncome && (
+                <p className="open-sans text-sm text-sky-500">
+                  {warningIncome}
+                </p>
+              )}
             </div>
-            {warningIncome && (
-              <p className="open-sans text-sm text-sky-500">{warningIncome}</p>
-            )}
+
+            <div className="flex flex-col items-center justify-center  mr-4">
+              <GiMoneyStack size={80} />
+              <p className="text-[12px] w-60  ">
+                Sua saúde financeira é muito importante, por tanto, lembre-se de
+                guardar uma parte do que você ganha todos os meses
+              </p>
+            </div>
           </div>
         </PageWrapper>
       )}
