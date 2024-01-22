@@ -107,10 +107,15 @@ function PageHome() {
                           <p className="border-b-2 shadow-lg">{bill.name}</p>
                         </div>
                         <div className="flex justify-center overflow-auto">
-                          <p>
-                            {format(parseISO(bill.date), "dd/MM/yyyy ", {})}
-                          </p>
+                          {!bill.warn ? (
+                            <p>
+                              {format(parseISO(bill.date), "dd/MM/yyyy ", {})}
+                            </p>
+                          ) : (
+                            <p className="text-sm">{bill.warn}</p>
+                          )}
                         </div>
+
                         <div className="w-1/3 lg:w-1/4 flex justify-end gap-1  items-center  overflow-auto ">
                           <p className="text-red-700    ">R$ {bill.price}</p>
                           <FaDeleteLeft
@@ -120,6 +125,7 @@ function PageHome() {
                               removeBill(
                                 bill._id,
                                 fetchDataAndSetBills,
+                                bills,
                                 setBills
                               );
                             }}
@@ -161,5 +167,6 @@ export interface myBills {
   price: number;
   date: string;
   _id: number;
+  warn: string;
   observation?: string;
 }
