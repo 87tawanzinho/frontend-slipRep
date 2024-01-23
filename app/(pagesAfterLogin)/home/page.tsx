@@ -116,7 +116,7 @@ function PageHome() {
                   <div className="flex justify-between font-bold text-[16px] border-2 p-2 rounded border-gray-500">
                     <p>Nome</p>
                     <p>Data</p>
-                    <p>Preço</p>
+                    <p>Valor</p>
                   </div>
                   {bills.length > 0 ? (
                     bills.map((bill, index) => (

@@ -75,7 +75,7 @@ function Slips() {
 
                   <p>Nome: {item.name}</p>
                   <p>Data: {format(parseISO(item.date), "dd/MM/yyyy ", {})}</p>
-                  <p className="">Preço: R${item.price}</p>
+                  <p className="">Valor: R${item.price}</p>
                   <div className="flex gap-2 items-center ">
                     <p>Código:</p>
                     <p className="w-32 overflow-auto border-2 rounded">

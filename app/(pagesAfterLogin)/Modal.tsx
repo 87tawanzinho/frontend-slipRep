@@ -33,7 +33,7 @@ function Modal({ setopenNew, income, setData, info, setOpenInfo }: ModalProps) {
       }
 
       if (newPay.price <= 0) {
-        return setWarning("O preço precisa ser maior que 0.");
+        return setWarning("O valor precisa ser maior que 0.");
       }
 
       setWarning("Aguarde, estamos registrando..");
@@ -69,7 +69,7 @@ function Modal({ setopenNew, income, setData, info, setOpenInfo }: ModalProps) {
       }
 
       if (newPay.price <= 0) {
-        return setWarning("O preço precisa ser maior que 0.");
+        return setWarning("O valor precisa ser maior que 0.");
       }
 
       setWarning("Aguarde, estamos registrando..");
@@ -134,7 +134,7 @@ function Modal({ setopenNew, income, setData, info, setOpenInfo }: ModalProps) {
               </div>
 
               <div className="flex flex-col mt-4">
-                <span>Preço</span>
+                <span>Valor</span>
                 <input
                   type="number"
                   className={`${income !== "Bills" && "border-red-400"} `}
