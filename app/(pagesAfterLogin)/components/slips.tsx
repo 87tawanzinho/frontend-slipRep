@@ -13,18 +13,20 @@ import { BsFillTrashFill, BsTrash2 } from "react-icons/bs";
 import { PiTrashSimpleThin } from "react-icons/pi";
 import { FiTrash } from "react-icons/fi";
 import { removeSlip } from "../datas/SlipFunctions/removeSlip";
-import { format, parseISO } from "date-fns";
-import { CiBarcode } from "react-icons/ci";
+import { format, isToday, parseISO } from "date-fns";
+import { CiBarcode, CiWarning } from "react-icons/ci";
+
 function Slips() {
   const [info, setInfo] = useState(false);
   const [openNew, setOpenNew] = useState(false);
   const [newSlip, setNewSlip] = useState<newPay>();
-  const [warning, setWarning] = useState("");
   const [data, setData] = useState<mySlips[]>([]);
 
   useEffect(() => {
     fetchDataAndSetSlips(setData);
   }, []);
+  const isTodayDate = data.filter((item) => isToday(parseISO(item.date)));
+
   return (
     <div className="px-4   custom:px-32  lg:px-60 pb-4 ">
       <div className="mt-20 p-4 w-full  rounded-2xl custom:w-96 lg:w-1/3 flex flex-col bg-white    max-h-[40rem] overflow-auto    ">
@@ -53,6 +55,19 @@ function Slips() {
             />
           </div>
         )}
+        {isTodayDate.length > 0 ? (
+          <div className="h-40 overflow-auto shadow-2xl mb-10 ">
+            {isTodayDate.map((item) => (
+              <div className="py-2">
+                <div className="flex gap-2 items-center justify-center">
+                  <CiWarning size={30} />
+                  <h2>Você tem boletos para pagar hoje</h2>
+                </div>
+                // TODO
+              </div>
+            ))}
+          </div>
+        ) : null}
         {data.length > 0 ? (
           <div className="flex flex-col overflow-x-auto h-full">
             {data.map((item, index) => (

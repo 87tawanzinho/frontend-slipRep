@@ -1,7 +1,11 @@
 import { myBills } from "../../home/page";
 
-let clickedBill: myBills | null = null;
+interface typeDateBill {
+  date: string[];
+}
 
+let clickedBill: myBills | null = null;
+let dateBill: typeDateBill;
 export const setClickedBill = (bill: myBills) => {
   clickedBill = bill;
 };
