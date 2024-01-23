@@ -8,12 +8,19 @@ interface ItensExpenses {
   total: number;
   type: "Bills" | "Tickets";
   payToday: ReactNode;
+  thereBillsToPayToday: boolean;
 }
-function ItensExpenses({ data, total, type, payToday }: ItensExpenses) {
+function ItensExpenses({
+  data,
+  total,
+  type,
+  payToday,
+  thereBillsToPayToday,
+}: ItensExpenses) {
   const [info, setInfo] = useState(false);
   return (
     <div className="bg-white w-11/12 lg:w-9/12 max-h-[60rem] overflow-auto rounded-2xl  mt-10 h-full p-4 ">
-      <div className="rounded-lg ">{payToday}</div>
+      {thereBillsToPayToday && <div className="rounded-lg ">{payToday}</div>}
       {data}
       <div className="mt-10 pb-2 text-xl flex items-center gap-4">
         <div>

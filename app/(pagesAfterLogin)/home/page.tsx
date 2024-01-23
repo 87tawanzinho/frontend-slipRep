@@ -43,7 +43,9 @@ function PageHome() {
     }
     fetchDataAndSetBills(setBills);
   }, [bills]);
-
+  const thereBillsToPayToday = bills.some((bill) =>
+    isToday(parseISO(bill.date))
+  );
   return (
     <>
       {loading === false ? (
@@ -66,11 +68,12 @@ function PageHome() {
             />
             <ItensExpenses
               type="Bills"
+              thereBillsToPayToday={thereBillsToPayToday}
               payToday={
-                <div className="rounded-2xl mb-10 border-b-4 box-green pb-4">
+                <div className="rounded-2xl mb-4  shadow pb-4">
                   <p className="flex gap-2 items-center mb-4 font-bold">
                     {" "}
-                    <CiWarning size={40} className="text-black" /> Contas para
+                    <CiWarning size={32} className="text-black" /> Contas para
                     pagar hoje
                   </p>
 
@@ -79,7 +82,7 @@ function PageHome() {
                       {isToday(parseISO(bill.date)) ? (
                         <PageWrapper>
                           <div
-                            className={` flex  font-bold text-sm justify-between items-center text-gray-800 px-2`}
+                            className={` flex  font-bold text-[14px] justify-between items-center text-gray-800 px-2`}
                           >
                             <div
                               className={` ${
