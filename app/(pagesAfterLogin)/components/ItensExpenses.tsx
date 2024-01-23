@@ -22,7 +22,10 @@ function ItensExpenses({ data, total, type, payToday }: ItensExpenses) {
             className={`${total <= -1 ? "text-red-600" : "text-green-600"}`}
           >
             {" "}
-            {total}
+            {total.toLocaleString(undefined, {
+              minimumFractionDigits: 2,
+              maximumFractionDigits: 2,
+            })}
           </span>
         </div>
         <ImInfo

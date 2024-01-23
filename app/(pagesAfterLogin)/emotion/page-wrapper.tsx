@@ -11,7 +11,7 @@ export const PageWrapper = ({ children }: { children: React.ReactNode }) => {
           initial={{ opacity: 0, x: 100 }}
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: -100 }}
-          transition={{ type: "spring", damping: 8, mass: 1, stiffness: 150 }}
+          transition={{ type: "tween", duration: 0.4 }}
         >
           {children}
         </motion.div>

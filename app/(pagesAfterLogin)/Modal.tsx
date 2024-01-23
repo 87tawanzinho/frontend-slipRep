@@ -26,16 +26,19 @@ function Modal({ setopenNew, income, setData, info, setOpenInfo }: ModalProps) {
 
     if (income === "Bills") {
       if (!newPay?.description || !newPay?.price || !newPay?.date) {
+        setClick(false);
         return setWarning("Preencha todos os campos para prosseguir.");
       }
 
       if (newPay.description.length <= 3 || newPay.description.length > 12) {
+        setClick(false);
         return setWarning(
           "A descrição tem que ter no minimo 4 dígitos e no maximo 12."
         );
       }
 
       if (newPay.price <= 0) {
+        setClick(false);
         return setWarning("O valor precisa ser maior que 0.");
       }
 
@@ -102,7 +105,7 @@ function Modal({ setopenNew, income, setData, info, setOpenInfo }: ModalProps) {
   return (
     <div>
       {" "}
-      <div className=" flex items-center justify-center h-full top-0 left-0 fixed w-full bg-black bg-opacity-40">
+      <div className=" flex items-center justify-center h-full top-0 left-0 fixed w-full bg-black bg-opacity-40 z-50">
         <div className=" rounded-xl shadow-2xl bg-white w-11/12 lg:w-9/12 h-auto py-8 px-4 relative">
           <p
             className="max-w-min  absolute end-4 top-4 text-red-700 cursor-pointer hover:opacity-75"
@@ -145,6 +148,7 @@ function Modal({ setopenNew, income, setData, info, setOpenInfo }: ModalProps) {
                 <span>Valor</span>
                 <input
                   type="number"
+                  placeholder="00,00"
                   className={`${income !== "Bills" && "border-red-400"} `}
                   name="price"
                   onChange={(e) =>

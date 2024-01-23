@@ -6,18 +6,18 @@ import IncomeBills from "../datas/incomeBills";
 import { format, isToday, parseISO } from "date-fns";
 import { fetchDataAndSetBills } from "../datas/BillFunctions/takeBills";
 import { BiDownArrowAlt } from "react-icons/bi";
-import { FaDeleteLeft } from "react-icons/fa6";
 import { CiWarning } from "react-icons/ci";
-import { removeBill } from "../datas/BillFunctions/removeBill";
 import Loading from "../loading";
 import { useRouter } from "next/navigation";
 import Slips from "../components/slips";
 import HowWorksThis from "../components/HowWorksTotal";
 import { ImInfo } from "react-icons/im";
-import { changePaidBill } from "../datas/BillFunctions/paidBill";
 import { PageWrapper } from "../emotion/page-wrapper";
 import { PageWrapperModal } from "../emotion/page-wrapperModal";
 import { Reveal } from "../emotion/Reveal";
+import { GoGear } from "react-icons/go";
+import ModalConfig from "../ModalConfig";
+import { setClickedBill } from "../datas/BillFunctions/clickedOnGear";
 
 function PageHome() {
   const [bills, setBills] = useState<myBills[]>([]);
@@ -25,6 +25,7 @@ function PageHome() {
   const [name, setName] = useState<string>("");
   const [warning, setWarning] = useState(false);
   const [info, setInfo] = useState(false);
+  const [configBillModal, setConfigBillModal] = useState(false);
   const router = useRouter();
   const [loading, setLoading] = useState(true);
   useEffect(() => {
@@ -42,6 +43,7 @@ function PageHome() {
     }
     fetchDataAndSetBills(setBills);
   }, [bills]);
+
   return (
     <>
       {loading === false ? (
@@ -132,11 +134,8 @@ function PageHome() {
                         >
                           <div
                             className={`w-1/3 lg:w-1/4 overflow-y-auto   hover:transition-all
-                          hover:text-black  cursor-pointer ${
-                            !bill.paid
-                              ? "hover:bg-sky-400 hover:text-white"
-                              : "hover:bg-white"
-                          }  `}
+                          hover:text-black  cursor-pointer hover:opacity-75
+                            `}
                             onClick={() => {
                               setWarning(true);
                               router.push(`home/${bill._id}?name=${name}`);
@@ -150,40 +149,28 @@ function PageHome() {
                             </p>
                           </div>
                           <div className="flex justify-center overflow-auto ">
-                            {!bill.warn ? (
-                              <p>
-                                {format(parseISO(bill.date), "dd/MM/yyyy ", {})}
-                              </p>
-                            ) : (
-                              <p className="text-sm">{bill.warn}</p>
-                            )}
+                            <p>
+                              {format(parseISO(bill.date), "dd/MM/yyyy ", {})}
+                            </p>
                           </div>
 
                           <div
-                            onClick={() =>
-                              changePaidBill(
-                                bill._id,
-                                fetchDataAndSetBills,
-                                setBills
-                              )
-                            }
-                            className={`w-1/3 lg:w-1/4 flex justify-end gap-1  items-center  overflow-auto cursor-pointer ${
-                              !bill.paid
-                                ? " hover:bg-green-400 "
-                                : " hover:bg-red-400"
-                            } `}
+                            className={`w-1/3 lg:w-1/4 flex justify-end gap-1  items-center  overflow-auto 
+                             `}
                           >
-                            <p className="text-red-700 ">R$ {bill.price}</p>
-                            <FaDeleteLeft
+                            <p className="text-red-700 ">
+                              R${" "}
+                              {bill.price.toLocaleString(undefined, {
+                                minimumFractionDigits: 2,
+                                maximumFractionDigits: 2,
+                              })}
+                            </p>
+                            <GoGear
                               size={20}
                               className="cursor-pointer hover:opacity-75 transition-all   "
                               onClick={() => {
-                                removeBill(
-                                  bill._id,
-                                  fetchDataAndSetBills,
-                                  bills,
-                                  setBills
-                                );
+                                setClickedBill(bill);
+                                setConfigBillModal(true);
                               }}
                             />
                           </div>
@@ -192,6 +179,17 @@ function PageHome() {
                               <div>
                                 <Loading />
                               </div>
+                            </div>
+                          )}
+                          {configBillModal && (
+                            <div className="absolute">
+                              <PageWrapperModal>
+                                <ModalConfig
+                                  type="Bill"
+                                  setConfigModal={setConfigBillModal}
+                                  allBillsData={setBills}
+                                />
+                              </PageWrapperModal>
                             </div>
                           )}
                         </div>
@@ -228,7 +226,6 @@ export interface myBills {
   price: number;
   date: string;
   _id: number;
-  warn: string;
   paid: boolean;
   observation?: string;
 }
