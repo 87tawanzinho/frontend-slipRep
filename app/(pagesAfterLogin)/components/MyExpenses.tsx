@@ -105,7 +105,7 @@ function MyExpenses({ text, span, income, setData }: Expenses) {
               </p>
               <input
                 type="number"
-                placeholder="Nova renda mensal"
+                placeholder="0000,00"
                 className="h-8 bg-gray-100 rounded-lg w-60"
                 onChange={(e) => setValue(e.target.value)}
               />

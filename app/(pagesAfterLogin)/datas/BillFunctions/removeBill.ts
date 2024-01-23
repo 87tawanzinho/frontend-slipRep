@@ -5,18 +5,11 @@ import { myBills } from "../../home/page";
 export const removeBill = async (
   id: number,
   fetchDataAndSetBills: Dispatch<SetStateAction<any>>,
-  bills: myBills[],
-  setBills: Dispatch<SetStateAction<myBills[]>>
+  bill: myBills,
+  setBills: Dispatch<SetStateAction<any>>
 ) => {
   try {
-    const newData = bills.map((bill) => {
-      if (bill._id === id) {
-        return { ...bill, warn: "Deletando.." };
-      }
-      return bill;
-    });
-
-    setBills(newData);
+    setBills(bill);
 
     const userName = localStorage.getItem("name");
     await instance.put(`deleteOneBill/${userName}`, { id });
