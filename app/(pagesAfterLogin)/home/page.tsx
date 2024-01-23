@@ -17,6 +17,7 @@ import { ImInfo } from "react-icons/im";
 import { changePaidBill } from "../datas/BillFunctions/paidBill";
 import { PageWrapper } from "../emotion/page-wrapper";
 import { PageWrapperModal } from "../emotion/page-wrapperModal";
+import { Reveal } from "../emotion/Reveal";
 
 function PageHome() {
   const [bills, setBills] = useState<myBills[]>([]);
@@ -209,7 +210,9 @@ function PageHome() {
             />
           </main>
 
-          <Slips />
+          <Reveal>
+            <Slips />
+          </Reveal>
         </div>
       ) : (
         <Loading />

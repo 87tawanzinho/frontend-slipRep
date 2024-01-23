@@ -1,17 +1,18 @@
 import React from "react";
 import MenuMobile from "./components/MenuMobile";
 import MenuPC from "./components/MenuPC";
-import { PageWrapper } from "./emotion/page-wrapper";
+
+import { Reveal } from "./emotion/Reveal";
 
 function HomeLayout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="">
+    <>
       <MenuPC />
       <MenuMobile />
-      <PageWrapper>
+      <Reveal>
         <div className="pt-20">{children}</div>
-      </PageWrapper>
-    </div>
+      </Reveal>
+    </>
   );
 }
 
