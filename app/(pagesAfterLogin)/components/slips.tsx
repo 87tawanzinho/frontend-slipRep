@@ -75,10 +75,16 @@ function Slips() {
 
                   <p>Nome: {item.name}</p>
                   <p>Data: {format(parseISO(item.date), "dd/MM/yyyy ", {})}</p>
-                  <p className="">Valor: R${item.price}</p>
-                  <div className="flex gap-2 items-center ">
-                    <p>Código:</p>
-                    <p className="w-32 overflow-auto border-2 rounded">
+                  <p className="">
+                    Valor: R$
+                    {item.price.toLocaleString(undefined, {
+                      minimumFractionDigits: 2,
+                      maximumFractionDigits: 2,
+                    })}
+                  </p>
+                  <div className="flex flex-col gap-2 items-center mt-4 rounded">
+                    <p>Código de Barras:</p>
+                    <p className="w-full bg-red-800  max-h-60 overflow-y-auto border-2 rounded break-words text-gray-200 text-center">
                       {item.code}
                     </p>
                   </div>
