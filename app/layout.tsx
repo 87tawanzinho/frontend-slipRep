@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Open_Sans, Roboto, Roboto_Slab } from "next/font/google";
 import "./globals.css";
+import { Reveal } from "./(pagesAfterLogin)/emotion/Reveal";
 
 const inter = Open_Sans({ subsets: ["latin"], weight: ["400"] });
 
@@ -16,7 +17,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <Reveal>{children}</Reveal>
+      </body>
     </html>
   );
 }
