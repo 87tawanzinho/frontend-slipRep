@@ -68,16 +68,19 @@ function Modal({ setopenNew, income, setData, info, setOpenInfo }: ModalProps) {
         !newPay?.date ||
         !newPay?.code
       ) {
+        setClick(false);
         return setWarning("Preencha todos os campos para prosseguir.");
       }
 
       if (newPay.description.length <= 3 || newPay.description.length > 12) {
+        setClick(false);
         return setWarning(
           "A descrição tem que ter no minimo 4 dígitos e no maximo 12."
         );
       }
 
       if (newPay.price <= 0) {
+        setClick(false);
         return setWarning("O valor precisa ser maior que 0.");
       }
 
