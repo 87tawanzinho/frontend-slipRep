@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { ImInfo } from "react-icons/im";
 import HowWorksThis from "./HowWorksTotal";
-import { FaFileInvoice, FaPlus } from "react-icons/fa6";
+import { FaBarcode, FaFileInvoice, FaPlus } from "react-icons/fa6";
 import Modal, { newPay } from "../Modal";
 import { fetchDataAndSetSlips } from "../datas/BillFunctions/takeSlips";
 import { PageWrapperModal } from "../emotion/page-wrapperModal";
@@ -14,6 +14,7 @@ import { PiTrashSimpleThin } from "react-icons/pi";
 import { FiTrash } from "react-icons/fi";
 import { removeSlip } from "../datas/SlipFunctions/removeSlip";
 import { format, parseISO } from "date-fns";
+import { CiBarcode } from "react-icons/ci";
 function Slips() {
   const [info, setInfo] = useState(false);
   const [openNew, setOpenNew] = useState(false);
@@ -84,6 +85,7 @@ function Slips() {
                   </p>
                   <div className="flex flex-col gap-2 items-center mt-4 rounded">
                     <p>Código de Barras:</p>
+                    <CiBarcode size={100} />
                     <p className="w-full bg-red-800  max-h-60 overflow-y-auto border-2 rounded break-words text-gray-200 text-center">
                       {item.code}
                     </p>
