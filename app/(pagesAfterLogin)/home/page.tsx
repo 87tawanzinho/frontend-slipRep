@@ -126,7 +126,7 @@ function PageHome() {
                       <PageWrapperModal key={bill._id}>
                         <div
                           className={`flex justify-between
-                         items-center mt-2 text-[15px] border p-1  rounded  ${
+                         items-center mt-2 text-[13px] lg:text-[15px] border p-1  rounded  ${
                            bill.paid &&
                            "bg-green-300 transition-all line-through"
                          } `}
@@ -158,8 +158,8 @@ function PageHome() {
                             className={`w-1/3 lg:w-1/4 flex justify-end gap-1  items-center  overflow-auto 
                              `}
                           >
-                            <p className="text-red-700 ">
-                              R${" "}
+                            <p className="text-red-700  ">
+                              <span className="text-[11px]">R$</span>
                               {bill.price.toLocaleString(undefined, {
                                 minimumFractionDigits: 2,
                                 maximumFractionDigits: 2,
