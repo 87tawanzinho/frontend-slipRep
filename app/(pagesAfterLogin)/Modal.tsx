@@ -20,7 +20,10 @@ interface ModalProps {
 function Modal({ setopenNew, income, setData, info, setOpenInfo }: ModalProps) {
   const [newPay, setNewPay] = useState<newPay>();
   const [warning, setWarning] = useState("");
+  const [click, setClick] = useState(false);
   const newCost = async () => {
+    setClick(true);
+
     if (income === "Bills") {
       if (!newPay?.description || !newPay?.price || !newPay?.date) {
         return setWarning("Preencha todos os campos para prosseguir.");
@@ -37,6 +40,7 @@ function Modal({ setopenNew, income, setData, info, setOpenInfo }: ModalProps) {
       }
 
       setWarning("Aguarde, estamos registrando..");
+
       try {
         const res = await instance.put("newBill", {
           userName: localStorage.getItem("name"),
@@ -47,9 +51,11 @@ function Modal({ setopenNew, income, setData, info, setOpenInfo }: ModalProps) {
         });
         setWarning("");
         setopenNew(false);
+        setClick(false);
         fetchDataAndSetBills(setData);
         console.log(res);
       } catch (error) {
+        setClick(false);
         setWarning("Um erro ocorreu, verifique novamente.");
       }
     } else {
@@ -82,10 +88,12 @@ function Modal({ setopenNew, income, setData, info, setOpenInfo }: ModalProps) {
           code: newPay?.code,
         });
         setWarning("");
+        setClick(false);
         setopenNew(false);
         fetchDataAndSetSlips(setData); // todo
         console.log(res);
       } catch (error) {
+        setClick(false);
         setWarning("Um erro ocorreu, verifique novamente.");
       }
     }
@@ -210,13 +218,15 @@ function Modal({ setopenNew, income, setData, info, setOpenInfo }: ModalProps) {
             </PageWrapper>
 
             <div className="flex justify-center mt-10">
-              <MdDone
-                onClick={newCost}
-                className={`${
-                  income === "Bills" ? "bg-sky-400" : "bg-red-400"
-                } rounded-full text-green-100 cursor-pointer hover:bg-black transition-all`}
-                size={80}
-              />
+              <button disabled={click}>
+                <MdDone
+                  onClick={newCost}
+                  className={`${
+                    income === "Bills" ? "bg-sky-400" : "bg-red-400"
+                  } rounded-full text-green-100 cursor-pointer hover:bg-black transition-all`}
+                  size={80}
+                />
+              </button>
             </div>
           </div>
         </div>

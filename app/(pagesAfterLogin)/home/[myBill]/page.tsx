@@ -38,15 +38,29 @@ function page({ params }: { params: { myBill: string } }) {
             <div className="flex justify-center p-4">
               <GiPayMoney size={100} />
             </div>
+            <p
+              className={` mb-2 font-bold  ${
+                informationsAboutThisBill.paid
+                  ? "text-green-600"
+                  : "text-red-600"
+              }`}
+            >
+              {" "}
+              {informationsAboutThisBill.paid
+                ? "Você pagou essa conta."
+                : "Você não pagou essa conta."}
+            </p>
             <p>
               Informações sobre a despesa: {informationsAboutThisBill?.name}
             </p>
+
             <div className="flex items-center gap-4 mt-4">
               <div className="flex items-center gap-2">
                 <CiMoneyBill
                   className="rounded-full bg-black text-white"
                   size={20}
                 />
+
                 <p>Valor total da despesa</p>
                 <FaArrowRight />
               </div>
@@ -74,11 +88,16 @@ function page({ params }: { params: { myBill: string } }) {
               <FaArrowDown />
             </div>
 
-            <div className="  bg-gray-300 text-zinc-800  rounded-lg p-2 w-full lg:w-80 mt-4">
+            <div className="  text-gray-300 bg-zinc-800  rounded-lg p-2 w-full lg:w-80 mt-4">
               <p className="break-words">
-                {informationsAboutThisBill!!.observation}
+                {informationsAboutThisBill.observation ? (
+                  informationsAboutThisBill.observation
+                ) : (
+                  <p className="  ">Sem observações</p>
+                )}
               </p>
             </div>
+
             <Link href={"/home"}>
               <button className="mt-10 hover:opacity-75">
                 <FaArrowLeftLong
