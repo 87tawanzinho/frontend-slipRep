@@ -22,6 +22,7 @@ function ItensExpenses({
     <div className="bg-white w-11/12 lg:w-9/12 max-h-[60rem] overflow-auto rounded-2xl  mt-10 h-full p-4 ">
       {thereBillsToPayToday && <div className="rounded-lg ">{payToday}</div>}
       {data}
+
       <div className="mt-10 pb-2 text-xl flex items-center gap-4">
         <div>
           Total do mês: <span className="text-[14px]">R$</span>

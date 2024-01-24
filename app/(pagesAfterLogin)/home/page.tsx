@@ -71,7 +71,7 @@ function PageHome() {
               thereBillsToPayToday={thereBillsToPayToday}
               payToday={
                 <div className="rounded-2xl mb-4  shadow pb-4">
-                  <p className="flex gap-2 items-center mb-4 font-bold">
+                  <p className="flex gap-2 items-center mb-4">
                     {" "}
                     <CiWarning size={32} className="text-black" /> Contas para
                     pagar hoje
@@ -82,7 +82,7 @@ function PageHome() {
                       {isToday(parseISO(bill.date)) ? (
                         <PageWrapper>
                           <div
-                            className={` flex  font-bold text-[14px] justify-between items-center text-gray-800 px-2`}
+                            className={` flex  text-[14px] justify-between items-center text-gray-800 px-2 `}
                           >
                             <div
                               className={` ${
