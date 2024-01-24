@@ -101,11 +101,15 @@ function Slips() {
                   className={`${
                     item.paid === true &&
                     "bg-yellow-100 hover:bg-yellow-200 hover:bg-opacity-100 "
-                  } flex flex-col justify-center border-2  p-4 h-full  gap-2 hover:opacity-95 transition-all `}
+                  } flex flex-col justify-center border-2  p-4 h-full   hover:opacity-95 transition-all `}
                 >
                   <div className="flex justify-between">
                     <div className="flex items-center gap-2">
-                      <Image src={invoice} alt="fatura" className="mb-4 " />
+                      <Image
+                        src={invoice}
+                        alt="fatura"
+                        className="mb-2 h-14 w-14 "
+                      />
                       {item.paid && <p>Conta Paga</p>}
                     </div>
                     <div className="flex gap-2">
@@ -131,21 +135,25 @@ function Slips() {
                         }}
                         size={28}
                         className={`${
-                          !item.paid ? "bg-yellow-400" : "bg-black"
+                          !item.paid ? "bg-yellow-600" : "bg-black"
                         } p-1 rounded-full text-white cursor-pointer hover:opacity-40`}
                       />
                     </div>
                   </div>
 
-                  <p>Nome: {item.name}</p>
-                  <p>Data: {format(parseISO(item.date), "dd/MM/yyyy ", {})}</p>
-                  <p className="">
-                    Valor: <span className="text-[12px]">R$</span>
-                    {item.price.toLocaleString(undefined, {
-                      minimumFractionDigits: 2,
-                      maximumFractionDigits: 2,
-                    })}
-                  </p>
+                  <div className="flex flex-col ">
+                    <p>Nome: {item.name}</p>
+                    <p>
+                      Data: {format(parseISO(item.date), "dd/MM/yyyy ", {})}
+                    </p>
+                    <p className="">
+                      Valor: <span className="text-[12px]">R$</span>
+                      {item.price.toLocaleString(undefined, {
+                        minimumFractionDigits: 2,
+                        maximumFractionDigits: 2,
+                      })}
+                    </p>
+                  </div>
                   <div className="flex flex-col gap-2 items-center mt-4 rounded">
                     <p>Código de Barras:</p>
                     <CiBarcode size={100} />
