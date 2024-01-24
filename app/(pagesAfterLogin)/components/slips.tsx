@@ -103,7 +103,7 @@ function Slips() {
                   className={`${
                     item.paid === true &&
                     "bg-yellow-100 hover:bg-yellow-200 hover:bg-opacity-100 "
-                  } flex flex-col justify-center border-2  p-4 h-full   hover:opacity-95 transition-all `}
+                  } flex flex-col justify-center border-2  p-4 h-full text-sm   hover:opacity-95 transition-all `}
                 >
                   <div className="flex justify-between">
                     <div className="flex items-center gap-2">
