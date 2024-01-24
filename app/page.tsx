@@ -5,6 +5,8 @@ import { instance } from "./axios/instance";
 import { jwtDecode } from "jwt-decode";
 import { PageWrapper } from "./(pagesAfterLogin)/emotion/page-wrapper";
 import Link from "next/link";
+import { PageWrapperUp } from "./(pagesAfterLogin)/emotion/page-wrapper-up";
+import { Reveal } from "./(pagesAfterLogin)/emotion/Reveal";
 export default function Home() {
   const router = useRouter();
   const [name, setName] = useState("");
@@ -24,11 +26,14 @@ export default function Home() {
       localStorage.setItem("name", tokenDecode.name);
       localStorage.setItem("incomeBills", tokenDecode.mensalIncomeBills);
       localStorage.setItem("incomeTickets", tokenDecode.mensalIncomeTickets);
-      setWarning("Sucesso!");
+      setWarning("Entrando na sua conta..");
       router.push("/home");
-    } catch (e) {
-      setWarning("Algo de errado, verifique.");
-      console.error(e);
+    } catch (e: ErrorLogin | any) {
+      if (e.hasOwnProperty("response") && e.response) {
+        setWarning(e.response.data.message);
+        console.error(e);
+        console.error(e);
+      }
     }
   };
 
@@ -60,7 +65,12 @@ export default function Home() {
           Entrar
         </button>
 
-        {warning && <p className="text-sm">{warning}</p>}
+        {warning && (
+          <Reveal>
+            {" "}
+            <p className="text-sm pt-4">{warning}</p>{" "}
+          </Reveal>
+        )}
 
         <Link href={"/sign-up"}>
           <p className="text-gray-700 mt-4 border-b-2 border-gray-700 hover:opacity-75">
@@ -78,4 +88,12 @@ interface jwtToken {
   email: string;
   mensalIncomeBills: string;
   mensalIncomeTickets: string;
+}
+
+interface ErrorLogin {
+  response: {
+    data: {
+      message: string;
+    };
+  };
 }
