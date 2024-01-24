@@ -56,24 +56,24 @@ function Slips() {
           </div>
         )}
         {isTodayDate.length > 0 ? (
-          <div className="h-96 overflow-auto shadow mb-10 ">
-            <div className="flex  items-center  justify-center">
+          <div className="  h-[90rem] overflow-auto shadow mb-10 ">
+            <div className="flex  items-center  justify-center py-4">
               <CiWarning size={30} />
               <h2>Você tem boletos para pagar hoje</h2>
             </div>
+            <div className=" shadow flex justify-between border p-2 text-red-800 font-bold ">
+              <p>Nome</p>
+              <p>Data</p>
+              <p>Valor</p>
+            </div>
             {isTodayDate.map((item) => (
-              <div className=" h-96 ">
-                <div className=" shadow flex justify-between border p-2 text-red-800 font-bold">
-                  <p>Nome</p>
-                  <p>Data</p>
-                  <p>Valor</p>
-                </div>
-                <div className="flex justify-between  border text-sm p-1 text-red-800">
+              <div className="mb-1 ">
+                <div className="flex justify-between  border text-[13px] p-1 text-red-800 px-2">
                   <p className="w-1/5 ">{item.name}</p>
-                  <p className="w-1/5 ">{item.date}</p>
+                  <p className="w-1/4 ">{item.date}</p>
 
-                  <p>
-                    <span className="text-[12px] w-1/5">R$</span>
+                  <p className=" w-1/6 text-end">
+                    <span className="text-[12px]">R$</span>
                     {item.price}
                   </p>
                 </div>
@@ -82,7 +82,7 @@ function Slips() {
           </div>
         ) : null}
         {data.length > 0 ? (
-          <div className="flex flex-col overflow-x-auto h-full">
+          <div className="flex flex-col overflow-x-auto ">
             {data.map((item, index) => (
               <PageWrapper key={item._id}>
                 <div className="flex flex-col justify-center border-2 font-bold p-4 h-full  gap-2 hover:bg-opacity-10 transition-all  hover:bg-black">

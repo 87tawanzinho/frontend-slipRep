@@ -9,6 +9,7 @@ html,
   transition: all;
   color: rgb(39, 39, 39);
 }
+
 body {
   background: linear-gradient(to bottom right, #e0dedd, #e0dedd9c);
 }
