@@ -14,14 +14,14 @@ function SignUpPage() {
   const handleSignUp = async () => {
     setWarning("Tentando criar sua conta..");
     if (password !== confirmPassword) {
-      return setWarning("Erro, verifique");
+      return setWarning("Senhas não coincidem.");
     }
     try {
       await instance.post("", { email, name, password }); // cria um usuario
       setWarning("Sucesso!");
       router.push("/");
-    } catch (e) {
-      setWarning("Tente novamente mais tarde.");
+    } catch (e: any) {
+      setWarning(e.response.data.message);
     }
   };
 
