@@ -75,7 +75,7 @@ function Modal({ setopenNew, income, setData, info, setOpenInfo }: ModalProps) {
       if (newPay.description.length <= 3 || newPay.description.length > 12) {
         setClick(false);
         return setWarning(
-          "A descrição tem que ter no minimo 4 dígitos e no maximo 12."
+          "O nome da empresa tem que ter no minimo 4 dígitos e no maximo 12."
         );
       }
 
@@ -130,7 +130,9 @@ function Modal({ setopenNew, income, setData, info, setOpenInfo }: ModalProps) {
           <div className="flex  flex-col gap-4 flex-wrap">
             <div className="flex gap-0 lg:gap-4 flex-wrap">
               <div className="flex flex-col mt-4 text-gray-700">
-                <span>Descrição</span>
+                <span>
+                  {income === "Bills" ? "Nome da despesa" : "Nome da empresa"}
+                </span>
                 <input
                   type="text"
                   className={`${income !== "Bills" && "border-red-400"} `}

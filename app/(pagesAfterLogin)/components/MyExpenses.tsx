@@ -36,31 +36,16 @@ function MyExpenses({ text, span, income, setData }: Expenses) {
 
   const handleChangeNumberIncomeOrTickets = async () => {
     setWarningIncome("Registrando sua renda..");
-    if (income === "Bills") {
-      try {
-        const res = await instance.put("/newIncomeBills", {
-          name: myName,
-          mensalIncomeBills: value,
-        });
-        setOpenInput(false);
-        setWarningIncome("");
-        localStorage.setItem("incomeBills", value);
-      } catch (error) {
-        console.log(error);
-      }
-    } else {
-      if (income === "Tickets") {
-        try {
-          const res = await instance.put("/newIncomeTickets", {
-            name: myName,
-            mensalIncomeTickets: value,
-          });
-          localStorage.setItem("incomeTickets", value);
-          setOpenInput(false);
-        } catch (error) {
-          console.log(error);
-        }
-      }
+    try {
+      const res = await instance.put("/newIncomeBills", {
+        name: myName,
+        mensalIncomeBills: value,
+      });
+      setOpenInput(false);
+      setWarningIncome("");
+      localStorage.setItem("incomeBills", value);
+    } catch (error) {
+      console.log(error);
     }
   };
 

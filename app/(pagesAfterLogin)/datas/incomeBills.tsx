@@ -19,7 +19,7 @@ export default function IncomeBills() {
 
   return (
     <p>
-      R${" "}
+      <span className="text-[13px] ">R$</span>
       {incomeBills !== 0
         ? incomeBills.toLocaleString(undefined, {
             minimumFractionDigits: 2,
