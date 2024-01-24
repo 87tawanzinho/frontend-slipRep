@@ -15,6 +15,8 @@ import { FiTrash } from "react-icons/fi";
 import { removeSlip } from "../datas/SlipFunctions/removeSlip";
 import { format, isToday, parseISO } from "date-fns";
 import { CiBarcode, CiWarning } from "react-icons/ci";
+import { MdDone } from "react-icons/md";
+import { changePaidSlip } from "../datas/SlipFunctions/paidSlip";
 
 function Slips() {
   const [info, setInfo] = useState(false);
@@ -29,7 +31,7 @@ function Slips() {
 
   return (
     <div className="px-4   custom:px-32  lg:px-60 pb-4 ">
-      <div className="mt-20 p-4 w-full  rounded-2xl custom:w-96 lg:w-1/3 flex flex-col bg-white    max-h-[40rem] overflow-auto    ">
+      <div className="mt-20 p-4 w-full  rounded-2xl custom:w-96 lg:w-1/3 flex flex-col bg-white    ] overflow-auto    ">
         {" "}
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center gap-2">
@@ -56,8 +58,11 @@ function Slips() {
           </div>
         )}
         {isTodayDate.length > 0 ? (
-          <div className="  h-[90rem] overflow-auto shadow mb-10 ">
-            <div className="flex  items-center  justify-center py-4">
+          <div
+            className="   overflow-auto shadow mb-10 max-h-96"
+            key={isTodayDate.length}
+          >
+            <div className="flex  items-center  justify-center py-4 text-sm gap-2">
               <CiWarning size={30} />
               <h2>Você tem boletos para pagar hoje</h2>
             </div>
@@ -67,13 +72,19 @@ function Slips() {
               <p>Valor</p>
             </div>
             {isTodayDate.map((item) => (
-              <div className="mb-1 ">
-                <div className="flex justify-between  border text-[13px] p-1 text-red-800 px-2">
+              <div className={`mb-1 ${item.paid && "bg-yellow-200"}`}>
+                <div
+                  className={`flex justify-between  border text-[12px] p-1 text-red-800 px-2`}
+                >
                   <p className="w-1/5 ">{item.name}</p>
-                  <p className="w-1/4 ">{item.date}</p>
+                  {item.paid ? (
+                    <p className="w-1/6 text-center">Pago</p>
+                  ) : (
+                    <p className="w-1/4 text-center ">{item.date}</p>
+                  )}
 
                   <p className=" w-1/6 text-end">
-                    <span className="text-[12px]">R$</span>
+                    <span className="text-[10px]">R$</span>
                     {item.price}
                   </p>
                 </div>
@@ -82,30 +93,54 @@ function Slips() {
           </div>
         ) : null}
         {data.length > 0 ? (
-          <div className="flex flex-col overflow-x-auto ">
+          <div className={`flex flex-col overflow-x-auto h-auto max-h-96  `}>
             {data.map((item, index) => (
               <PageWrapper key={item._id}>
-                <div className="flex flex-col justify-center border-2 font-bold p-4 h-full  gap-2 hover:bg-opacity-10 transition-all  hover:bg-black">
+                <div
+                  key={item._id}
+                  className={`${
+                    item.paid === true &&
+                    "bg-yellow-100 hover:bg-yellow-200 hover:bg-opacity-100 "
+                  } flex flex-col justify-center border-2  p-4 h-full  gap-2 hover:opacity-95 transition-all `}
+                >
                   <div className="flex justify-between">
-                    <Image src={invoice} alt="fatura" className="mb-4" />
-                    <FiTrash
-                      onClick={() =>
-                        removeSlip(
-                          item._id,
-                          fetchDataAndSetSlips,
-                          data,
-                          setData
-                        )
-                      }
-                      size={20}
-                      className="  text-black  rounded-full cursor-pointer hover:opacity-40"
-                    />
+                    <div className="flex items-center gap-2">
+                      <Image src={invoice} alt="fatura" className="mb-4 " />
+                      {item.paid && <p>Conta Paga</p>}
+                    </div>
+                    <div className="flex gap-2">
+                      <FiTrash
+                        onClick={() =>
+                          removeSlip(
+                            item._id,
+                            fetchDataAndSetSlips,
+                            data,
+                            setData
+                          )
+                        }
+                        size={28}
+                        className="  bg-red-400 text-white p-1  rounded-full cursor-pointer hover:opacity-40"
+                      />
+                      <MdDone
+                        onClick={() => {
+                          changePaidSlip(
+                            item._id,
+                            fetchDataAndSetSlips,
+                            setData
+                          );
+                        }}
+                        size={28}
+                        className={`${
+                          !item.paid ? "bg-yellow-400" : "bg-black"
+                        } p-1 rounded-full text-white cursor-pointer hover:opacity-40`}
+                      />
+                    </div>
                   </div>
 
                   <p>Nome: {item.name}</p>
                   <p>Data: {format(parseISO(item.date), "dd/MM/yyyy ", {})}</p>
                   <p className="">
-                    Valor: R$
+                    Valor: <span className="text-[12px]">R$</span>
                     {item.price.toLocaleString(undefined, {
                       minimumFractionDigits: 2,
                       maximumFractionDigits: 2,
@@ -114,7 +149,11 @@ function Slips() {
                   <div className="flex flex-col gap-2 items-center mt-4 rounded">
                     <p>Código de Barras:</p>
                     <CiBarcode size={100} />
-                    <p className="w-full bg-red-800  max-h-60 overflow-y-auto border-2 rounded break-words text-gray-200 text-center">
+                    <p
+                      className={`w-full ${
+                        item.paid ? "hidden" : "bg-red-800"
+                      }  max-h-60 overflow-y-auto border-2 rounded break-words text-gray-200 text-center`}
+                    >
                       {item.code}
                     </p>
                   </div>
@@ -151,4 +190,5 @@ export interface mySlips {
   date: string;
   warn: string;
   _id: number;
+  paid: boolean;
 }

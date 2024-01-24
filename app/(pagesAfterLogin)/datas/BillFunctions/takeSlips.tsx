@@ -5,6 +5,7 @@ const fetchData = async () => {
   const name = localStorage.getItem("name");
   const res = await instance.get(`showSlips/${name}`);
   const result = res.data.tickets.reverse();
+  console.log(result);
   return result;
 };
 
