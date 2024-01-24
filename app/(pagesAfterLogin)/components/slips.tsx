@@ -33,7 +33,7 @@ function Slips() {
 
   return (
     <div className="px-4   custom:px-40  lg:px-60 pb-4 ">
-      <div className="mt-20 p-4 w-full  rounded-2xl custom:w-96 lg:w-1/3 flex flex-col bg-white    ] overflow-auto    ">
+      <div className="mt-20 p-4 w-full  rounded-2xl custom:w-96 lg:w-1/3 flex flex-col bg-white     overflow-auto    ">
         {" "}
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center gap-2">

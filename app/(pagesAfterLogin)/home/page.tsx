@@ -211,9 +211,7 @@ function PageHome() {
             />
           </main>
 
-          <Reveal>
-            <Slips />
-          </Reveal>
+          <Slips />
         </div>
       ) : (
         <Loading />
