@@ -162,7 +162,7 @@ function PageHome() {
                              `}
                           >
                             <p className="text-red-700  ">
-                              <span className="text-[11px]">R$</span>
+                              <span className="text-[10px]">R$</span>
                               {bill.price.toLocaleString(undefined, {
                                 minimumFractionDigits: 2,
                                 maximumFractionDigits: 2,
