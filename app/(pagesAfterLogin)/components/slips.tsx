@@ -17,6 +17,8 @@ import { format, isToday, parseISO } from "date-fns";
 import { CiBarcode, CiWarning } from "react-icons/ci";
 import { MdDone } from "react-icons/md";
 import { changePaidSlip } from "../datas/SlipFunctions/paidSlip";
+import { Reveal } from "../emotion/Reveal";
+import { PageWrapperUp } from "../emotion/page-wrapper-up";
 
 function Slips() {
   const [info, setInfo] = useState(false);
@@ -154,17 +156,20 @@ function Slips() {
                       })}
                     </p>
                   </div>
-                  <div className="flex flex-col gap-2 items-center mt-4 rounded">
-                    <p>Código de Barras:</p>
-                    <CiBarcode size={100} />
-                    <p
-                      className={`w-full ${
-                        item.paid ? "hidden" : "bg-red-800"
+                  {!item.paid && (
+                    <PageWrapperUp>
+                      <div className="flex flex-col gap-2 items-center mt-4 rounded">
+                        <p>Código de Barras:</p>
+                        <CiBarcode size={100} />
+                        <p
+                          className={`w-full  bg-red-800
                       }  max-h-60 overflow-y-auto border-2 rounded break-words text-gray-200 text-center`}
-                    >
-                      {item.code}
-                    </p>
-                  </div>
+                        >
+                          {item.code}
+                        </p>
+                      </div>
+                    </PageWrapperUp>
+                  )}
                 </div>
               </PageWrapper>
             ))}

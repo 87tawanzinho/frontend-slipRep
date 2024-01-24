@@ -7,11 +7,10 @@ export const PageWrapper = ({ children }: { children: React.ReactNode }) => {
     <>
       <AnimatePresence>
         <motion.div
-          className="w-full"
           initial={{ opacity: 0, x: 100 }}
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: -100 }}
-          transition={{ type: "tween", duration: 0.4 }}
+          transition={{ type: "spring", stiffness: 100 }}
         >
           {children}
         </motion.div>
