@@ -15,10 +15,12 @@ import { ImInfo } from "react-icons/im";
 import { PageWrapper } from "../emotion/page-wrapper";
 import { PageWrapperModal } from "../emotion/page-wrapperModal";
 import { Reveal } from "../emotion/Reveal";
-import { GoGear } from "react-icons/go";
+import { GoChevronRight, GoGear } from "react-icons/go";
 import ModalConfig from "../ModalConfig";
 import { setClickedBill } from "../datas/BillFunctions/clickedOnGear";
 import { useSlip } from "@/app/context/DataContext";
+import { DiAtom } from "react-icons/di";
+import { FaJava } from "react-icons/fa6";
 
 function PageHome() {
   const [bills, setBills] = useState<myBills[]>([]);
@@ -119,27 +121,31 @@ function PageHome() {
             />
 
             {totalAboutAll !== 0 && (
-              <div className="mt-4 bg-white rounded-lg p-4 flex gap-2">
-                <div className="text-red-800 text-sm flex gap-2">
-                  <p>
-                    <span className="text-black">Total - </span>{" "}
+              <div className="mt-6 bg-white rounded-lg p-4 flex gap-2 ">
+                <div className=" text-sm flex gap-2">
+
+                  <div className="flex gap-1 items-center">
+                    <span className="text-black">Total</span>{" "}
+
                     <span
-                      className={`${
-                        totalIncome <= -1 ? "text-red-600" : "text-green-600"
-                      }`}
+                      className={`${totalIncome <= -1 ? "text-red-700" : "text-green-700"
+                        }`}
                     >
-                      {totalIncome.toLocaleString(undefined, {
+                      R${totalIncome.toLocaleString(undefined, {
                         minimumFractionDigits: 2,
                         maximumFractionDigits: 2,
                       })}
                     </span>{" "}
-                    |
-                  </p>
-                  <span className="text-black">Gastos - </span>R$
-                  {totalAboutAll!!.toLocaleString(undefined, {
-                    minimumFractionDigits: 2,
-                    maximumFractionDigits: 2,
-                  })}
+                    <FaJava />
+
+                  </div>
+                  <div className="flex items-center gap-1">  <span className="text-black">Gastos  </span>
+                    <p className="text-red-700">R$
+                      {totalAboutAll!!.toLocaleString(undefined, {
+                        minimumFractionDigits: 2,
+                        maximumFractionDigits: 2,
+                      })}</p>
+                  </div>
                 </div>
               </div>
             )}
@@ -162,9 +168,8 @@ function PageHome() {
                             className={` flex  text-[14px] justify-between items-center text-gray-800 px-2 `}
                           >
                             <div
-                              className={` ${
-                                bill.paid && "bg-green-300 line-through"
-                              } flex justify-between items-center w-full  `}
+                              className={` ${bill.paid && "bg-green-300 line-through"
+                                } flex justify-between items-center w-full  `}
                             >
                               <p className="w-1/3 overflow-auto">{bill.name}</p>
                               <p className="flex justify-center w-1/3">
@@ -216,17 +221,16 @@ function PageHome() {
                         filter === ""
                           ? bill
                           : bill.name
-                              .toLowerCase()
-                              .includes(filter.toLowerCase())
+                            .toLowerCase()
+                            .includes(filter.toLowerCase())
                       )
                       .map((bill, index) => (
                         <PageWrapperModal key={bill._id}>
                           <div
                             className={`flex justify-between
-                         items-center mt-2 text-[13px] lg:text-[15px] border p-1  rounded  ${
-                           bill.paid &&
-                           "bg-green-300 transition-all line-through"
-                         } `}
+                         items-center mt-2 text-[13px] lg:text-[15px] border p-1  rounded  ${bill.paid &&
+                              "bg-green-300 transition-all line-through"
+                              } `}
                             key={bill._id}
                           >
                             <div
