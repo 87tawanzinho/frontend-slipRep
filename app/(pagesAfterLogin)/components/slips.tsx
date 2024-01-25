@@ -25,6 +25,7 @@ function Slips() {
   const [openNew, setOpenNew] = useState(false);
   const [newSlip, setNewSlip] = useState<newPay>();
   const [data, setData] = useState<mySlips[]>([]);
+  const [filter, setFilter] = useState("");
 
   useEffect(() => {
     fetchDataAndSetSlips(setData);
@@ -76,13 +77,15 @@ function Slips() {
             {isTodayDate.map((item) => (
               <div className={`mb-1 ${item.paid && "bg-yellow-200"}`}>
                 <div
-                  className={`flex justify-between  border text-[12px] p-1 text-red-800 px-2`}
+                  className={`flex justify-between  border text-[12px] p-1 text-red-800 px-2 items-center`}
                 >
                   <p className="w-1/5 ">{item.name}</p>
                   {item.paid ? (
                     <p className="w-1/6 text-center">Pago</p>
                   ) : (
-                    <p className="w-1/4 text-center ">{item.date}</p>
+                    <p className="w-1/4 text-center ">
+                      {format(parseISO(item.date), "dd/MM/yyyy ", {})}
+                    </p>
                   )}
 
                   <p className=" w-1/6 text-end">
@@ -94,85 +97,100 @@ function Slips() {
             ))}
           </div>
         ) : null}
+        <input
+          type="text"
+          placeholder="Filtrar"
+          className="border-red-900 h-7 rounded mb-4"
+          onChange={(e) => setFilter(e.target.value)}
+        />
         {data.length > 0 ? (
           <div className={`flex flex-col overflow-x-auto h-auto max-h-96  `}>
-            {data.map((item, index) => (
-              <PageWrapper key={item._id}>
-                <div
-                  key={item._id}
-                  className={`${
-                    item.paid === true &&
-                    "bg-yellow-100 hover:bg-yellow-200 hover:bg-opacity-100 "
-                  } flex flex-col justify-center border-2  p-4 h-full text-sm   hover:opacity-95 transition-all `}
-                >
-                  <div className="flex justify-between">
-                    <div className="flex items-center gap-2">
-                      <Image
-                        src={invoice}
-                        alt="fatura"
-                        className="mb-2 h-14 w-14 "
-                      />
-                      {item.paid && <p>Conta Paga</p>}
-                    </div>
-                    <div className="flex gap-2">
-                      <FiTrash
-                        onClick={() =>
-                          removeSlip(
-                            item._id,
-                            fetchDataAndSetSlips,
-                            data,
-                            setData
-                          )
-                        }
-                        size={28}
-                        className="  bg-red-400 text-white p-1  rounded-full cursor-pointer hover:opacity-40"
-                      />
-                      <MdDone
-                        onClick={() => {
-                          changePaidSlip(
-                            item._id,
-                            fetchDataAndSetSlips,
-                            setData
-                          );
-                        }}
-                        size={28}
-                        className={`${
-                          !item.paid ? "bg-yellow-600" : "bg-black"
-                        } p-1 rounded-full text-white cursor-pointer hover:opacity-40`}
-                      />
-                    </div>
-                  </div>
-
-                  <div className="flex flex-col ">
-                    <p>Nome: {item.name}</p>
-                    <p>
-                      Data: {format(parseISO(item.date), "dd/MM/yyyy ", {})}
-                    </p>
-                    <p className="">
-                      Valor: <span className="text-[12px]">R$</span>
-                      {item.price.toLocaleString(undefined, {
-                        minimumFractionDigits: 2,
-                        maximumFractionDigits: 2,
-                      })}
-                    </p>
-                  </div>
-                  {!item.paid && (
-                    <PageWrapperUp>
-                      <div className="flex flex-col gap-2 items-center mt-4 rounded">
-                        <p>Código de Barras:</p>
-                        <CiBarcode size={100} />
-                        <p
-                          className={`w-full  bg-red-800
-                      }  max-h-60 overflow-y-auto border-2 rounded break-words text-gray-200 text-center`}
-                        >
-                          {item.code}
-                        </p>
+            {data
+              .filter((slip) =>
+                filter === ""
+                  ? slip
+                  : slip.name
+                      .toLowerCase()
+                      .includes(filter.toLocaleLowerCase()) ||
+                    slip.price.toString().includes(filter)
+              )
+              .map((item, index) => (
+                <PageWrapper key={item._id}>
+                  <div
+                    key={item._id}
+                    className={`${
+                      item.paid === true &&
+                      "bg-yellow-100 hover:bg-yellow-200 hover:bg-opacity-100 "
+                    } flex flex-col justify-center border-2  p-4 h-full text-sm   hover:opacity-95 transition-all `}
+                  >
+                    <div className="flex justify-between">
+                      <div className="flex items-center gap-2">
+                        <Image
+                          src={invoice}
+                          alt="fatura"
+                          className="mb-2 h-14 w-14 "
+                        />
+                        {item.paid && <p>Conta Paga</p>}
                       </div>
-                    </PageWrapperUp>
-                  )}
-                </div>
-              </PageWrapper>
-            ))}
+                      <div className="flex gap-2">
+                        <FiTrash
+                          onClick={() =>
+                            removeSlip(
+                              item._id,
+                              fetchDataAndSetSlips,
+                              data,
+                              setData
+                            )
+                          }
+                          size={28}
+                          className="  bg-red-400 text-white p-1  rounded-full cursor-pointer hover:opacity-40"
+                        />
+                        <MdDone
+                          onClick={() => {
+                            changePaidSlip(
+                              item._id,
+                              fetchDataAndSetSlips,
+                              setData
+                            );
+                          }}
+                          size={28}
+                          className={`${
+                            !item.paid ? "bg-yellow-600" : "bg-black"
+                          } p-1 rounded-full text-white cursor-pointer hover:opacity-40`}
+                        />
+                      </div>
+                    </div>
+
+                    <div className="flex flex-col ">
+                      <p>Nome: {item.name}</p>
+                      <p>
+                        Data: {format(parseISO(item.date), "dd/MM/yyyy ", {})}
+                      </p>
+                      <p className="">
+                        Valor: <span className="text-[12px]">R$</span>
+                        {item.price.toLocaleString(undefined, {
+                          minimumFractionDigits: 2,
+                          maximumFractionDigits: 2,
+                        })}
+                      </p>
+                    </div>
+                    {!item.paid && (
+                      <PageWrapperUp>
+                        <div className="flex flex-col gap-2 items-center mt-4 rounded">
+                          <p>Código de Barras:</p>
+                          <CiBarcode size={100} />
+                          <p
+                            className={`w-full  bg-red-800
+                      }  max-h-60 overflow-y-auto border-2 rounded break-words text-gray-200 text-center`}
+                          >
+                            {item.code}
+                          </p>
+                        </div>
+                      </PageWrapperUp>
+                    )}
+                  </div>
+                </PageWrapper>
+              ))}
           </div>
         ) : (
           "Ainda não existem boletos registrados."
