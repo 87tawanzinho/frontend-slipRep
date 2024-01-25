@@ -124,7 +124,9 @@ function PageHome() {
 
                   {info && (
                     <p className="py-4">
-                      <HowWorksThis text="Neste espaço, você encontrará uma tabela com todos os itens que você cadastrou. Aqui, é possível acompanhar detalhes de cada um deles. Para obter mais informações, basta clicar sobre o nome do item. Se desejar marcar um item como pago, clique no preço correspondente. Todos os valores serão automaticamente deduzidos de sua renda, proporcionando uma visão clara do total mensal." />
+                      <HowWorksThis
+                        text={`Neste espaço, você encontrará uma tabela com todos os itens que você cadastrou. Aqui, é possível acompanhar detalhes de cada um deles. Para obter mais informações, basta clicar sobre o nome do item. Se desejar marcar um item como pago, clique no preço correspondente. Todos os valores pagos serão automaticamente deduzidos de sua renda, proporcionando uma visão clara do total mensal.`}
+                      />
                     </p>
                   )}
                   <div className="flex justify-between font-bold text-[16px] border-2 p-2 rounded border-gray-500">
@@ -222,7 +224,10 @@ function PageHome() {
                 </>
               }
               total={
-                incomeBill - bills.reduce((acc, bill) => acc + bill.price, 0)
+                incomeBill -
+                bills
+                  .filter((item) => item.paid)
+                  .reduce((acc, bill) => acc + bill.price, 0)
               }
             />
           </main>

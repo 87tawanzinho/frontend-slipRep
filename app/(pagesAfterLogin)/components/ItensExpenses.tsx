@@ -26,9 +26,7 @@ function ItensExpenses({
       <div className="mt-10 pb-2 text-xl flex items-center gap-4">
         <div>
           Total do mês: <span className="text-[14px]">R$</span>
-          <span
-            className={`${total <= -1 ? "text-red-600" : "text-green-600"}`}
-          >
+          <span className={`${total <= -1 ? "text-red-600" : "text-blue-800"}`}>
             {total.toLocaleString(undefined, {
               minimumFractionDigits: 2,
               maximumFractionDigits: 2,
