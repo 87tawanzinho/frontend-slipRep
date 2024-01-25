@@ -30,25 +30,54 @@ function PageHome() {
   const router = useRouter();
   const [loading, setLoading] = useState(true);
   const [filter, setFilter] = useState("");
+  const [totalIncome, setTotalIcome] = useState(0);
+  const [totalAboutAll, setTotalAboutAll] = useState(0);
   let { slip } = useSlip();
+  const billsAll = bills
+    .filter((bill) => bill.paid)
+    .reduce((acc, bill) => acc + bill.price, 0);
+  const slipAll = slip
+    .filter((slip) => slip.paid)
+    .reduce((acc, slip) => acc + slip.price, 0);
+  useEffect(() => {
+    const totalAboutAll = () => {
+      if (bills.length === 0 && slip.length === 0) {
+        return setTotalAboutAll(0);
+      }
+      if (bills.length >= 1 && slip.length === 0) {
+        const total = billsAll;
 
-  const totalAboutAll = () => {
-    if (bills.length === 0 && slip.length === 0) {
-      return false;
-    }
-    if (bills.length >= 1 && slip.length === 0) {
-      return bills.reduce((acc, bill) => acc + bill.price, 0);
-    }
-    if (bills.length === 0 && slip.length >= 1) {
-      return slip.reduce((acc, slip) => acc + slip.price, 0);
-    }
-    if (bills.length >= 1 && slip.length >= 1) {
-      return (
-        bills.reduce((acc, bill) => acc + bill.price, 0) +
-        slip.reduce((acc, slip) => acc + slip.price, 0)
-      );
-    }
-  };
+        return setTotalAboutAll(total);
+      }
+      if (bills.length === 0 && slip.length >= 1) {
+        const total = slipAll;
+        return setTotalAboutAll(total);
+      }
+      if (bills.length >= 1 && slip.length >= 1) {
+        const total = billsAll + slipAll;
+
+        return setTotalAboutAll(total);
+      }
+    };
+
+    const remainingIncome = () => {
+      if (bills.length === 0 && slip.length === 0) {
+        return setTotalIcome(incomeBill);
+      }
+      if (bills.length >= 1 && slip.length === 0) {
+        return setTotalIcome(incomeBill - billsAll);
+      }
+      if (bills.length >= 1 && slip.length >= 1) {
+        return setTotalIcome(incomeBill - (billsAll + slipAll));
+      }
+      if (bills.length >= 0 && slip.length >= 1) {
+        return setTotalIcome(incomeBill - slipAll);
+      }
+    };
+
+    totalAboutAll();
+    remainingIncome();
+  }, [bills, slip, setBills]);
 
   useEffect(() => {
     let bills;
@@ -88,11 +117,26 @@ function PageHome() {
               setData={setBills}
               span={<IncomeBills />}
             />
-            {totalAboutAll() && (
-              <div className="mt-4 bg-white rounded-lg p-4">
-                <div className="text-red-800 text-sm">
-                  <span className="text-black">Gasto Total - </span>R$
-                  {totalAboutAll()!!.toLocaleString(undefined, {
+
+            {totalAboutAll !== 0 && (
+              <div className="mt-4 bg-white rounded-lg p-4 flex gap-2">
+                <div className="text-red-800 text-sm flex gap-2">
+                  <p>
+                    <span className="text-black">Total - </span>{" "}
+                    <span
+                      className={`${
+                        totalIncome <= -1 ? "text-red-600" : "text-green-600"
+                      }`}
+                    >
+                      {totalIncome.toLocaleString(undefined, {
+                        minimumFractionDigits: 2,
+                        maximumFractionDigits: 2,
+                      })}
+                    </span>{" "}
+                    |
+                  </p>
+                  <span className="text-black">Gastos - </span>R$
+                  {totalAboutAll!!.toLocaleString(undefined, {
                     minimumFractionDigits: 2,
                     maximumFractionDigits: 2,
                   })}

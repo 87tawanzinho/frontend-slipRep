@@ -23,24 +23,6 @@ function ItensExpenses({
       {thereBillsToPayToday && <div className="rounded-lg ">{payToday}</div>}
       {data}
 
-      <div className="mt-10 pb-2 text-lg flex items-center gap-4 ">
-        <div>
-          Total: <span className="text-[14px]">R$</span>
-          <span
-            className={`${total <= -1 ? "text-red-600" : "text-green-600"}`}
-          >
-            {total.toLocaleString(undefined, {
-              minimumFractionDigits: 2,
-              maximumFractionDigits: 2,
-            })}
-          </span>
-        </div>
-        <ImInfo
-          className="text-zinc-700 hover:opacity-75 transition-all cursor-pointer"
-          onClick={() => setInfo(!info)}
-        />
-      </div>
-
       {info && (
         <HowWorksThis
           text=" A sua renda mensal (o quanto você pode gastar por mês) será
