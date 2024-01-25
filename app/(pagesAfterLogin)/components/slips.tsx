@@ -19,18 +19,19 @@ import { MdDone } from "react-icons/md";
 import { changePaidSlip } from "../datas/SlipFunctions/paidSlip";
 import { Reveal } from "../emotion/Reveal";
 import { PageWrapperUp } from "../emotion/page-wrapper-up";
+import { useSlip } from "@/app/context/DataContext";
 
 function Slips() {
   const [info, setInfo] = useState(false);
   const [openNew, setOpenNew] = useState(false);
   const [newSlip, setNewSlip] = useState<newPay>();
-  const [data, setData] = useState<mySlips[]>([]);
+  const { slip, setSlip } = useSlip();
   const [filter, setFilter] = useState("");
 
   useEffect(() => {
-    fetchDataAndSetSlips(setData);
+    fetchDataAndSetSlips(setSlip);
   }, []);
-  const isTodayDate = data.filter((item) => isToday(parseISO(item.date)));
+  const isTodayDate = slip.filter((item) => isToday(parseISO(item.date)));
 
   return (
     <div className="px-4   custom:px-48  lg:px-60 pb-4 ">
@@ -62,7 +63,7 @@ function Slips() {
         )}
         {isTodayDate.length > 0 ? (
           <div
-            className="   overflow-auto shadow mb-10 max-h-96"
+            className="   overflow-auto shadow mb-2 max-h-96"
             key={isTodayDate.length}
           >
             <div className="flex  items-center  justify-center py-4 text-sm gap-2">
@@ -75,7 +76,7 @@ function Slips() {
               <p>Valor</p>
             </div>
             {isTodayDate.map((item) => (
-              <div className={`mb-1 ${item.paid && "bg-yellow-200"}`}>
+              <div className={` ${item.paid && "bg-yellow-200"}`}>
                 <div
                   className={`flex justify-between  border text-[12px] p-1 text-red-800 px-2 items-center`}
                 >
@@ -100,12 +101,12 @@ function Slips() {
         <input
           type="text"
           placeholder="Filtrar"
-          className="border-red-900 h-7 rounded mb-4"
+          className="border-red-900 h-7 rounded mb-2"
           onChange={(e) => setFilter(e.target.value)}
         />
-        {data.length > 0 ? (
+        {slip.length > 0 ? (
           <div className={`flex flex-col overflow-x-auto h-auto max-h-96  `}>
-            {data
+            {slip
               .filter((slip) =>
                 filter === ""
                   ? slip
@@ -138,8 +139,8 @@ function Slips() {
                             removeSlip(
                               item._id,
                               fetchDataAndSetSlips,
-                              data,
-                              setData
+                              slip,
+                              setSlip
                             )
                           }
                           size={28}
@@ -150,7 +151,7 @@ function Slips() {
                             changePaidSlip(
                               item._id,
                               fetchDataAndSetSlips,
-                              setData
+                              setSlip
                             );
                           }}
                           size={28}
@@ -203,7 +204,7 @@ function Slips() {
             income="slips"
             setNewPay={setNewSlip}
             info={info}
-            setData={setData}
+            setData={setSlip}
             setOpenInfo={setInfo}
           />
         </PageWrapperModal>

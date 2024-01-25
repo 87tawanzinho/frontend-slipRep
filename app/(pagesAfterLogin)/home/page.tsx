@@ -18,6 +18,7 @@ import { Reveal } from "../emotion/Reveal";
 import { GoGear } from "react-icons/go";
 import ModalConfig from "../ModalConfig";
 import { setClickedBill } from "../datas/BillFunctions/clickedOnGear";
+import { useSlip } from "@/app/context/DataContext";
 
 function PageHome() {
   const [bills, setBills] = useState<myBills[]>([]);
@@ -29,6 +30,26 @@ function PageHome() {
   const router = useRouter();
   const [loading, setLoading] = useState(true);
   const [filter, setFilter] = useState("");
+  let { slip } = useSlip();
+
+  const totalAboutAll = () => {
+    if (bills.length === 0 && slip.length === 0) {
+      return false;
+    }
+    if (bills.length >= 1 && slip.length === 0) {
+      return bills.reduce((acc, bill) => acc + bill.price, 0);
+    }
+    if (bills.length === 0 && slip.length >= 1) {
+      return slip.reduce((acc, slip) => acc + slip.price, 0);
+    }
+    if (bills.length >= 1 && slip.length >= 1) {
+      return (
+        bills.reduce((acc, bill) => acc + bill.price, 0) +
+        slip.reduce((acc, slip) => acc + slip.price, 0)
+      );
+    }
+  };
+
   useEffect(() => {
     let bills;
     if (
@@ -62,11 +83,22 @@ function PageHome() {
           </div>
           <main className="flex flex-col  items-center w-full">
             <MyExpenses
-              text={" Minhas Despesas - Renda Mensal"}
+              text={"Minhas Despesas - Renda Mensal -"}
               income="Bills"
               setData={setBills}
               span={<IncomeBills />}
             />
+            {totalAboutAll() && (
+              <div className="mt-4 bg-white rounded-lg p-4">
+                <div className="text-red-800 text-sm">
+                  <span className="text-black">Gasto Total - </span>R$
+                  {totalAboutAll()!!.toLocaleString(undefined, {
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 2,
+                  })}
+                </div>
+              </div>
+            )}
             <ItensExpenses
               type="Bills"
               thereBillsToPayToday={thereBillsToPayToday}
@@ -117,9 +149,9 @@ function PageHome() {
 
                   <input
                     type="text"
-                    placeholder="Filtrar por nome"
+                    placeholder="Filtrar"
                     onChange={(e) => setFilter(e.target.value)}
-                    className="h-6 rounded mb-4 border-zinc-700"
+                    className="h-8 rounded mb-2 shadow-2xl border-none "
                   />
 
                   {info && (
@@ -129,7 +161,7 @@ function PageHome() {
                       />
                     </p>
                   )}
-                  <div className="flex justify-between font-bold text-[16px] border-2 p-2 rounded border-gray-500">
+                  <div className="flex justify-between font-bold text-[16px] border-2 p-2 rounded border-gray-400">
                     <p>Nome</p>
                     <p>Data</p>
                     <p>Valor</p>

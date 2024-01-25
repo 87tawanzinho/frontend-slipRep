@@ -23,10 +23,12 @@ function ItensExpenses({
       {thereBillsToPayToday && <div className="rounded-lg ">{payToday}</div>}
       {data}
 
-      <div className="mt-10 pb-2 text-xl flex items-center gap-4">
+      <div className="mt-10 pb-2 text-lg flex items-center gap-4 ">
         <div>
-          Total do mês: <span className="text-[14px]">R$</span>
-          <span className={`${total <= -1 ? "text-red-600" : "text-blue-800"}`}>
+          Total: <span className="text-[14px]">R$</span>
+          <span
+            className={`${total <= -1 ? "text-red-600" : "text-green-600"}`}
+          >
             {total.toLocaleString(undefined, {
               minimumFractionDigits: 2,
               maximumFractionDigits: 2,
