@@ -28,6 +28,7 @@ function PageHome() {
   const [configBillModal, setConfigBillModal] = useState(false);
   const router = useRouter();
   const [loading, setLoading] = useState(true);
+  const [filter, setFilter] = useState("");
   useEffect(() => {
     let bills;
     if (
@@ -114,6 +115,13 @@ function PageHome() {
                     />
                   </div>
 
+                  <input
+                    type="text"
+                    placeholder="Filtrar por nome"
+                    onChange={(e) => setFilter(e.target.value)}
+                    className="h-6 rounded mb-4 border-zinc-700"
+                  />
+
                   {info && (
                     <p className="py-4">
                       <HowWorksThis text="Neste espaço, você encontrará uma tabela com todos os itens que você cadastrou. Aqui, é possível acompanhar detalhes de cada um deles. Para obter mais informações, basta clicar sobre o nome do item. Se desejar marcar um item como pago, clique no preço correspondente. Todos os valores serão automaticamente deduzidos de sua renda, proporcionando uma visão clara do total mensal." />
@@ -125,79 +133,87 @@ function PageHome() {
                     <p>Valor</p>
                   </div>
                   {bills.length > 0 ? (
-                    bills.map((bill, index) => (
-                      <PageWrapperModal key={bill._id}>
-                        <div
-                          className={`flex justify-between
+                    bills
+                      .filter((bill) =>
+                        filter === ""
+                          ? bill
+                          : bill.name
+                              .toLowerCase()
+                              .includes(filter.toLowerCase())
+                      )
+                      .map((bill, index) => (
+                        <PageWrapperModal key={bill._id}>
+                          <div
+                            className={`flex justify-between
                          items-center mt-2 text-[13px] lg:text-[15px] border p-1  rounded  ${
                            bill.paid &&
                            "bg-green-300 transition-all line-through"
                          } `}
-                          key={bill._id}
-                        >
-                          <div
-                            className={`w-1/3 lg:w-1/4 overflow-y-auto   hover:transition-all
+                            key={bill._id}
+                          >
+                            <div
+                              className={`w-1/3 lg:w-1/4 overflow-y-auto   hover:transition-all
                           hover:text-black  cursor-pointer hover:opacity-75
                             `}
-                            onClick={() => {
-                              setWarning(true);
-                              router.push(`home/${bill._id}?name=${name}`);
-                            }}
-                          >
-                            <p className=" flex gap-2 ">
-                              <span className="font-bold text-sm">
-                                {index + 1}
-                              </span>
-                              {bill.name}
-                            </p>
-                          </div>
-                          <div className="flex justify-center overflow-auto ">
-                            <p>
-                              {format(parseISO(bill.date), "dd/MM/yyyy ", {})}
-                            </p>
-                          </div>
-
-                          <div
-                            className={`w-1/3 lg:w-1/4 flex justify-end gap-1  items-center  overflow-auto 
-                             `}
-                          >
-                            <p className="text-red-700  ">
-                              <span className="text-[10px]">R$</span>
-                              {bill.price.toLocaleString(undefined, {
-                                minimumFractionDigits: 2,
-                                maximumFractionDigits: 2,
-                              })}
-                            </p>
-                            <GoGear
-                              size={20}
-                              className="cursor-pointer hover:opacity-75 transition-all   "
                               onClick={() => {
-                                setClickedBill(bill);
-                                setConfigBillModal(true);
+                                setWarning(true);
+                                router.push(`home/${bill._id}?name=${name}`);
                               }}
-                            />
-                          </div>
-                          {warning && (
-                            <div className="fixed h-screen w-full bg-black bg-opacity-20 top-0 left-0">
-                              <div>
-                                <Loading />
+                            >
+                              <p className=" flex gap-2 ">
+                                <span className="font-bold text-sm">
+                                  {index + 1}
+                                </span>
+                                {bill.name}
+                              </p>
+                            </div>
+                            <div className="flex justify-center overflow-auto ">
+                              <p>
+                                {format(parseISO(bill.date), "dd/MM/yyyy ", {})}
+                              </p>
+                            </div>
+
+                            <div
+                              className={`w-1/3 lg:w-1/4 flex justify-end gap-1  items-center  overflow-auto 
+                             `}
+                            >
+                              <p className="text-red-700  ">
+                                <span className="text-[10px]">R$</span>
+                                {bill.price.toLocaleString(undefined, {
+                                  minimumFractionDigits: 2,
+                                  maximumFractionDigits: 2,
+                                })}
+                              </p>
+                              <GoGear
+                                size={20}
+                                className="cursor-pointer hover:opacity-75 transition-all   "
+                                onClick={() => {
+                                  setClickedBill(bill);
+                                  setConfigBillModal(true);
+                                }}
+                              />
+                            </div>
+                            {warning && (
+                              <div className="fixed h-screen w-full bg-black bg-opacity-20 top-0 left-0">
+                                <div>
+                                  <Loading />
+                                </div>
                               </div>
-                            </div>
-                          )}
-                          {configBillModal && (
-                            <div className="absolute">
-                              <PageWrapperModal>
-                                <ModalConfig
-                                  type="Bill"
-                                  setConfigModal={setConfigBillModal}
-                                  allBillsData={setBills}
-                                />
-                              </PageWrapperModal>
-                            </div>
-                          )}
-                        </div>
-                      </PageWrapperModal>
-                    ))
+                            )}
+                            {configBillModal && (
+                              <div className="absolute">
+                                <PageWrapperModal>
+                                  <ModalConfig
+                                    type="Bill"
+                                    setConfigModal={setConfigBillModal}
+                                    allBillsData={setBills}
+                                  />
+                                </PageWrapperModal>
+                              </div>
+                            )}
+                          </div>
+                        </PageWrapperModal>
+                      ))
                   ) : (
                     <PageWrapper>
                       <p className="mt-4">Ainda não há nada aqui</p>

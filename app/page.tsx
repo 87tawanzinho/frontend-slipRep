@@ -3,16 +3,13 @@ import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import { instance } from "./axios/instance";
 import { jwtDecode } from "jwt-decode";
-import { PageWrapper } from "./(pagesAfterLogin)/emotion/page-wrapper";
 import Link from "next/link";
-import { PageWrapperUp } from "./(pagesAfterLogin)/emotion/page-wrapper-up";
 import { Reveal } from "./(pagesAfterLogin)/emotion/Reveal";
 export default function Home() {
   const router = useRouter();
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [warning, setWarning] = useState("");
-  const [error, setError] = useState("");
 
   const handleSignUp = async () => {
     setWarning("Estamos tentando...");
@@ -25,7 +22,6 @@ export default function Home() {
       const tokenDecode = jwtDecode(token) as jwtToken;
       localStorage.setItem("name", tokenDecode.name);
       localStorage.setItem("incomeBills", tokenDecode.mensalIncomeBills);
-      localStorage.setItem("incomeTickets", tokenDecode.mensalIncomeTickets);
       setWarning("Entrando na sua conta..");
       router.push("/home");
     } catch (e: ErrorLogin | any) {
