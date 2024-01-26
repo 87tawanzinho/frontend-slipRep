@@ -112,7 +112,7 @@ function Modal({ setopenNew, income, setData, info, setOpenInfo }: ModalProps) {
   return (
     <div>
       {" "}
-      <div className=" flex items-center justify-center h-full top-10 left-0 fixed w-full bg-black bg-opacity-40 ">
+      <div className=" flex items-center justify-center h-full top-0 left-0 fixed w-full bg-black bg-opacity-40 ">
         <div className=" rounded-xl shadow-2xl bg-white w-11/12 flex flex-col justify-center  lg:w-9/12 h-auto py-8 px-4 relative">
           <p
             className="max-w-min  absolute end-4 top-4 text-red-700 cursor-pointer hover:opacity-75"
