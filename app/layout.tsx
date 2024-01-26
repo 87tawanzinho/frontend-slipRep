@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
-import { Inter, Open_Sans, Roboto, Roboto_Slab } from "next/font/google";
+import { Inter, Open_Sans, Poppins, Roboto, Roboto_Slab } from "next/font/google";
 import "./globals.css";
 import { Reveal } from "./(pagesAfterLogin)/emotion/Reveal";
 import { SlipProvider } from "./context/DataContext";
 
-const inter = Open_Sans({ subsets: ["latin"], weight: ["400"] });
+const inter = Poppins({ subsets: ["latin"], weight: ["400"] });
 
 export const metadata: Metadata = {
   title: "Monify - Despesas Pessoais",
