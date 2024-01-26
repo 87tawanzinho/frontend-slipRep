@@ -137,7 +137,7 @@ function PageHome() {
               span={<IncomeBills />}
             />
 
-            {totalAboutAll !== 0 && (
+            {!hide && (
               <div className="mt-6 bg-white rounded-lg p-4 relative z-0">
                 <div className=" flex gap-2  ">
                   <div className=" text-sm flex gap-2">
