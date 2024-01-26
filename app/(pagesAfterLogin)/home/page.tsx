@@ -32,6 +32,7 @@ import { VscInfo } from "react-icons/vsc";
 import { FcInfo } from "react-icons/fc";
 import { IoMdArrowDropright } from "react-icons/io";
 import { useHide } from "@/app/context/HideDivContext";
+import { AiFillCaretDown } from "react-icons/ai";
 
 function PageHome() {
   const [bills, setBills] = useState<myBills[]>([]);
@@ -136,7 +137,7 @@ function PageHome() {
               span={<IncomeBills />}
             />
 
-            {totalAboutAll !== 0 && !hide && (
+            {totalAboutAll !== 0 && (
               <div className="mt-6 bg-white rounded-lg p-4 relative z-0">
                 <div className=" flex gap-2  ">
                   <div className=" text-sm flex gap-2">
@@ -171,7 +172,7 @@ function PageHome() {
                     onClick={() => setInfoAboutTotal(!infoAboutTotal)}
                     className="absolute top-1 end-1 cursor-pointer hover:opacity-75"
                   >
-                    <FcInfo size={14} />
+                    <AiFillCaretDown size={14} className="text-gray-400" />
                   </p>
                 </div>
 
