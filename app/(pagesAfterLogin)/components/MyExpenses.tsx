@@ -27,7 +27,7 @@ interface Expenses {
 function MyExpenses({ text, span, income, setData }: Expenses) {
   const [openInput, setOpenInput] = useState(false);
   const [openNew, setopenNew] = useState(false);
-  const [value, setValue] = useState("");
+  const [value, setValue] = useState(0);
   const [info, setOpenInfo] = useState(false);
   const [warning, setWarning] = useState("");
   const [hidePrice, setHidePrice] = useState(true);
@@ -38,6 +38,9 @@ function MyExpenses({ text, span, income, setData }: Expenses) {
 
   const handleChangeNumberIncomeOrTickets = async () => {
     setWarningIncome("Registrando sua renda..");
+    if (value <= 999) {
+      return setWarningIncome("Sua renda precisa ser de pelo menos 1000");
+    }
     try {
       const res = await instance.put("/newIncomeBills", {
         name: myName,
@@ -45,7 +48,7 @@ function MyExpenses({ text, span, income, setData }: Expenses) {
       });
       setOpenInput(false);
       setWarningIncome("");
-      localStorage.setItem("incomeBills", value);
+      localStorage.setItem("incomeBills", value.toString());
     } catch (error) {
       console.log(error);
     }
@@ -99,7 +102,7 @@ function MyExpenses({ text, span, income, setData }: Expenses) {
                 type="number"
                 placeholder="0000,00"
                 className="h-8 bg-gray-100 rounded-lg w-60"
-                onChange={(e) => setValue(e.target.value)}
+                onChange={(e) => setValue(parseFloat(e.target.value))}
               />
               <div className="flex gap-2 items-center">
                 <button
