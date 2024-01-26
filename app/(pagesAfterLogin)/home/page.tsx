@@ -30,6 +30,7 @@ import { PageWrapperUp } from "../emotion/page-wrapper-up";
 import { IoFilterOutline } from "react-icons/io5";
 import { VscInfo } from "react-icons/vsc";
 import { FcInfo } from "react-icons/fc";
+import { IoMdArrowDropright } from "react-icons/io";
 
 function PageHome() {
   const [bills, setBills] = useState<myBills[]>([]);
@@ -175,8 +176,8 @@ function PageHome() {
                 {infoAboutTotal && (
                   <PageWrapperUp>
                     <div className="mt-4 text-[13px] text-gray-700">
-                      <p>
-                        Gastos com contas gerais:{" "}
+                      <p className="flex items-center">
+                        Gastos com contas gerais <IoMdArrowDropright />{" "}
                         <span className="text-red-700">
                           R$
                           {billsAll.toLocaleString(undefined, {
@@ -185,8 +186,8 @@ function PageHome() {
                           })}
                         </span>
                       </p>
-                      <p>
-                        Gastos com boletos:{" "}
+                      <p className="flex items-center">
+                        Gastos com boletos <IoMdArrowDropright />{" "}
                         <span className="text-red-700">
                           R$
                           {slipAll.toLocaleString(undefined, {
@@ -196,8 +197,8 @@ function PageHome() {
                         </span>
                       </p>
 
-                      <p>
-                        Total{" "}
+                      <p className="flex items-center">
+                        Total <IoMdArrowDropright />{" "}
                         <span className="text-red-700">
                           R$
                           {total.toLocaleString(undefined, {
