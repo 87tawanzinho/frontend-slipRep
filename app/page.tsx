@@ -43,19 +43,20 @@ export default function Home() {
       <div className="h-80 w-11/12 lg:w-7/12 border-b-2 shadow-2xl mt-4 flex flex-col justify-center items-center">
         <div>
           <p>Usuário</p>
-          <input type="text" onChange={(e) => setName(e.target.value)} />
+          <input type="text" className="border-none" onChange={(e) => setName(e.target.value)} />
         </div>
 
         <div>
           <p>Senha</p>
           <input
             type="password"
+            className="border-none"
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
 
         <button
-          className="bg-black text-white p-1 w-32 mt-4 hover:opacity-75"
+          className="bg-sky-600 text-white rounded p-1 w-32 mt-4 hover:opacity-75"
           onClick={handleSignUp}
         >
           Entrar

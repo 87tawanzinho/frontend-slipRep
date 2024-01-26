@@ -35,18 +35,18 @@ function SignUpPage() {
       <div className="h-96  mt-4 w-11/12 lg:w-7/12 border-b-2 shadow-2xl  flex flex-col justify-center items-center">
         <div className="">
           <p>E-mail</p>
-          <input type="text" onChange={(e) => setEmail(e.target.value)} />
+          <input type="text" className="border-none" onChange={(e) => setEmail(e.target.value)} />
         </div>
 
         <div>
           <p>Usuário</p>
-          <input type="text" onChange={(e) => setName(e.target.value)} />
+          <input type="text" className="border-none" onChange={(e) => setName(e.target.value)} />
         </div>
 
         <div>
           <p>Senha</p>
           <input
-            type="password"
+            type="password" className="border-none"
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
@@ -54,16 +54,16 @@ function SignUpPage() {
         <div>
           <p>Confirmar Senha</p>
           <input
-            type="password"
+            type="password" className="border-none"
             onChange={(e) => setConfirmPassword(e.target.value)}
           />
         </div>
 
         <button
-          className="bg-black text-white p-1 w-32 mt-4 hover:opacity-75"
+          className="bg-black text-white p-1 w-32 mt-4 hover:opacity-75 rounded"
           onClick={handleSignUp}
         >
-          Entrar
+          Se Registrar
         </button>
 
         {warning && <p className="text-sm mt-2">{warning}</p>}
