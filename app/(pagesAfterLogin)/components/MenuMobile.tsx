@@ -7,11 +7,15 @@ import Link from "next/link";
 import { justName } from "../datas/name";
 import { PageWrapper } from "../emotion/page-wrapper";
 import { PageWrapperModal } from "../emotion/page-wrapperModal";
+import { useHide } from "@/app/context/HideDivContext";
 function MenuMobile() {
   const name = justName();
   const [openMenu, setOpenMenu] = useState(false);
+  const { hide } = useHide();
   return (
-    <nav className="flex fixed lg:hidden px-2 bg-nav p-2  justify-between items-center text-xl w-full top-0 z-50 ">
+    <nav
+      className={`flex fixed lg:hidden px-2 p-2 justify-between items-center text-xl w-full top-0 z-50`}
+    >
       <h2 className="font-sans italic">Monify</h2>
       <IoMdMenu size={40} onClick={() => setOpenMenu(true)} />
 
@@ -37,7 +41,13 @@ function MenuMobile() {
                 >
                   Despesas
                 </Link>
-
+                <Link
+                  href={"/checks"}
+                  className="border-b-2 shadow-lg"
+                  onClick={() => setOpenMenu(false)}
+                >
+                  cheques
+                </Link>
                 <Link
                   href={"/"}
                   className="border-b-2 shadow-lg mt-4"

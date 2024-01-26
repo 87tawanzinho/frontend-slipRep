@@ -32,7 +32,7 @@ function MenuPC() {
               path === "/checks" && "border-b-2 border-gray-100  rounded"
             } hover:text-green-100`}
           >
-            Cheques
+            cheques
           </Link>
         </div>
 
