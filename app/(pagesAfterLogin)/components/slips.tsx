@@ -20,7 +20,9 @@ import { changePaidSlip } from "../datas/SlipFunctions/paidSlip";
 import { Reveal } from "../emotion/Reveal";
 import { PageWrapperUp } from "../emotion/page-wrapper-up";
 import { useSlip } from "@/app/context/DataContext";
-import { TbFilterSearch } from "react-icons/tb";
+import { TbFileInvoice, TbFilterSearch } from "react-icons/tb";
+import { IoFilterOutline } from "react-icons/io5";
+import { BiDownArrow } from "react-icons/bi";
 
 function Slips() {
   const [info, setInfo] = useState(false);
@@ -38,14 +40,14 @@ function Slips() {
     <div className="px-4   custom:px-48  lg:px-60 pb-4 ">
       <div className="mt-20 p-4 w-full  rounded-2xl custom:w-96 lg:w-1/3 flex flex-col bg-white     overflow-auto    ">
         {" "}
-        <div className="flex items-center justify-between mb-4">
-          <div className="flex items-center gap-2">
-            <p className="text-md text-start">Meus Boletos </p>
+        <div className="flex items-center justify-between mb-4 ">
+          <div className="flex items-center gap-2 justify-between">
+            <p className="text-md text-start flex gap-2 items-center">Meus Boletos  <TbFileInvoice /> </p>
             <ImInfo
               className="cursor-pointer hover:opacity-75"
               onClick={() => setInfo(!info)}
             />
-            <TbFilterSearch onClick={() => setShowFilter(!showFilter)} className=" cursor-pointer hover:opacity-75" />
+            <IoFilterOutline onClick={() => setShowFilter(!showFilter)} className=" cursor-pointer hover:opacity-75" />
           </div>
           <div className="">
             <FaPlus

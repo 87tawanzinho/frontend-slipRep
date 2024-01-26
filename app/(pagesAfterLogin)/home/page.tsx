@@ -23,6 +23,7 @@ import { DiAtom } from "react-icons/di";
 import { FaJava } from "react-icons/fa6";
 import { TbFilterSearch } from "react-icons/tb";
 import { PageWrapperUp } from "../emotion/page-wrapper-up";
+import { IoFilterOutline } from "react-icons/io5";
 
 function PageHome() {
   const [bills, setBills] = useState<myBills[]>([]);
@@ -197,7 +198,7 @@ function PageHome() {
                       className="cursor-pointer hover:opacity-75"
                       onClick={() => setInfo(!info)}
                     />
-                    <TbFilterSearch onClick={() => setShowFilter(!showFilter)} className=" cursor-pointer hover:opacity-75" />
+                    <IoFilterOutline onClick={() => setShowFilter(!showFilter)} className=" cursor-pointer hover:opacity-75" />
                   </div>
 
                   {showFilter && <PageWrapperUp>
