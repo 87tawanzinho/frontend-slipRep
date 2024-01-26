@@ -21,7 +21,11 @@ function ItensExpenses({
   const [info, setInfo] = useState(false);
   const { hide } = useHide();
   return (
-    <div className="bg-white w-11/12 lg:w-9/12 max-h-[60rem] overflow-auto rounded-2xl  mt-10 h-full p-4 ">
+    <div
+      className={`${
+        hide ? "bg-none" : "bg-white"
+      } w-11/12 lg:w-9/12 max-h-[60rem] overflow-auto rounded-2xl  mt-10 h-full p-4 `}
+    >
       {!hide && (
         <div>
           {" "}
