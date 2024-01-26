@@ -118,7 +118,7 @@ function PageHome() {
           </div>
           <main className="flex flex-col  items-center w-full">
             <MyExpenses
-              text={"Minhas Despesas - Renda Mensal -"}
+              text={"Minhas Despesas - Renda Mensal "}
               income="Bills"
               setData={setBills}
               span={<IncomeBills />}
