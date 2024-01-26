@@ -20,6 +20,7 @@ import { changePaidSlip } from "../datas/SlipFunctions/paidSlip";
 import { Reveal } from "../emotion/Reveal";
 import { PageWrapperUp } from "../emotion/page-wrapper-up";
 import { useSlip } from "@/app/context/DataContext";
+import { TbFilterSearch } from "react-icons/tb";
 
 function Slips() {
   const [info, setInfo] = useState(false);
@@ -27,7 +28,7 @@ function Slips() {
   const [newSlip, setNewSlip] = useState<newPay>();
   const { slip, setSlip } = useSlip();
   const [filter, setFilter] = useState("");
-
+  const [showFilter, setShowFilter] = useState(false)
   useEffect(() => {
     fetchDataAndSetSlips(setSlip);
   }, []);
@@ -44,6 +45,7 @@ function Slips() {
               className="cursor-pointer hover:opacity-75"
               onClick={() => setInfo(!info)}
             />
+            <TbFilterSearch onClick={() => setShowFilter(!showFilter)} className=" cursor-pointer hover:opacity-75" />
           </div>
           <div className="">
             <FaPlus
@@ -98,12 +100,13 @@ function Slips() {
             ))}
           </div>
         ) : null}
-        <input
-          type="text"
-          placeholder="Filtrar"
-          className="border-red-900 h-7 rounded mb-2"
-          onChange={(e) => setFilter(e.target.value)}
-        />
+        {showFilter && <PageWrapperUp>
+          <input
+            type="text"
+            placeholder="Filtrar"
+            className="border-red-900 h-7 rounded mb-2"
+            onChange={(e) => setFilter(e.target.value)}
+          /></PageWrapperUp>}
         {slip.length > 0 ? (
           <div className={`flex flex-col overflow-x-auto h-auto max-h-96  `}>
             {slip
@@ -111,18 +114,17 @@ function Slips() {
                 filter === ""
                   ? slip
                   : slip.name
-                      .toLowerCase()
-                      .includes(filter.toLocaleLowerCase()) ||
-                    slip.price.toString().includes(filter)
+                    .toLowerCase()
+                    .includes(filter.toLocaleLowerCase()) ||
+                  slip.price.toString().includes(filter)
               )
               .map((item, index) => (
                 <PageWrapper key={item._id}>
                   <div
                     key={item._id}
-                    className={`${
-                      item.paid === true &&
+                    className={`${item.paid === true &&
                       "bg-yellow-100 hover:bg-yellow-200 hover:bg-opacity-100 "
-                    } flex flex-col justify-center border-2  p-4 h-full text-sm   hover:opacity-95 transition-all `}
+                      } flex flex-col justify-center border-2  p-4 h-full text-sm   hover:opacity-95 transition-all `}
                   >
                     <div className="flex justify-between">
                       <div className="flex items-center gap-2">
@@ -155,9 +157,8 @@ function Slips() {
                             );
                           }}
                           size={28}
-                          className={`${
-                            !item.paid ? "bg-yellow-600" : "bg-black"
-                          } p-1 rounded-full text-white cursor-pointer hover:opacity-40`}
+                          className={`${!item.paid ? "bg-yellow-600" : "bg-black"
+                            } p-1 rounded-full text-white cursor-pointer hover:opacity-40`}
                         />
                       </div>
                     </div>

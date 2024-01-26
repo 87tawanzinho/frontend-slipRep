@@ -21,6 +21,8 @@ import { setClickedBill } from "../datas/BillFunctions/clickedOnGear";
 import { useSlip } from "@/app/context/DataContext";
 import { DiAtom } from "react-icons/di";
 import { FaJava } from "react-icons/fa6";
+import { TbFilterSearch } from "react-icons/tb";
+import { PageWrapperUp } from "../emotion/page-wrapper-up";
 
 function PageHome() {
   const [bills, setBills] = useState<myBills[]>([]);
@@ -33,6 +35,7 @@ function PageHome() {
   const [loading, setLoading] = useState(true);
   const [filter, setFilter] = useState("");
   const [totalIncome, setTotalIcome] = useState(0);
+  const [showFilter, setShowFilter] = useState(false);
   const [totalAboutAll, setTotalAboutAll] = useState(0);
   let { slip } = useSlip();
   const billsAll = bills
@@ -194,14 +197,16 @@ function PageHome() {
                       className="cursor-pointer hover:opacity-75"
                       onClick={() => setInfo(!info)}
                     />
+                    <TbFilterSearch onClick={() => setShowFilter(!showFilter)} className=" cursor-pointer hover:opacity-75" />
                   </div>
 
-                  <input
-                    type="text"
-                    placeholder="Filtrar"
-                    onChange={(e) => setFilter(e.target.value)}
-                    className="h-8 rounded mb-2 shadow-2xl border-none "
-                  />
+                  {showFilter && <PageWrapperUp>
+                    <input
+                      type="text"
+                      placeholder="Filtrar"
+                      onChange={(e) => setFilter(e.target.value)}
+                      className="h-8 rounded mb-2 shadow-2xl border-none "
+                    /></PageWrapperUp>}
 
                   {info && (
                     <p className="py-4">
