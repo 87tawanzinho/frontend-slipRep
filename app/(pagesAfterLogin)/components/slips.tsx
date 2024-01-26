@@ -87,18 +87,18 @@ function Slips() {
             {isTodayDate.map((item) => (
               <div className={` ${item.paid && "bg-yellow-200"}`}>
                 <div
-                  className={`flex justify-between  border text-[12px] p-1 text-red-800 px-2 items-center overflow-hidden`}
+                  className={`flex justify-between  border text-[12px] p-1 text-red-800 px-2 items-center overflow-auto`}
                 >
                   <p className="w-1/5 ">{item.name}</p>
                   {item.paid ? (
                     <p className="w-1/6 text-center">Pago</p>
                   ) : (
-                    <p className="w-1/4 text-center ">
+                    <p className="w-1/5 text-center ">
                       {format(parseISO(item.date), "dd/MM/yyyy ", {})}
                     </p>
                   )}
 
-                  <p className=" w-1/6 text-end">
+                  <p className=" w-1/4 lg:w-1/5 text-end">
                     <span className="text-[10px]">R$</span>
                     {item.price.toLocaleString(undefined, {
                       minimumFractionDigits: 2,
