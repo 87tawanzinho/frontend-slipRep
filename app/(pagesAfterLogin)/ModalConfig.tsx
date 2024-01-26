@@ -18,7 +18,6 @@ function ModalConfig({ type, setConfigModal, allBillsData }: typeConfig) {
     useEffect(() => {
       const clickedBill = getClickedBill();
       setData(clickedBill);
-      console.log(data);
     }, [data]);
 
     return (

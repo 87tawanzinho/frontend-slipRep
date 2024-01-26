@@ -71,10 +71,7 @@ function Slips() {
           </div>
         )}
         {isTodayDate.length > 0 ? (
-          <div
-            className="   overflow-auto shadow mb-2 max-h-96"
-            key={isTodayDate.length}
-          >
+          <div className="overflow-auto shadow mb-2 max-h-96">
             <div className="flex  items-center  justify-center py-4 text-sm gap-2">
               <CiWarning size={30} />
               <h2>Você tem boletos para pagar hoje</h2>
@@ -85,7 +82,10 @@ function Slips() {
               <p>Valor</p>
             </div>
             {isTodayDate.map((item) => (
-              <div className={` ${item.paid && "bg-yellow-200"}`}>
+              <div
+                className={` ${item.paid && "bg-yellow-200"}`}
+                key={item._id}
+              >
                 <div
                   className={`flex justify-between  border text-[12px] p-1 text-red-800 px-2 items-center overflow-auto`}
                 >

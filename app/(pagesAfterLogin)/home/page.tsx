@@ -21,15 +21,10 @@ import { setClickedBill } from "../datas/BillFunctions/clickedOnGear";
 import { useSlip } from "@/app/context/DataContext";
 import { DiAtom } from "react-icons/di";
 import { FaJava } from "react-icons/fa6";
-import {
-  TbFilterSearch,
-  TbInfoOctagonFilled,
-  TbInfoSquareRoundedFilled,
-} from "react-icons/tb";
+
 import { PageWrapperUp } from "../emotion/page-wrapper-up";
 import { IoFilterOutline } from "react-icons/io5";
-import { VscInfo } from "react-icons/vsc";
-import { FcInfo } from "react-icons/fc";
+
 import { IoMdArrowDropright } from "react-icons/io";
 import { useHide } from "@/app/context/HideDivContext";
 import { AiFillCaretDown } from "react-icons/ai";
