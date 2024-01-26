@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { VscChromeClose } from "react-icons/vsc";
 import { IoMdMenu } from "react-icons/io";
 import Avatar from "./Avatar";
@@ -12,9 +12,30 @@ function MenuMobile() {
   const name = justName();
   const [openMenu, setOpenMenu] = useState(false);
   const { hide } = useHide();
+  const [bg, setBG] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY >= 8) {
+        setBG(true);
+      } else {
+        setBG(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    // Cleanup the event listener when the component unmounts
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []); // Empty dependency array to run the effect only once during component mount
+
   return (
     <nav
-      className={`flex fixed lg:hidden px-2 p-2 justify-between items-center text-xl w-full top-0 z-50`}
+      className={`flex fixed lg:hidden px-2 p-2  justify-between transition-all duration-300 ease-in-out ${
+        bg ? "bg-black  text-white" : "shadow-2xl"
+      } items-center text-xl w-full top-0 z-50`}
     >
       <h2 className="font-sans italic">Monify</h2>
       <IoMdMenu size={40} onClick={() => setOpenMenu(true)} />
