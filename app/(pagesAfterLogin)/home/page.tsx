@@ -21,9 +21,15 @@ import { setClickedBill } from "../datas/BillFunctions/clickedOnGear";
 import { useSlip } from "@/app/context/DataContext";
 import { DiAtom } from "react-icons/di";
 import { FaJava } from "react-icons/fa6";
-import { TbFilterSearch } from "react-icons/tb";
+import {
+  TbFilterSearch,
+  TbInfoOctagonFilled,
+  TbInfoSquareRoundedFilled,
+} from "react-icons/tb";
 import { PageWrapperUp } from "../emotion/page-wrapper-up";
 import { IoFilterOutline } from "react-icons/io5";
+import { VscInfo } from "react-icons/vsc";
+import { FcInfo } from "react-icons/fc";
 
 function PageHome() {
   const [bills, setBills] = useState<myBills[]>([]);
@@ -38,6 +44,7 @@ function PageHome() {
   const [totalIncome, setTotalIcome] = useState(0);
   const [showFilter, setShowFilter] = useState(false);
   const [totalAboutAll, setTotalAboutAll] = useState(0);
+  const [infoAboutTotal, setInfoAboutTotal] = useState(false);
   let { slip } = useSlip();
   const billsAll = bills
     .filter((bill) => bill.paid)
@@ -45,6 +52,8 @@ function PageHome() {
   const slipAll = slip
     .filter((slip) => slip.paid)
     .reduce((acc, slip) => acc + slip.price, 0);
+
+  const total = billsAll + slipAll;
   useEffect(() => {
     const totalAboutAll = () => {
       if (bills.length === 0 && slip.length === 0) {
@@ -125,32 +134,81 @@ function PageHome() {
             />
 
             {totalAboutAll !== 0 && (
-              <div className="mt-6 bg-white rounded-lg p-4 flex gap-2 ">
-                <div className=" text-sm flex gap-2">
-
-                  <div className="flex gap-1 items-center">
-                    <span className="text-black">Total</span>{" "}
-
-                    <span
-                      className={`${totalIncome <= -1 ? "text-red-700" : "text-green-700"
+              <div className="mt-6 bg-white rounded-lg p-4 relative">
+                <div className=" flex gap-2  ">
+                  <div className=" text-sm flex gap-2">
+                    <div className="flex gap-1 items-center">
+                      <span className="text-black">Total</span>{" "}
+                      <span
+                        className={`${
+                          totalIncome <= -1 ? "text-red-700" : "text-green-700"
                         }`}
-                    >
-                      R${totalIncome.toLocaleString(undefined, {
-                        minimumFractionDigits: 2,
-                        maximumFractionDigits: 2,
-                      })}
-                    </span>{" "}
-                    <FaJava />
-
+                      >
+                        R$
+                        {totalIncome.toLocaleString(undefined, {
+                          minimumFractionDigits: 2,
+                          maximumFractionDigits: 2,
+                        })}
+                      </span>{" "}
+                      <FaJava />
+                    </div>
+                    <div className="flex items-center gap-1">
+                      {" "}
+                      <span className="text-black">Gastos </span>
+                      <p className="text-red-700">
+                        R$
+                        {totalAboutAll!!.toLocaleString(undefined, {
+                          minimumFractionDigits: 2,
+                          maximumFractionDigits: 2,
+                        })}
+                      </p>
+                    </div>
                   </div>
-                  <div className="flex items-center gap-1">  <span className="text-black">Gastos  </span>
-                    <p className="text-red-700">R$
-                      {totalAboutAll!!.toLocaleString(undefined, {
-                        minimumFractionDigits: 2,
-                        maximumFractionDigits: 2,
-                      })}</p>
-                  </div>
+                  <p
+                    onClick={() => setInfoAboutTotal(!infoAboutTotal)}
+                    className="absolute top-1 end-1 cursor-pointer hover:opacity-75"
+                  >
+                    <FcInfo size={14} />
+                  </p>
                 </div>
+
+                {infoAboutTotal && (
+                  <PageWrapperUp>
+                    <div className="mt-4 text-[13px] text-gray-700">
+                      <p>
+                        Gastos com contas gerais:{" "}
+                        <span className="text-red-700">
+                          R$
+                          {billsAll.toLocaleString(undefined, {
+                            minimumFractionDigits: 2,
+                            maximumFractionDigits: 2,
+                          })}
+                        </span>
+                      </p>
+                      <p>
+                        Gastos com boletos:{" "}
+                        <span className="text-red-700">
+                          R$
+                          {slipAll.toLocaleString(undefined, {
+                            minimumFractionDigits: 2,
+                            maximumFractionDigits: 2,
+                          })}
+                        </span>
+                      </p>
+
+                      <p>
+                        Total{" "}
+                        <span className="text-red-700">
+                          R$
+                          {total.toLocaleString(undefined, {
+                            minimumFractionDigits: 2,
+                            maximumFractionDigits: 2,
+                          })}
+                        </span>
+                      </p>
+                    </div>
+                  </PageWrapperUp>
+                )}
               </div>
             )}
             <ItensExpenses
@@ -172,8 +230,9 @@ function PageHome() {
                             className={` flex  text-[14px] justify-between items-center text-gray-800 px-2 `}
                           >
                             <div
-                              className={` ${bill.paid && "bg-green-300 line-through"
-                                } flex justify-between items-center w-full  `}
+                              className={` ${
+                                bill.paid && "bg-green-300 line-through"
+                              } flex justify-between items-center w-full  `}
                             >
                               <p className="w-1/3 overflow-auto">{bill.name}</p>
                               <p className="flex justify-center w-1/3">
@@ -198,16 +257,22 @@ function PageHome() {
                       className="cursor-pointer hover:opacity-75"
                       onClick={() => setInfo(!info)}
                     />
-                    <IoFilterOutline onClick={() => setShowFilter(!showFilter)} className=" cursor-pointer hover:opacity-75" />
+                    <IoFilterOutline
+                      onClick={() => setShowFilter(!showFilter)}
+                      className=" cursor-pointer hover:opacity-75"
+                    />
                   </div>
 
-                  {showFilter && <PageWrapperUp>
-                    <input
-                      type="text"
-                      placeholder="Filtrar"
-                      onChange={(e) => setFilter(e.target.value)}
-                      className="h-8 rounded mb-2 shadow-2xl border-none "
-                    /></PageWrapperUp>}
+                  {showFilter && (
+                    <PageWrapperUp>
+                      <input
+                        type="text"
+                        placeholder="Filtrar"
+                        onChange={(e) => setFilter(e.target.value)}
+                        className="h-8 rounded mb-2 shadow-2xl border-none "
+                      />
+                    </PageWrapperUp>
+                  )}
 
                   {info && (
                     <p className="py-4">
@@ -227,16 +292,17 @@ function PageHome() {
                         filter === ""
                           ? bill
                           : bill.name
-                            .toLowerCase()
-                            .includes(filter.toLowerCase())
+                              .toLowerCase()
+                              .includes(filter.toLowerCase())
                       )
                       .map((bill, index) => (
                         <PageWrapperModal key={bill._id}>
                           <div
                             className={`flex justify-between
-                         items-center mt-2 text-[13px] lg:text-[15px] border p-1  rounded  ${bill.paid &&
-                              "bg-green-300 transition-all line-through"
-                              } `}
+                         items-center mt-2 text-[13px] lg:text-[15px] border p-1  rounded  ${
+                           bill.paid &&
+                           "bg-green-300 transition-all line-through"
+                         } `}
                             key={bill._id}
                           >
                             <div

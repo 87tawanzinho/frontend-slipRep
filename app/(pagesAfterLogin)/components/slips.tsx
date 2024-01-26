@@ -30,7 +30,7 @@ function Slips() {
   const [newSlip, setNewSlip] = useState<newPay>();
   const { slip, setSlip } = useSlip();
   const [filter, setFilter] = useState("");
-  const [showFilter, setShowFilter] = useState(false)
+  const [showFilter, setShowFilter] = useState(false);
   useEffect(() => {
     fetchDataAndSetSlips(setSlip);
   }, []);
@@ -42,12 +42,17 @@ function Slips() {
         {" "}
         <div className="flex items-center justify-between mb-4 ">
           <div className="flex items-center gap-2 justify-between">
-            <p className="text-md text-start flex gap-2 items-center">Meus Boletos  <TbFileInvoice /> </p>
+            <p className="text-md text-start flex gap-2 items-center">
+              Meus Boletos <TbFileInvoice />{" "}
+            </p>
             <ImInfo
               className="cursor-pointer hover:opacity-75"
               onClick={() => setInfo(!info)}
             />
-            <IoFilterOutline onClick={() => setShowFilter(!showFilter)} className=" cursor-pointer hover:opacity-75" />
+            <IoFilterOutline
+              onClick={() => setShowFilter(!showFilter)}
+              className=" cursor-pointer hover:opacity-75"
+            />
           </div>
           <div className="">
             <FaPlus
@@ -82,7 +87,7 @@ function Slips() {
             {isTodayDate.map((item) => (
               <div className={` ${item.paid && "bg-yellow-200"}`}>
                 <div
-                  className={`flex justify-between  border text-[12px] p-1 text-red-800 px-2 items-center`}
+                  className={`flex justify-between  border text-[12px] p-1 text-red-800 px-2 items-center overflow-hidden`}
                 >
                   <p className="w-1/5 ">{item.name}</p>
                   {item.paid ? (
@@ -93,22 +98,28 @@ function Slips() {
                     </p>
                   )}
 
-                  <p className=" w-1/6 text-end">
+                  <p className=" w-1/5 text-end">
                     <span className="text-[10px]">R$</span>
-                    {item.price}
+                    {item.price.toLocaleString(undefined, {
+                      minimumFractionDigits: 2,
+                      maximumFractionDigits: 2,
+                    })}
                   </p>
                 </div>
               </div>
             ))}
           </div>
         ) : null}
-        {showFilter && <PageWrapperUp>
-          <input
-            type="text"
-            placeholder="Filtrar"
-            className="border-red-900 h-7 rounded mb-2"
-            onChange={(e) => setFilter(e.target.value)}
-          /></PageWrapperUp>}
+        {showFilter && (
+          <PageWrapperUp>
+            <input
+              type="text"
+              placeholder="Filtrar"
+              className="border-red-900 h-7 rounded mb-2"
+              onChange={(e) => setFilter(e.target.value)}
+            />
+          </PageWrapperUp>
+        )}
         {slip.length > 0 ? (
           <div className={`flex flex-col overflow-x-auto h-auto max-h-96  `}>
             {slip
@@ -116,17 +127,18 @@ function Slips() {
                 filter === ""
                   ? slip
                   : slip.name
-                    .toLowerCase()
-                    .includes(filter.toLocaleLowerCase()) ||
-                  slip.price.toString().includes(filter)
+                      .toLowerCase()
+                      .includes(filter.toLocaleLowerCase()) ||
+                    slip.price.toString().includes(filter)
               )
               .map((item, index) => (
                 <PageWrapper key={item._id}>
                   <div
                     key={item._id}
-                    className={`${item.paid === true &&
+                    className={`${
+                      item.paid === true &&
                       "bg-yellow-100 hover:bg-yellow-200 hover:bg-opacity-100 "
-                      } flex flex-col justify-center border-2  p-4 h-full text-sm   hover:opacity-95 transition-all `}
+                    } flex flex-col justify-center border-2  p-4 h-full text-sm   hover:opacity-95 transition-all `}
                   >
                     <div className="flex justify-between">
                       <div className="flex items-center gap-2">
@@ -159,8 +171,9 @@ function Slips() {
                             );
                           }}
                           size={28}
-                          className={`${!item.paid ? "bg-yellow-600" : "bg-black"
-                            } p-1 rounded-full text-white cursor-pointer hover:opacity-40`}
+                          className={`${
+                            !item.paid ? "bg-yellow-600" : "bg-black"
+                          } p-1 rounded-full text-white cursor-pointer hover:opacity-40`}
                         />
                       </div>
                     </div>

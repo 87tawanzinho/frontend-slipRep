@@ -24,6 +24,18 @@ function MenuPC() {
             despesas gerais
           </Link>
         </div>
+
+        <div>
+          <Link
+            href={"/checks"}
+            className={`${
+              path === "/checks" && "border-b-2 border-gray-100  rounded"
+            } hover:text-green-100`}
+          >
+            Cheques
+          </Link>
+        </div>
+
         <div>
           <Link
             href={"/"}
