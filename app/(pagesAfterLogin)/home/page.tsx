@@ -31,6 +31,7 @@ import { IoFilterOutline } from "react-icons/io5";
 import { VscInfo } from "react-icons/vsc";
 import { FcInfo } from "react-icons/fc";
 import { IoMdArrowDropright } from "react-icons/io";
+import { useHide } from "@/app/context/HideDivContext";
 
 function PageHome() {
   const [bills, setBills] = useState<myBills[]>([]);
@@ -46,6 +47,7 @@ function PageHome() {
   const [showFilter, setShowFilter] = useState(false);
   const [totalAboutAll, setTotalAboutAll] = useState(0);
   const [infoAboutTotal, setInfoAboutTotal] = useState(false);
+  const { hide } = useHide();
   let { slip } = useSlip();
   const billsAll = bills
     .filter((bill) => bill.paid)
@@ -103,12 +105,12 @@ function PageHome() {
     ) {
       setIncomeBill(parseFloat(localStorage.getItem("incomeBills") as any));
       bills = localStorage.getItem("incomeBills");
-      setTimeout(() => {
-        setLoading(false);
-      }, 600);
+
       setName(localStorage.getItem("name")!!);
     }
-    fetchDataAndSetBills(setBills);
+    fetchDataAndSetBills(setBills).then(() => {
+      setLoading(false);
+    });
   }, [bills]);
   const thereBillsToPayToday = bills.some((bill) =>
     isToday(parseISO(bill.date))
@@ -134,8 +136,8 @@ function PageHome() {
               span={<IncomeBills />}
             />
 
-            {totalAboutAll !== 0 && (
-              <div className="mt-6 bg-white rounded-lg p-4 relative">
+            {totalAboutAll !== 0 && !hide && (
+              <div className="mt-6 bg-white rounded-lg p-4 relative z-0">
                 <div className=" flex gap-2  ">
                   <div className=" text-sm flex gap-2">
                     <div className="flex gap-1 items-center">
@@ -216,7 +218,7 @@ function PageHome() {
               type="Bills"
               thereBillsToPayToday={thereBillsToPayToday}
               payToday={
-                <div className="rounded-2xl mb-4  shadow pb-4">
+                <div className="rounded-2xl mb-4  shadow pb-4 z-0">
                   <p className="flex gap-2 items-center mb-4">
                     {" "}
                     <CiWarning size={32} className="text-black" /> Contas para

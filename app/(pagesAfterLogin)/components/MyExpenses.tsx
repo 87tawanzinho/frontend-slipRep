@@ -17,6 +17,7 @@ import Modal, { newPay } from "../Modal";
 import { FaRightLeft } from "react-icons/fa6";
 import { TbMoneybag } from "react-icons/tb";
 import { GiMoneyStack } from "react-icons/gi";
+import { useHide } from "@/app/context/HideDivContext";
 interface Expenses {
   text: string;
   span?: ReactNode;
@@ -29,10 +30,11 @@ function MyExpenses({ text, span, income, setData }: Expenses) {
   const [value, setValue] = useState("");
   const [info, setOpenInfo] = useState(false);
   const [warning, setWarning] = useState("");
-  const [hide, setHide] = useState(true);
+  const [hidePrice, setHidePrice] = useState(true);
   const [warningIncome, setWarningIncome] = useState("");
   const [newPay, setNewPay] = useState<newPay>();
   const myName = justName();
+  const { setHide } = useHide();
 
   const handleChangeNumberIncomeOrTickets = async () => {
     setWarningIncome("Registrando sua renda..");
@@ -57,13 +59,15 @@ function MyExpenses({ text, span, income, setData }: Expenses) {
             <h2> {text}</h2>
             <div className="flex gap-4 items-center">
               {" "}
-              <span className={`${hide ? "blur-sm" : null} text-green-600`}>
+              <span
+                className={`${hidePrice ? "blur-sm" : null} text-green-600`}
+              >
                 {span}
               </span>{" "}
               <BiHide
                 className="cursor-pointer hover:opacity-75"
                 size={20}
-                onClick={() => setHide(!hide)}
+                onClick={() => setHidePrice(!hidePrice)}
               />
               <MdModeEditOutline
                 className="cursor-pointer hover:opacity-75"
@@ -73,7 +77,10 @@ function MyExpenses({ text, span, income, setData }: Expenses) {
               <IoMdAddCircleOutline
                 className="text-red-700 cursor-pointer heart hover:opacity-75"
                 size={20}
-                onClick={() => setopenNew(true)}
+                onClick={() => {
+                  setopenNew(true);
+                  setHide(true);
+                }}
               />
             </div>
           </div>

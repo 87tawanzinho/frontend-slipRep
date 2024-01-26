@@ -98,7 +98,7 @@ function Slips() {
                     </p>
                   )}
 
-                  <p className=" w-1/5 text-end">
+                  <p className=" w-1/6 text-end">
                     <span className="text-[10px]">R$</span>
                     {item.price.toLocaleString(undefined, {
                       minimumFractionDigits: 2,

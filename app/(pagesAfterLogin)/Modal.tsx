@@ -7,6 +7,7 @@ import { MdDone } from "react-icons/md";
 import { instance } from "../axios/instance";
 import { fetchDataAndSetBills } from "./datas/BillFunctions/takeBills";
 import { fetchDataAndSetSlips } from "./datas/BillFunctions/takeSlips";
+import { useHide } from "../context/HideDivContext";
 
 interface ModalProps {
   setopenNew: React.Dispatch<React.SetStateAction<boolean>>;
@@ -21,6 +22,7 @@ function Modal({ setopenNew, income, setData, info, setOpenInfo }: ModalProps) {
   const [newPay, setNewPay] = useState<newPay>();
   const [warning, setWarning] = useState("");
   const [click, setClick] = useState(false);
+  const { setHide } = useHide();
   const newCost = async () => {
     setClick(true);
 
@@ -55,6 +57,7 @@ function Modal({ setopenNew, income, setData, info, setOpenInfo }: ModalProps) {
         setWarning("");
         setopenNew(false);
         setClick(false);
+        setHide(false);
         fetchDataAndSetBills(setData);
         console.log(res);
       } catch (error) {
@@ -96,6 +99,7 @@ function Modal({ setopenNew, income, setData, info, setOpenInfo }: ModalProps) {
         setWarning("");
         setClick(false);
         setopenNew(false);
+        setHide(false);
         fetchDataAndSetSlips(setData); // todo
         console.log(res);
       } catch (error) {
@@ -108,11 +112,14 @@ function Modal({ setopenNew, income, setData, info, setOpenInfo }: ModalProps) {
   return (
     <div>
       {" "}
-      <div className=" flex items-center justify-center h-full top-0 left-0 fixed w-full bg-black bg-opacity-40 z-50">
+      <div className=" flex items-center justify-center h-full top-0 left-0 fixed w-full bg-black bg-opacity-40 ">
         <div className=" rounded-xl shadow-2xl bg-white w-11/12 lg:w-9/12 h-auto py-8 px-4 relative">
           <p
             className="max-w-min  absolute end-4 top-4 text-red-700 cursor-pointer hover:opacity-75"
-            onClick={() => setopenNew(false)}
+            onClick={() => {
+              setopenNew(false);
+              setHide(false);
+            }}
           >
             X
           </p>
@@ -229,7 +236,9 @@ function Modal({ setopenNew, income, setData, info, setOpenInfo }: ModalProps) {
             <div className="flex justify-center mt-10">
               <button disabled={click}>
                 <MdDone
-                  onClick={newCost}
+                  onClick={() => {
+                    newCost();
+                  }}
                   className={`${
                     income === "Bills" ? "bg-sky-400" : "bg-red-400"
                   } rounded-full text-green-100 cursor-pointer hover:bg-black transition-all`}

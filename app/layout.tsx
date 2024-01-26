@@ -1,8 +1,15 @@
 import type { Metadata } from "next";
-import { Inter, Open_Sans, Poppins, Roboto, Roboto_Slab } from "next/font/google";
+import {
+  Inter,
+  Open_Sans,
+  Poppins,
+  Roboto,
+  Roboto_Slab,
+} from "next/font/google";
 import "./globals.css";
 import { Reveal } from "./(pagesAfterLogin)/emotion/Reveal";
 import { SlipProvider } from "./context/DataContext";
+import { HideDivContextProvider } from "./context/HideDivContext";
 
 const inter = Poppins({ subsets: ["latin"], weight: ["400"] });
 
@@ -19,9 +26,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <SlipProvider>
-        <body className={inter.className}>
-          <Reveal>{children}</Reveal>
-        </body>
+        <HideDivContextProvider>
+          <body className={inter.className}>
+            <Reveal>{children}</Reveal>
+          </body>
+        </HideDivContextProvider>
       </SlipProvider>
     </html>
   );
