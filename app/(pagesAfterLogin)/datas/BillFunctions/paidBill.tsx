@@ -5,11 +5,17 @@ import { myBills } from "../../home/page";
 export const changePaidBill = async (
   id: number,
   fetchDataAndSetBills: Dispatch<SetStateAction<any>>,
-  setBills: Dispatch<SetStateAction<myBills[]>>
+  setBills: Dispatch<SetStateAction<myBills[]>>,
+  interest?: number,
+  date?: string
 ) => {
   try {
     const name = localStorage.getItem("name");
-    await instance.put(`paidBillOrNo/${name}`, { id });
+    await instance.put(`paidBillOrNo/${name}`, {
+      id: id,
+      interest: interest,
+      date: date,
+    });
     fetchDataAndSetBills(setBills);
   } catch (error) {
     console.log(error);

@@ -78,7 +78,7 @@ function ModalConfig({ type, setConfigModal, allBillsData }: typeConfig) {
                     }}
                     className="bg-red-600 text-white h-8 w-48 rounded hover:opacity-75"
                   >
-                    REMOVER DESPESA
+                    REMOVER PAGAMENTO
                   </button>
                 )}
 
@@ -124,11 +124,16 @@ function ModalConfig({ type, setConfigModal, allBillsData }: typeConfig) {
                       <button
                         className="bg-green-800 text-white rounded w-32 hover:opacity-75"
                         onClick={() => {
+                          if (inputsToConfirm?.date === undefined) {
+                            return alert("Qual a data que você pagou?");
+                          }
                           setConfigModal(false);
                           changePaidBill(
                             data._id,
                             fetchDataAndSetBills,
-                            allBillsData
+                            allBillsData,
+                            inputsToConfirm?.interest,
+                            inputsToConfirm?.date
                           );
                         }}
                       >

@@ -20,7 +20,7 @@ import ModalConfig from "../ModalConfig";
 import { setClickedBill } from "../datas/BillFunctions/clickedOnGear";
 import { useSlip } from "@/app/context/DataContext";
 import { DiAtom } from "react-icons/di";
-import { FaJava } from "react-icons/fa6";
+import { FaEye, FaJava, FaRegEye } from "react-icons/fa6";
 
 import { PageWrapperUp } from "../emotion/page-wrapper-up";
 import { IoFilterOutline } from "react-icons/io5";
@@ -47,7 +47,7 @@ function PageHome() {
   let { slip } = useSlip();
   const billsAll = bills
     .filter((bill) => bill.paid)
-    .reduce((acc, bill) => acc + bill.price, 0);
+    .reduce((acc, bill) => acc + bill.totalPriceWithInterest, 0);
   const slipAll = slip
     .filter((slip) => slip.paid)
     .reduce((acc, slip) => acc + slip.price, 0);
@@ -238,7 +238,19 @@ function PageHome() {
                                 {format(parseISO(bill.date), "dd/MM/yyyy ", {})}
                               </p>
                               <p className="flex justify-end w-1/3">
-                                R${bill.price}
+                                R$
+                                {bill.interest === 0 || bill.interest === null
+                                  ? bill.price.toLocaleString(undefined, {
+                                      minimumFractionDigits: 2,
+                                      maximumFractionDigits: 2,
+                                    })
+                                  : bill.totalPriceWithInterest.toLocaleString(
+                                      undefined,
+                                      {
+                                        minimumFractionDigits: 2,
+                                        maximumFractionDigits: 2,
+                                      }
+                                    )}
                               </p>
                             </div>
                           </div>
@@ -299,8 +311,7 @@ function PageHome() {
                           <div
                             className={`flex justify-between
                          items-center mt-2 text-[13px] lg:text-[15px] border p-1  rounded  ${
-                           bill.paid &&
-                           "bg-green-300 transition-all line-through"
+                           bill.paid && "bg-green-300 transition-all "
                          } `}
                             key={bill._id}
                           >
@@ -308,16 +319,18 @@ function PageHome() {
                               className={`w-1/3 lg:w-1/4 overflow-y-auto   hover:transition-all
                           hover:text-black  cursor-pointer hover:opacity-75
                             `}
-                              onClick={() => {
-                                setWarning(true);
-                                router.push(`home/${bill._id}?name=${name}`);
-                              }}
+                              onClick={() => {}}
                             >
                               <p className=" flex gap-2 ">
                                 <span className="font-bold text-sm">
                                   {index + 1}
                                 </span>
-                                {bill.name}
+                                <div className="flex items-center gap-2 flex-row-reverse ">
+                                  {bill.name}
+                                  <FaEye
+                                    onClick={() => alert("Em desenvolvimento")}
+                                  />
+                                </div>
                               </p>
                             </div>
                             <div className="flex justify-center overflow-auto ">
@@ -327,15 +340,30 @@ function PageHome() {
                             </div>
 
                             <div
-                              className={`w-1/3 lg:w-1/4 flex justify-end gap-1  items-center  overflow-auto 
+                              className={`w-1/3 lg:w-1/4 flex justify-end gap-1   items-center  overflow-auto 
                              `}
                             >
-                              <p className="text-red-700  ">
+                              <p className="text-red-700 flex items-center  ">
                                 <span className="text-[10px]">R$</span>
-                                {bill.price.toLocaleString(undefined, {
-                                  minimumFractionDigits: 2,
-                                  maximumFractionDigits: 2,
-                                })}
+                                {bill.interest === null ||
+                                bill.interest === 0 ? (
+                                  <p>
+                                    {bill.price.toLocaleString(undefined, {
+                                      minimumFractionDigits: 2,
+                                      maximumFractionDigits: 2,
+                                    })}
+                                  </p>
+                                ) : (
+                                  <p>
+                                    {bill.totalPriceWithInterest.toLocaleString(
+                                      undefined,
+                                      {
+                                        minimumFractionDigits: 2,
+                                        maximumFractionDigits: 2,
+                                      }
+                                    )}{" "}
+                                  </p>
+                                )}
                               </p>
                               <GoGear
                                 size={20}
@@ -400,5 +428,7 @@ export interface myBills {
   date: string;
   _id: number;
   paid: boolean;
+  interest: number;
+  totalPriceWithInterest: number;
   observation?: string;
 }
