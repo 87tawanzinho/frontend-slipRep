@@ -321,7 +321,10 @@ function PageHome() {
                             `}
                               onClick={() => {}}
                             >
-                              <div className="flex gap-1 items-center">
+                              <span className="font-bold text-[13px] absolute  ">
+                                {index + 1}
+                              </span>
+                              <div className="flex gap-1 items-center ml-3">
                                 <FaEye
                                   onClick={() => alert("Em desenvolvimento")}
                                   size={14}
@@ -336,7 +339,7 @@ function PageHome() {
                             </div>
 
                             <div
-                              className={`w-1/3 lg:w-1/4 flex justify-end gap-1   items-center  overflow-auto 
+                              className={`w-1/3 lg:w-1/4 flex justify-end   items-center  overflow-auto 
                              `}
                             >
                               <p className="text-red-700 flex items-center  ">

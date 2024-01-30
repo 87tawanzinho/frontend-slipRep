@@ -32,10 +32,10 @@ function Modal({ setopenNew, income, setData, info, setOpenInfo }: ModalProps) {
         return setWarning("Preencha todos os campos para prosseguir.");
       }
 
-      if (newPay.description.length <= 3 || newPay.description.length > 12) {
+      if (newPay.description.length <= 2 || newPay.description.length > 12) {
         setClick(false);
         return setWarning(
-          "A descrição tem que ter no minimo 4 dígitos e no maximo 12."
+          "O nome da empresa tem que ter no minimo 3 dígitos e no maximo 12."
         );
       }
 
