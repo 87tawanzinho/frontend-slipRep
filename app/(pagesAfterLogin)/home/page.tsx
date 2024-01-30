@@ -28,6 +28,7 @@ import { IoFilterOutline } from "react-icons/io5";
 import { IoMdArrowDropright } from "react-icons/io";
 import { useHide } from "@/app/context/HideDivContext";
 import { AiFillCaretDown } from "react-icons/ai";
+import Details from "../components/details";
 
 function PageHome() {
   const [bills, setBills] = useState<myBills[]>([]);
@@ -43,6 +44,7 @@ function PageHome() {
   const [showFilter, setShowFilter] = useState(false);
   const [totalAboutAll, setTotalAboutAll] = useState(0);
   const [infoAboutTotal, setInfoAboutTotal] = useState(false);
+  const [detailsAboutThisBill, setDetailsAboutThisBill] = useState(false);
   const { hide } = useHide();
   let { slip } = useSlip();
   const billsAll = bills
@@ -326,7 +328,10 @@ function PageHome() {
                               </span>
                               <div className="flex gap-1 items-center ml-3">
                                 <FaEye
-                                  onClick={() => alert("Em desenvolvimento")}
+                                  onClick={() => {
+                                    setDetailsAboutThisBill(true);
+                                    setClickedBill(bill);
+                                  }}
                                   size={14}
                                 />
                                 {bill.name}
@@ -409,7 +414,7 @@ function PageHome() {
               }
             />
           </main>
-
+          {detailsAboutThisBill && <Details />}
           <Slips />
         </div>
       ) : (
