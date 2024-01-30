@@ -316,22 +316,18 @@ function PageHome() {
                             key={bill._id}
                           >
                             <div
-                              className={`w-1/3 lg:w-1/4 overflow-y-auto   hover:transition-all
+                              className={`w-1/3 lg:w-1/4 flex gap-1  overflow-y-auto justify-start items-center   hover:transition-all
                           hover:text-black  cursor-pointer hover:opacity-75
                             `}
                               onClick={() => {}}
                             >
-                              <p className=" flex gap-2 ">
-                                <span className="font-bold text-sm">
-                                  {index + 1}
-                                </span>
-                                <div className="flex items-center gap-2 flex-row-reverse ">
-                                  {bill.name}
-                                  <FaEye
-                                    onClick={() => alert("Em desenvolvimento")}
-                                  />
-                                </div>
-                              </p>
+                              <div className="flex gap-1 items-center">
+                                <FaEye
+                                  onClick={() => alert("Em desenvolvimento")}
+                                  size={14}
+                                />
+                                {bill.name}
+                              </div>
                             </div>
                             <div className="flex justify-center overflow-auto ">
                               <p>
