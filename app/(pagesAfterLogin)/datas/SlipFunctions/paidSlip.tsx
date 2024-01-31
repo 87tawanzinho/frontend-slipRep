@@ -1,6 +1,6 @@
 import { instance } from "@/app/axios/instance";
 import { Dispatch, SetStateAction } from "react";
-import { mySlips } from "../../components/slips";
+import { mySlips } from "../../home/components/slips";
 
 export const changePaidSlip = async (
   id: number,

@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import MyExpenses from "../components/MyExpenses";
-import ItensExpenses from "../components/ItensExpenses";
+import MyExpenses from "./components/MyExpenses";
+import ItensExpenses from "./components/ItensExpenses";
 import IncomeBills from "../datas/incomeBills";
 import { format, isToday, parseISO } from "date-fns";
 import { fetchDataAndSetBills } from "../datas/BillFunctions/takeBills";
@@ -9,8 +9,8 @@ import { BiDownArrowAlt } from "react-icons/bi";
 import { CiWarning } from "react-icons/ci";
 import Loading from "../loading";
 import { useRouter } from "next/navigation";
-import Slips from "../components/slips";
-import HowWorksThis from "../components/HowWorksTotal";
+import Slips from "./components/slips";
+import HowWorksThis from "./components/HowWorksTotal";
 import { ImInfo } from "react-icons/im";
 import { PageWrapper } from "../emotion/page-wrapper";
 import { PageWrapperModal } from "../emotion/page-wrapperModal";
@@ -28,7 +28,9 @@ import { IoFilterOutline } from "react-icons/io5";
 import { IoMdArrowDropright } from "react-icons/io";
 import { useHide } from "@/app/context/HideDivContext";
 import { AiFillCaretDown } from "react-icons/ai";
-import Details from "../components/details";
+import Details from "./components/details";
+import TypeWriter from "./components/typewriter";
+import ExpensesAndTotals from "./components/expensesAndTotals";
 
 function PageHome() {
   const [bills, setBills] = useState<myBills[]>([]);
@@ -45,8 +47,8 @@ function PageHome() {
   const [totalAboutAll, setTotalAboutAll] = useState(0);
   const [infoAboutTotal, setInfoAboutTotal] = useState(false);
   const [detailsAboutThisBill, setDetailsAboutThisBill] = useState(false);
-  const { hide } = useHide();
   let { slip } = useSlip();
+
   const billsAll = bills
     .filter((bill) => bill.paid)
     .reduce((acc, bill) => acc + bill.totalPriceWithInterest, 0);
@@ -55,6 +57,7 @@ function PageHome() {
     .reduce((acc, slip) => acc + slip.price, 0);
 
   const total = billsAll + slipAll;
+
   useEffect(() => {
     const totalAboutAll = () => {
       if (bills.length === 0 && slip.length === 0) {
@@ -117,15 +120,8 @@ function PageHome() {
     <>
       {loading === false ? (
         <div className=" bg-home  pt-10 w-full flex flex-col  ">
-          <div className="flex justify-center items-center    ">
-            <div className="typewriter shadow-2xl p-4 rounded-lg ">
-              <div className="slide">
-                <i></i>
-              </div>
-              <div className="paper"></div>
-              <div className="keyboard"></div>
-            </div>
-          </div>
+          <TypeWriter />
+
           <main className="flex flex-col  items-center w-full">
             <MyExpenses
               text={"Minhas Despesas - Renda Mensal "}
@@ -134,84 +130,16 @@ function PageHome() {
               span={<IncomeBills />}
             />
 
-            {!hide && (
-              <div className="mt-6 bg-white rounded-lg p-4 relative z-0">
-                <div className=" flex gap-2  ">
-                  <div className=" text-sm flex gap-2">
-                    <div className="flex gap-1 items-center">
-                      <span className="text-black">Total</span>{" "}
-                      <span
-                        className={`${
-                          totalIncome <= -1 ? "text-red-700" : "text-green-700"
-                        }`}
-                      >
-                        R$
-                        {totalIncome.toLocaleString(undefined, {
-                          minimumFractionDigits: 2,
-                          maximumFractionDigits: 2,
-                        })}
-                      </span>{" "}
-                      <FaJava />
-                    </div>
-                    <div className="flex items-center gap-1">
-                      {" "}
-                      <span className="text-black">Gastos </span>
-                      <p className="text-red-700">
-                        R$
-                        {totalAboutAll!!.toLocaleString(undefined, {
-                          minimumFractionDigits: 2,
-                          maximumFractionDigits: 2,
-                        })}
-                      </p>
-                    </div>
-                  </div>
-                  <p
-                    onClick={() => setInfoAboutTotal(!infoAboutTotal)}
-                    className="absolute top-1 end-1 cursor-pointer hover:opacity-75"
-                  >
-                    <AiFillCaretDown size={14} className="text-gray-400" />
-                  </p>
-                </div>
+            <ExpensesAndTotals
+              totalIncome={totalIncome}
+              billsAll={billsAll}
+              infoAboutTotal={infoAboutTotal}
+              setInfoAboutTotal={setInfoAboutTotal}
+              slipAll={slipAll}
+              total={total}
+              totalAboutAll={totalAboutAll}
+            />
 
-                {infoAboutTotal && (
-                  <PageWrapperUp>
-                    <div className="mt-4 text-[13px] text-gray-700">
-                      <p className="flex items-center">
-                        Gastos com contas gerais <IoMdArrowDropright />{" "}
-                        <span className="text-red-700">
-                          R$
-                          {billsAll.toLocaleString(undefined, {
-                            minimumFractionDigits: 2,
-                            maximumFractionDigits: 2,
-                          })}
-                        </span>
-                      </p>
-                      <p className="flex items-center">
-                        Gastos com boletos <IoMdArrowDropright />{" "}
-                        <span className="text-red-700">
-                          R$
-                          {slipAll.toLocaleString(undefined, {
-                            minimumFractionDigits: 2,
-                            maximumFractionDigits: 2,
-                          })}
-                        </span>
-                      </p>
-
-                      <p className="flex items-center">
-                        Total <IoMdArrowDropright />{" "}
-                        <span className="text-red-700">
-                          R$
-                          {total.toLocaleString(undefined, {
-                            minimumFractionDigits: 2,
-                            maximumFractionDigits: 2,
-                          })}
-                        </span>
-                      </p>
-                    </div>
-                  </PageWrapperUp>
-                )}
-              </div>
-            )}
             <ItensExpenses
               type="Bills"
               thereBillsToPayToday={thereBillsToPayToday}

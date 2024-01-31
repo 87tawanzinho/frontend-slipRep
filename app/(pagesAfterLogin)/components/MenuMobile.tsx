@@ -5,7 +5,6 @@ import { IoMdMenu } from "react-icons/io";
 import Avatar from "./Avatar";
 import Link from "next/link";
 import { justName } from "../datas/name";
-import { PageWrapper } from "../emotion/page-wrapper";
 import { PageWrapperModal } from "../emotion/page-wrapperModal";
 function MenuMobile() {
   const name = justName();

@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
-import { PageWrapper } from "../emotion/page-wrapper";
-import { PageWrapperModal } from "../emotion/page-wrapperModal";
+import { PageWrapper } from "../../emotion/page-wrapper";
+import { PageWrapperModal } from "../../emotion/page-wrapperModal";
 
 function HowWorksThis({
   text,

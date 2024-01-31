@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { getClickedBill } from "../datas/BillFunctions/clickedOnGear";
-import { myBills } from "../home/page";
+import { getClickedBill } from "../../datas/BillFunctions/clickedOnGear";
+import { myBills } from "../page";
 
 function Details() {
   const [details, setDetails] = useState<myBills | null>();
@@ -15,6 +15,7 @@ function Details() {
         <p className="text-xl text-center font-sans font-bold">
           {details?.name}
         </p>
+        (EM DESENVOLVIMENTO)
         <div className="flex flex-col gap-2">
           <p className="mt-12">
             Status:{" "}
@@ -42,9 +43,6 @@ function Details() {
             >
               {details?.interest}
             </span>
-          </p>
-          <p>
-            Preço: <span className="text-red-700">{details?.price}</span>
           </p>
         </div>
       </div>

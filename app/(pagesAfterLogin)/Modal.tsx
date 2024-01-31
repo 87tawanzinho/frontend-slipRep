@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { ImInfo } from "react-icons/im";
 import { PageWrapper } from "./emotion/page-wrapper";
-import HowWorksThis from "./components/HowWorksTotal";
+import HowWorksThis from "./home/components/HowWorksTotal";
 import { MdDone } from "react-icons/md";
 import { instance } from "../axios/instance";
 import { fetchDataAndSetBills } from "./datas/BillFunctions/takeBills";

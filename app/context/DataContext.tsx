@@ -6,7 +6,7 @@ import {
   useContext,
   useState,
 } from "react";
-import { mySlips } from "../(pagesAfterLogin)/components/slips";
+import { mySlips } from "../(pagesAfterLogin)/home/components/slips";
 
 interface SlipContextProps {
   slip: mySlips[];
