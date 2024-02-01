@@ -145,9 +145,7 @@ function ModalConfig({ type, setConfigModal, allBillsData }: typeConfig) {
               )}
             </div>
           </div>
-        ) : (
-          <Loading />
-        )}
+        ) : null}
       </>
     );
   }
