@@ -44,16 +44,20 @@ function ModalConfig({ type, setConfigModal, allBillsData }: typeConfig) {
       <>
         {data?._id ? (
           <div className=" flex items-center justify-center h-full top-0 left-0 fixed w-full bg-black bg-opacity-20 z-50">
-            <div className=" rounded-xl shadow-2xl bg-white w-11/12 lg:w-4/12 h-auto py-8 px-4 relative">
-              <p
-                className="max-w-min  absolute end-4 top-4 text-red-700 cursor-pointer hover:opacity-75"
-                onClick={() => setConfigModal(false)}
-              >
-                X
-              </p>
-
-              <div>
-                <p>Registro: {data?.name} </p>
+            <div className=" rounded shadow-2xl bg-white w-11/12 lg:w-4/12 h-auto relative text-[14px]">
+            <div className="bg-black text-white p-2 flex justify-between items-center">
+            <p className="text-center text-lg text-gray-100 ">
+              Configuração da Despesa
+            </p>
+            <p
+              onClick={() => setConfigModal(false)}
+              className="text-end cursor-pointer hover:opacity-75 text-xl"
+            >
+              X
+            </p>
+          </div >
+              <div className="py-2 px-4">
+                <p>Despesa: {data?.name} </p>
                 <p>
                   Status Atual:
                   <span
@@ -65,7 +69,7 @@ function ModalConfig({ type, setConfigModal, allBillsData }: typeConfig) {
                 </p>
               </div>
 
-              <div className="mt-4 flex gap-2 items-center">
+              <div className="flex gap-2 items-center py-4 px-4">
                 {data.paid && (
                   <button
                     onClick={() => {
@@ -87,8 +91,8 @@ function ModalConfig({ type, setConfigModal, allBillsData }: typeConfig) {
                     onClick={() => setShowDivInterestRate(!showDivInterestRate)}
                     className={`h-8 w-48 rounded hover:opacity-75  ${
                       showDivInterestRate
-                        ? "bg-gray-300 border text-black"
-                        : "bg-green-600 text-white "
+                        ? "bg-gray-300 border text-gray-800"
+                        : "bg-emerald-600 text-white "
                     } `}
                   >
                     {!showDivInterestRate ? "PAGAR DESPESA" : "VOLTAR"}
@@ -106,7 +110,7 @@ function ModalConfig({ type, setConfigModal, allBillsData }: typeConfig) {
               </div>
               {showDivInterestRate && (
                 <PageWrapperUp>
-                  <div className="mt-4">
+                  <div className=" py-4 px-4 bg-zinc-800 text-white">
                     <p className="">Valor do Juros</p>
                     <input
                       type="number"
@@ -122,7 +126,7 @@ function ModalConfig({ type, setConfigModal, allBillsData }: typeConfig) {
                         onChange={handleValueOfInputs}
                       />
                       <button
-                        className="bg-green-800 text-white rounded w-32 hover:opacity-75"
+                        className="bg-emerald-400 text-white rounded w-32 hover:opacity-75"
                         onClick={() => {
                           if (inputsToConfirm?.date === undefined) {
                             return alert("Qual a data que você pagou?");
