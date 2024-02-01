@@ -251,7 +251,7 @@ function PageHome() {
                             `}
                               onClick={() => {}}
                             >
-                              <span className="font-bold text-[11px] w-[1px] mr-4   ">
+                              <span className="font-bold text-[11px] w-[1px] mr-4 py-1   ">
                                 {index + 1}
                               </span>
                               <div className={`flex gap-1 items-center `}>
@@ -344,7 +344,9 @@ function PageHome() {
               }
             />
           </main>
-          {detailsAboutThisBill && <Details />}
+          {detailsAboutThisBill && (
+            <Details setDetailsAboutThisBill={setDetailsAboutThisBill} />
+          )}
           <Slips />
         </div>
       ) : (
@@ -363,6 +365,7 @@ export interface myBills {
   _id: number;
   paid: boolean;
   interest: number;
+  datePayment?: string;
   totalPriceWithInterest: number;
   observation?: string;
 }
