@@ -246,15 +246,15 @@ function PageHome() {
                             key={bill._id}
                           >
                             <div
-                              className={`w-1/3 lg:w-1/4 flex gap-1  overflow-y-auto justify-start items-center   hover:transition-all
+                              className={`w-1/3 lg:w-1/4 flex   overflow-auto justify-start items-center relative   hover:transition-all
                           hover:text-black  cursor-pointer hover:opacity-75
                             `}
                               onClick={() => {}}
                             >
-                              <span className="font-bold text-[13px] absolute  ">
+                              <span className="font-bold text-[11px] w-[1px] mr-4   ">
                                 {index + 1}
                               </span>
-                              <div className="flex gap-1 items-center ml-3">
+                              <div className={`flex gap-1 items-center `}>
                                 <FaEye
                                   onClick={() => {
                                     setDetailsAboutThisBill(true);
@@ -262,7 +262,9 @@ function PageHome() {
                                   }}
                                   size={14}
                                 />
-                                {bill.name}
+                                <p className="text-[11px] lg:text-[14px] text-nowrap ">
+                                  {bill.name}
+                                </p>
                               </div>
                             </div>
                             <div className="flex justify-center overflow-auto ">
