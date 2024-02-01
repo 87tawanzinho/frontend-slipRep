@@ -31,6 +31,8 @@ import { AiFillCaretDown } from "react-icons/ai";
 import Details from "./components/details";
 import TypeWriter from "./components/typewriter";
 import ExpensesAndTotals from "./components/expensesAndTotals";
+import { FaArrowAltCircleDown, FaArrowAltCircleUp } from "react-icons/fa";
+import { getToDown, setToDown } from "../datas/toDown";
 
 function PageHome() {
   const [bills, setBills] = useState<myBills[]>([]);
@@ -48,7 +50,7 @@ function PageHome() {
   const [infoAboutTotal, setInfoAboutTotal] = useState(false);
   const [detailsAboutThisBill, setDetailsAboutThisBill] = useState(false);
   let { slip } = useSlip();
-
+  const toDown = getToDown();
   const billsAll = bills
     .filter((bill) => bill.paid)
     .reduce((acc, bill) => acc + bill.totalPriceWithInterest, 0);
@@ -202,6 +204,17 @@ function PageHome() {
                       onClick={() => setShowFilter(!showFilter)}
                       className=" cursor-pointer hover:opacity-75"
                     />
+                    {!toDown ? (
+                      <FaArrowAltCircleUp
+                        onClick={() => setToDown(true)}
+                        className="hover:opacity-75 cursor-pointer"
+                      />
+                    ) : (
+                      <FaArrowAltCircleDown
+                        onClick={() => setToDown(false)}
+                        className="hover:opacity-75 cursor-pointer"
+                      />
+                    )}
                   </div>
 
                   {showFilter && (
