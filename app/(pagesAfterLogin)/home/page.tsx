@@ -162,7 +162,7 @@ function PageHome() {
                           >
                             <div
                               className={` ${
-                                bill.paid && "bg-green-300 line-through"
+                                bill.paid && "bg-emerald-300 line-through"
                               } flex justify-between items-center w-full  `}
                             >
                               <p className="w-1/3 overflow-auto">{bill.name}</p>
@@ -254,7 +254,7 @@ function PageHome() {
                           <div
                             className={`flex justify-between
                          items-center mt-2 text-[13px] lg:text-[15px] border p-1  rounded  ${
-                           bill.paid && "bg-green-300 transition-all "
+                           bill.paid && "bg-emerald-300 transition-all "
                          } `}
                             key={bill._id}
                           >
