@@ -10,7 +10,7 @@ function HomeLayout({ children }: { children: React.ReactNode }) {
       <MenuPC />
       <MenuMobile />
       <Reveal>
-        <div className="pt-20">{children}</div>
+        <div className="pt-12">{children}</div>
       </Reveal>
     </>
   );

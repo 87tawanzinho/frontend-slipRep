@@ -65,7 +65,7 @@ function MyExpenses({ text, span, income, setData }: Expenses) {
             <div className="flex gap-4 items-center">
               {" "}
               <span
-                className={`${hidePrice ? "blur-sm" : null} text-green-600`}
+                className={`${hidePrice ? "blur-sm" : null} text-emerald-600`}
               >
                 {span}
               </span>{" "}

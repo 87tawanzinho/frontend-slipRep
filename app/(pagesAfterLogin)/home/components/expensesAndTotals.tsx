@@ -36,7 +36,7 @@ function ExpensesAndTotals({
                 <span className="text-black">Total</span>{" "}
                 <span
                   className={`${
-                    totalIncome <= -1 ? "text-red-700" : "text-green-700"
+                    totalIncome <= -1 ? "text-red-700" : "text-emerald-700"
                   }`}
                 >
                   R$

@@ -17,7 +17,7 @@ function MenuPC() {
             href={"/home"}
             className={`${
               path === "/home" && "border-b-2 border-gray-100  rounded"
-            } hover:text-green-100`}
+            } hover:text-emerald-100`}
           >
             Despesas
           </Link>

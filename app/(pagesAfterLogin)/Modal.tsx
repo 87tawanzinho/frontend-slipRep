@@ -241,7 +241,7 @@ function Modal({ setopenNew, income, setData, info, setOpenInfo }: ModalProps) {
                   }}
                   className={`${
                     income === "Bills" ? "bg-sky-400" : "bg-red-400"
-                  } rounded-full text-green-100 cursor-pointer hover:bg-black transition-all`}
+                  } rounded-full text-emerald-100 cursor-pointer hover:bg-black transition-all`}
                   size={80}
                 />
               </button>

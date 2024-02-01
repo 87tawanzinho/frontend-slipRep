@@ -61,7 +61,7 @@ function ModalConfig({ type, setConfigModal, allBillsData }: typeConfig) {
                 <p>
                   Status Atual:
                   <span
-                    className={data.paid ? "text-green-800 " : "text-red-800"}
+                    className={data.paid ? "text-emerald-800 " : "text-red-800"}
                   >
                     {" "}
                     {data.paid ? "Pago" : "Não pago"}
