@@ -125,7 +125,7 @@ function PageHome() {
   return (
     <>
       {loading === false ? (
-        <div className=" bg-home  pt-10 w-full flex flex-col  ">
+        <div className=" bg-home  w-full flex flex-col  ">
           
 
           <main className="flex flex-col  items-center w-full">
