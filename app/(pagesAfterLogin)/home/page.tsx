@@ -33,6 +33,10 @@ import TypeWriter from "./components/typewriter";
 import ExpensesAndTotals from "./components/expensesAndTotals";
 import { FaArrowAltCircleDown, FaArrowAltCircleUp } from "react-icons/fa";
 import { getToDown, setToDown } from "../datas/toDown";
+import Image from "next/image";
+import personAnimation from "@/public/AnimationMoney.json"
+import ImageAnimation from "../components/ImageAnimation";
+
 
 function PageHome() {
   const [bills, setBills] = useState<myBills[]>([]);
@@ -141,7 +145,9 @@ function PageHome() {
               total={total}
               totalAboutAll={totalAboutAll}
             />
-
+<div className="py-12">
+<ImageAnimation  image={personAnimation} text={"Sempre se mantenha organizado (a) com seu balanço mensal"}/>
+</div>
             <ItensExpenses
               type="Bills"
               thereBillsToPayToday={thereBillsToPayToday}
@@ -360,6 +366,7 @@ function PageHome() {
           {detailsAboutThisBill && (
             <Details setDetailsAboutThisBill={setDetailsAboutThisBill} />
           )}
+          
           <Slips />
         </div>
       ) : (

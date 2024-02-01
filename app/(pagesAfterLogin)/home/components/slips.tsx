@@ -23,7 +23,8 @@ import { useSlip } from "@/app/context/DataContext";
 import { TbFileInvoice, TbFilterSearch } from "react-icons/tb";
 import { IoFilterOutline } from "react-icons/io5";
 import { BiDownArrow } from "react-icons/bi";
-
+import ImageAnimation from "../../components/ImageAnimation";
+import chatAnimation from "@/public/chatAnimation.json"
 function Slips() {
   const [info, setInfo] = useState(false);
   const [openNew, setOpenNew] = useState(false);
@@ -37,7 +38,9 @@ function Slips() {
   const isTodayDate = slip.filter((item) => isToday(parseISO(item.date)));
 
   return (
-    <div className="px-4   custom:px-48  lg:px-60 pb-4 ">
+    <div className="px-4   custom:px-48  lg:px-60 pb-4  ">
+      <ImageAnimation  image={chatAnimation} alt="chat" text={"Precisa de ajuda? Entre em contato!"} iNeedHelp={true} />
+
       <div className="mt-20 p-4 w-full  rounded-2xl custom:w-96 lg:w-1/3 flex flex-col bg-white     overflow-auto    ">
         {" "}
         <div className="flex items-center justify-between mb-4 ">

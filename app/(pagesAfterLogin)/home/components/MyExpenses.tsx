@@ -18,6 +18,7 @@ import { FaRightLeft } from "react-icons/fa6";
 import { TbMoneybag } from "react-icons/tb";
 import { GiMoneyStack } from "react-icons/gi";
 import { useHide } from "@/app/context/HideDivContext";
+
 interface Expenses {
   text: string;
   span?: ReactNode;
@@ -56,6 +57,7 @@ function MyExpenses({ text, span, income, setData }: Expenses) {
 
   return (
     <div className="bg-white w-11/12 lg:w-auto rounded-2xl mt-10 p-2 lg:p-12">
+    
       {!openInput && (
         <PageWrapper>
           <div className="text-sm lg:text-lg  flex flex-col lg:flex-row gap-2 items-center">
@@ -92,6 +94,7 @@ function MyExpenses({ text, span, income, setData }: Expenses) {
       {openInput && (
         <PageWrapper>
           <div className="flex flex-col lg:flex-row  justify-normal lg:justify-between gap-2 lg:gap-24  items-center  p-2 ">
+           
             <div className="flex flex-col gap-3">
               <p className="font-sans text-[13px] w-60 ">
                 Defina uma renda mensal para poder se{" "}
