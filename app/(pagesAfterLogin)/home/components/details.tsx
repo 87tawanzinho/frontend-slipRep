@@ -94,6 +94,19 @@ function Details({
               </p>
             </div>
           </div>
+          <div className="px-4 py-4">
+            <div className="flex gap-2 items-center">
+              <p className="text-gray-700">Observação</p>
+              <FaArrowDown size={12} />
+            </div>
+            {details?.observation ? (
+              <div className="border  w-40 px-2 py-1 mt-2 rounded border-gray-500">
+                <p className="break-words">{details.observation}</p>
+              </div>
+            ) : (
+              "Não definido"
+            )}
+          </div>
         </div>
       </div>
     </PageWrapperModal>
