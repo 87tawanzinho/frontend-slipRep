@@ -126,7 +126,7 @@ function PageHome() {
     <>
       {loading === false ? (
         <div className=" bg-home  pt-10 w-full flex flex-col  ">
-          <TypeWriter />
+          
 
           <main className="flex flex-col  items-center w-full">
             <MyExpenses
