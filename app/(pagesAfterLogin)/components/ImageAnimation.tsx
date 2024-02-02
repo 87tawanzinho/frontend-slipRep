@@ -25,7 +25,7 @@ function ImageAnimation({
   }
   if (!text && !isAdvice) {
     return (
-      <div className="flex flex-col items-center justify-center text-center rounded-lg">
+      <div className="flex flex-col items-center justify-center text-center rounded-lg z-0">
         <Player
           autoplay
           loop
@@ -44,7 +44,7 @@ function ImageAnimation({
     );
   }
   return (
-    <div className="flex flex-col items-center justify-center text-center rounded-lg">
+    <div className="flex flex-col items-center justify-center text-center rounded-lg z-0">
       <Player
         autoplay
         loop
