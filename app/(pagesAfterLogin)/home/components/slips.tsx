@@ -43,16 +43,7 @@ function Slips() {
   }, []);
   const isTodayDate = slip.filter((item) => isToday(parseISO(item.date)));
 
-  useEffect(() => {
-    if (animation) {
-      const timeoutId = setTimeout(() => {
-        setAnimation(false);
-      }, 1600);
-
-      return () => clearTimeout(timeoutId);
-    }
-  }, [animation]);
-
+  
   return (
     <div className="px-4   custom:px-48  lg:px-60 pb-4  ">
       <ImageAnimation
@@ -62,18 +53,6 @@ function Slips() {
         iNeedHelp={true}
       />
 
-      {animation && (
-        <div className="h-screen w-full fixed flex justify-center items-center z-50 top-0 left-0 bg-black bg-opacity-95">
-          {" "}
-          <div className="flex flex-col items-center justify-center text-white">
-            <Image src={congrats} alt="congrats" />
-            <Reveal>
-              {" "}
-              <p className="text-lg mt-4">Parabéns, sua conta foi paga.</p>
-            </Reveal>
-          </div>
-        </div>
-      )}
 
       <div className="mt-20 p-4 w-full  rounded-lg custom:w-96 lg:w-1/3 flex flex-col bg-white     overflow-auto    ">
         {" "}
