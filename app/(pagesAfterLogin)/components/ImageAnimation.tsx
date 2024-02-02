@@ -2,6 +2,7 @@ import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { Player, Controls } from "@lottiefiles/react-lottie-player";
 import advices from "@/app/(pagesAfterLogin)/components/advicesAboutFinance.json";
+import { useHide } from "@/app/context/HideDivContext";
 
 function ImageAnimation({
   image,
@@ -12,12 +13,15 @@ function ImageAnimation({
   width,
 }: any) {
   const [randomAdvice, setRandomAdvice] = useState<string | null>(null);
-
+  const { hide } = useHide();
   useEffect(() => {
     const randomIndex = Math.floor(Math.random() * advices.length);
     setRandomAdvice(advices[randomIndex].description);
   }, []);
 
+  if (hide) {
+    return;
+  }
   if (!text && !isAdvice) {
     return (
       <div className="flex flex-col items-center justify-center text-center rounded-lg">
