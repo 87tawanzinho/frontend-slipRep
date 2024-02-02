@@ -67,7 +67,10 @@ function Slips() {
           {" "}
           <div className="flex flex-col items-center justify-center text-white">
             <Image src={congrats} alt="congrats" />
-            <p className="text-lg ">Parabéns, sua conta foi paga. 🎉</p>
+            <Reveal>
+              {" "}
+              <p className="text-lg mt-4">Parabéns, sua conta foi paga.</p>
+            </Reveal>
           </div>
         </div>
       )}
