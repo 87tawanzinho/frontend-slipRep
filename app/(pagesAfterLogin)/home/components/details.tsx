@@ -66,12 +66,21 @@ function Details({
                 <p className="text-gray-700  mt-4 flex flex-col lg:hidden">
                   Valor
                 </p>
-                <p>R${details?.price}</p>
+                <p>
+                  R$
+                  {details?.price.toLocaleString(undefined, {
+                    maximumFractionDigits: 2,
+                    minimumFractionDigits: 2,
+                  })}
+                </p>
 
                 <p className="text-gray-700 mt-4">Total com Juros</p>
                 <p>
                   {details?.totalPriceWithInterest !== 0
-                    ? `R$${details?.totalPriceWithInterest}`
+                    ? `R$${details?.totalPriceWithInterest.toLocaleString(
+                        undefined,
+                        { maximumFractionDigits: 2, minimumFractionDigits: 2 }
+                      )}`
                     : "Não definido"}
                 </p>
               </div>
