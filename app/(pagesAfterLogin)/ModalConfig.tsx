@@ -45,17 +45,17 @@ function ModalConfig({ type, setConfigModal, allBillsData }: typeConfig) {
         {data?._id ? (
           <div className=" flex items-center justify-center h-full top-0 left-0 fixed w-full bg-black bg-opacity-20 z-50">
             <div className=" rounded shadow-2xl bg-white w-11/12 lg:w-4/12 h-auto relative text-[14px]">
-            <div className="bg-black text-white p-2 flex justify-between items-center">
-            <p className="text-center text-lg text-gray-100 ">
-              Configuração da Despesa
-            </p>
-            <p
-              onClick={() => setConfigModal(false)}
-              className="text-end cursor-pointer hover:opacity-75 text-xl"
-            >
-              X
-            </p>
-          </div >
+              <div className="bg-emerald-800 text-white p-2 flex justify-between items-center">
+                <p className="text-center text-lg text-gray-100 ">
+                  Configuração da Despesa
+                </p>
+                <p
+                  onClick={() => setConfigModal(false)}
+                  className="text-end cursor-pointer hover:opacity-75 text-xl"
+                >
+                  X
+                </p>
+              </div>
               <div className="py-2 px-4">
                 <p>Despesa: {data?.name} </p>
                 <p>
@@ -110,7 +110,7 @@ function ModalConfig({ type, setConfigModal, allBillsData }: typeConfig) {
               </div>
               {showDivInterestRate && (
                 <PageWrapperUp>
-                  <div className=" py-4 px-4 bg-zinc-800 text-white">
+                  <div className=" py-4 px-4 bg-emerald-950 text-white">
                     <p className="">Valor do Juros</p>
                     <input
                       type="number"

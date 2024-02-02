@@ -24,7 +24,9 @@ import { TbFileInvoice, TbFilterSearch } from "react-icons/tb";
 import { IoFilterOutline } from "react-icons/io5";
 import { BiDownArrow } from "react-icons/bi";
 import ImageAnimation from "../../components/ImageAnimation";
-import chatAnimation from "@/public/chatAnimation.json"
+import chatAnimation from "@/public/chatAnimation.json";
+import slipPaid from "./slipPaid.json";
+import sliptNotPaid from "./slipNotPaid.json";
 function Slips() {
   const [info, setInfo] = useState(false);
   const [openNew, setOpenNew] = useState(false);
@@ -39,7 +41,12 @@ function Slips() {
 
   return (
     <div className="px-4   custom:px-48  lg:px-60 pb-4  ">
-      <ImageAnimation  image={chatAnimation} alt="chat" text={"Precisa de ajuda? Entre em contato!"} iNeedHelp={true} />
+      <ImageAnimation
+        image={chatAnimation}
+        alt="chat"
+        text={"Precisa de ajuda? Entre em contato!"}
+        iNeedHelp={true}
+      />
 
       <div className="mt-20 p-4 w-full  rounded-2xl custom:w-96 lg:w-1/3 flex flex-col bg-white     overflow-auto    ">
         {" "}
@@ -139,17 +146,24 @@ function Slips() {
                   <div
                     key={item._id}
                     className={`${
-                      item.paid === true &&
-                      "bg-yellow-100 hover:bg-yellow-200 hover:bg-opacity-100 "
+                      item.paid === true && " hover:bg-opacity-100 "
                     } flex flex-col justify-center border-2  p-4 h-full text-sm   hover:opacity-95 transition-all `}
                   >
                     <div className="flex justify-between">
                       <div className="flex items-center gap-2">
-                        <Image
-                          src={invoice}
-                          alt="fatura"
-                          className="mb-2 h-14 w-14 "
-                        />
+                        {item.paid ? (
+                          <ImageAnimation
+                            image={slipPaid}
+                            height={"100px"}
+                            width={"100px"}
+                          />
+                        ) : (
+                          <ImageAnimation
+                            image={sliptNotPaid}
+                            height={"120px"}
+                            width={"120px"}
+                          />
+                        )}
                         {item.paid && <p>Conta Paga</p>}
                       </div>
                       <div className="flex gap-2">

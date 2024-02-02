@@ -3,7 +3,14 @@ import React, { useEffect, useState } from "react";
 import { Player, Controls } from "@lottiefiles/react-lottie-player";
 import advices from "@/app/(pagesAfterLogin)/components/advicesAboutFinance.json";
 
-function ImageAnimation({ image, text, iNeedHelp, isAdvice }: any) {
+function ImageAnimation({
+  image,
+  text,
+  iNeedHelp,
+  isAdvice,
+  height,
+  width,
+}: any) {
   const [randomAdvice, setRandomAdvice] = useState<string | null>(null);
 
   useEffect(() => {
@@ -11,13 +18,36 @@ function ImageAnimation({ image, text, iNeedHelp, isAdvice }: any) {
     setRandomAdvice(advices[randomIndex].description);
   }, []);
 
+  if (!text && !isAdvice) {
+    return (
+      <div className="flex flex-col items-center justify-center text-center rounded-lg">
+        <Player
+          autoplay
+          loop
+          src={image}
+          style={{
+            height: height ? height : "300px",
+            width: width ? width : "300px",
+          }}
+        >
+          <Controls
+            visible={false}
+            buttons={["play", "repeat", "frame", "debug"]}
+          />
+        </Player>
+      </div>
+    );
+  }
   return (
     <div className="flex flex-col items-center justify-center text-center rounded-lg">
       <Player
         autoplay
         loop
         src={image}
-        style={{ height: "300px", width: "300px" }}
+        style={{
+          height: height ? height : "300px",
+          width: width ? width : "300px",
+        }}
       >
         <Controls
           visible={false}

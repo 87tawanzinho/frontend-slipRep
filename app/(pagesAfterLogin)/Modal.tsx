@@ -113,28 +113,33 @@ function Modal({ setopenNew, income, setData, info, setOpenInfo }: ModalProps) {
     <div>
       {" "}
       <div className=" flex items-center justify-center h-full top-0 left-0 fixed w-full bg-black bg-opacity-40 z-50">
-        <div className=" rounded-xl shadow-2xl bg-white w-11/12 flex flex-col justify-center  lg:w-9/12 h-auto py-8 px-4 relative">
-          <p
-            className="max-w-min  absolute end-4 top-4 text-red-700 cursor-pointer hover:opacity-75"
-            onClick={() => {
-              setopenNew(false);
-              setHide(false);
-            }}
+        <div className="shadow-2xl bg-white w-11/12 flex flex-col pb-8 justify-center  lg:w-9/12 h-auto  relative">
+          <div
+            className={`flex gap-2 items-center ${
+              income === "Bills" ? "bg-emerald-800" : "bg-red-800"
+            } p-2 px-8 text-white`}
           >
-            X
-          </p>
-
-          <div className="flex gap-2 items-center">
             <p className="text-xl">
               {income === "Bills" ? "Nova Despesa" : "Novo Boleto"}
             </p>
+
             <ImInfo
               className="cursor-pointer hover:opacity-75"
               size={18}
               onClick={() => setOpenInfo(!info)}
             />
+
+            <p
+              className="max-w-min absolute end-4 text-2xl text-white cursor-pointer hover:opacity-75"
+              onClick={() => {
+                setopenNew(false);
+                setHide(false);
+              }}
+            >
+              X
+            </p>
           </div>
-          <div className="flex  flex-col gap-4 flex-wrap">
+          <div className="flex  flex-col gap-4 flex-wrap px-8">
             <div className="flex gap-0 lg:gap-4 flex-wrap">
               <div className="flex flex-col mt-4 text-gray-700">
                 <span>
@@ -240,7 +245,7 @@ function Modal({ setopenNew, income, setData, info, setOpenInfo }: ModalProps) {
                     newCost();
                   }}
                   className={`${
-                    income === "Bills" ? "bg-sky-400" : "bg-red-400"
+                    income === "Bills" ? "bg-emerald-400" : "bg-red-400"
                   } rounded-full text-emerald-100 cursor-pointer hover:bg-black transition-all`}
                   size={80}
                 />
