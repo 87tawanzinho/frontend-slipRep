@@ -24,19 +24,13 @@ import { FaEye, FaJava, FaRegEye } from "react-icons/fa6";
 
 import { PageWrapperUp } from "../emotion/page-wrapper-up";
 import { IoFilterOutline } from "react-icons/io5";
-
-import { IoMdArrowDropright } from "react-icons/io";
-import { useHide } from "@/app/context/HideDivContext";
-import { AiFillCaretDown } from "react-icons/ai";
 import Details from "./components/details";
-import TypeWriter from "./components/typewriter";
 import ExpensesAndTotals from "./components/expensesAndTotals";
 import { FaArrowAltCircleDown, FaArrowAltCircleUp } from "react-icons/fa";
 import { getToDown, setToDown } from "../datas/toDown";
 import Image from "next/image";
-import personAnimation from "@/public/AnimationMoney.json"
+import personAnimation from "@/public/AnimationMoney.json";
 import ImageAnimation from "../components/ImageAnimation";
-
 
 function PageHome() {
   const [bills, setBills] = useState<myBills[]>([]);
@@ -126,8 +120,6 @@ function PageHome() {
     <>
       {loading === false ? (
         <div className=" bg-home  w-full flex flex-col  ">
-          
-
           <main className="flex flex-col  items-center w-full">
             <MyExpenses
               text={"Minhas Despesas - Renda Mensal "}
@@ -145,9 +137,9 @@ function PageHome() {
               total={total}
               totalAboutAll={totalAboutAll}
             />
-<div className="py-12">
-<ImageAnimation  image={personAnimation} text={"Sempre se mantenha organizado (a) com seu balanço mensal"}/>
-</div>
+            <div className="py-12">
+              <ImageAnimation image={personAnimation} isAdvice={true} />
+            </div>
             <ItensExpenses
               type="Bills"
               thereBillsToPayToday={thereBillsToPayToday}
@@ -155,8 +147,8 @@ function PageHome() {
                 <div className="rounded-lg mb-4  shadow pb-4 z-0  text-gray-900">
                   <p className="flex gap-2 items-center mb-4">
                     {" "}
-                    <CiWarning size={32} className="text-gray-900" /> Contas para
-                    pagar hoje
+                    <CiWarning size={32} className="text-gray-900" /> Contas
+                    para pagar hoje
                   </p>
 
                   {bills.map((bill) => (
@@ -366,7 +358,7 @@ function PageHome() {
           {detailsAboutThisBill && (
             <Details setDetailsAboutThisBill={setDetailsAboutThisBill} />
           )}
-          
+
           <Slips />
         </div>
       ) : (

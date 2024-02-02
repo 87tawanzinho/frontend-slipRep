@@ -1,0 +1,342 @@
+[
+  {
+    "id": 1,
+    "description": "Evite compras impulsivas; planeje seus gastos com antecedência."
+  },
+  {
+    "id": 2,
+    "description": "Analise extratos bancários para identificar padrões e economizar."
+  },
+  {
+    "id": 3,
+    "description": "Estabeleça metas financeiras realistas e acompanhe seu progresso."
+  },
+  {
+    "id": 4,
+    "description": "Crie um fundo de emergência para despesas inesperadas."
+  },
+  {
+    "id": 5,
+    "description": "Pesquise antes de grandes compras para obter o melhor custo-benefício."
+  },
+  {
+    "id": 6,
+    "description": "Automatize transferências para conta poupança ou investimentos."
+  },
+  {
+    "id": 7,
+    "description": "Evite acumular várias dívidas; pague as de juros mais altos primeiro."
+  },
+  {
+    "id": 8,
+    "description": "Diversifique seus investimentos para reduzir riscos."
+  },
+  {
+    "id": 9,
+    "description": "Reavalie contratos de serviços periodicamente para obter melhores ofertas."
+  },
+  {
+    "id": 10,
+    "description": "Evite usar cartões de crédito para compras que não pode pagar integralmente."
+  },
+  {
+    "id": 11,
+    "description": "Negocie taxas bancárias; muitos bancos estão abertos a negociações."
+  },
+  {
+    "id": 12,
+    "description": "Priorize pagamentos para contas essenciais antes de gastos não essenciais."
+  },
+  {
+    "id": 13,
+    "description": "Considere refinanciar dívidas para obter taxas de juros mais baixas."
+  },
+  {
+    "id": 14,
+    "description": "Aprenda a cozinhar em casa; refeições caseiras são geralmente mais econômicas."
+  },
+  {
+    "id": 15,
+    "description": "Evite seguir tendências de consumo; compre por necessidade, não por moda."
+  },
+  {
+    "id": 16,
+    "description": "Participe de programas de fidelidade para obter descontos e recompensas."
+  },
+  {
+    "id": 17,
+    "description": "Desenvolva habilidades de negociação ao renegociar contratos."
+  },
+  {
+    "id": 18,
+    "description": "Escolha planos de seguro que atendam às suas necessidades."
+  },
+  {
+    "id": 19,
+    "description": "Diga 'não' a compras impulsivas; reserve tempo antes de decisões financeiras."
+  },
+  {
+    "id": 20,
+    "description": "Ensine conceitos financeiros básicos aos filhos para promover educação financeira."
+  },
+  {
+    "id": 21,
+    "description": "Mantenha-se informado sobre mudanças nas leis fiscais."
+  },
+  {
+    "id": 22,
+    "description": "Evite empréstimos de curto prazo com taxas de juros extremamente altas."
+  },
+  {
+    "id": 23,
+    "description": "Avalie a possibilidade de refinanciar sua hipoteca se as taxas de juros estiverem favoráveis."
+  },
+  {
+    "id": 24,
+    "description": "Evite acumular dívidas em cartões de crédito; sempre pague o valor total da fatura quando possível."
+  },
+  {
+    "id": 25,
+    "description": "Considere criar um orçamento mensal e siga-o rigorosamente para controlar seus gastos."
+  },
+  {
+    "id": 26,
+    "description": "Invista em educação financeira; entender como o dinheiro funciona é essencial para tomar decisões informadas."
+  },
+  {
+    "id": 27,
+    "description": "Evite gastar dinheiro em itens supérfluos; priorize necessidades sobre desejos."
+  },
+  {
+    "id": 28,
+    "description": "Poupe para a aposentadoria desde cedo; o poder dos juros compostos pode trabalhar a seu favor."
+  },
+  {
+    "id": 29,
+    "description": "Faça uma revisão anual de seu plano de celular e considere mudar para um plano mais econômico."
+  },
+  {
+    "id": 30,
+    "description": "Automatize o pagamento de contas para evitar atrasos e multas."
+  },
+  {
+    "id": 31,
+    "description": "Evite comprar em datas festivas, quando os preços geralmente estão mais altos."
+  },
+  {
+    "id": 32,
+    "description": "Mantenha registros detalhados de despesas para identificar áreas onde é possível economizar mais."
+  },
+  {
+    "id": 33,
+    "description": "Crie uma reserva específica para despesas anuais, como impostos ou seguros, para evitar surpresas financeiras."
+  },
+  {
+    "id": 34,
+    "description": "Considere investir em cursos online para desenvolver habilidades que possam aumentar sua renda."
+  },
+  {
+    "id": 35,
+    "description": "Evite empréstimos para compras de bens de consumo que depreciarão rapidamente, como eletrônicos."
+  },
+  {
+    "id": 36,
+    "description": "Mantenha-se atualizado sobre as mudanças nos benefícios de emprego, como planos de aposentadoria e assistência médica."
+  },
+  {
+    "id": 37,
+    "description": "Estabeleça um limite mensal para gastos discricionários e evite ultrapassá-lo."
+  },
+  {
+    "id": 38,
+    "description": "Pague suas contas automaticamente para evitar multas por atraso e preservar sua pontuação de crédito."
+  },
+  {
+    "id": 39,
+    "description": "Reveja seus planos de telefone, internet e TV a cabo regularmente para garantir que está obtendo os melhores preços."
+  },
+  {
+    "id": 40,
+    "description": "Crie um fundo de investimento específico para metas de curto prazo, como férias ou compras planejadas."
+  },
+  {
+    "id": 41,
+    "description": "Evite empréstimos desnecessários; reserve um tempo para avaliar se realmente precisa do dinheiro emprestado."
+  },
+  {
+    "id": 42,
+    "description": "Use cupons e códigos promocionais ao fazer compras online para economizar dinheiro."
+  },
+  {
+    "id": 43,
+    "description": "Evite comprar café ou lanches todos os dias; prepare em casa para economizar ao longo do tempo."
+  },
+  {
+    "id": 44,
+    "description": "Estabeleça uma política de 'espera' para compras significativas; espere alguns dias antes de decidir comprar."
+  },
+  {
+    "id": 45,
+    "description": "Revise seus investimentos regularmente e ajuste sua carteira conforme necessário para atender seus objetivos."
+  },
+  {
+    "id": 46,
+    "description": "Considere opções mais baratas ao escolher marcas ou produtos; nem sempre o mais caro é o melhor."
+  },
+  {
+    "id": 47,
+    "description": "Ao receber um aumento ou bônus, destine uma parte para a poupança ou investimentos antes de gastar."
+  },
+  {
+    "id": 48,
+    "description": "Participe de cursos e workshops gratuitos sobre finanças pessoais para aprimorar seu conhecimento."
+  },
+  {
+    "id": 49,
+    "description": "Evite comprar itens com crédito rotativo; priorize pagamentos à vista sempre que possível."
+  },
+  {
+    "id": 50,
+    "description": "Ao negociar salários ou contratos, pesquise os padrões do setor para garantir que está sendo justamente remunerado."
+  },
+  {
+    "id": 51,
+    "description": "Mantenha-se atualizado sobre as taxas de juros de seus empréstimos e cartões de crédito; busque reduções se possível."
+  },
+  {
+    "id": 52,
+    "description": "Considere a criação de uma conta de aposentadoria individual (IRA) para aumentar suas economias de aposentadoria."
+  },
+  {
+    "id": 53,
+    "description": "Avalie a possibilidade de transferir dívidas de cartões de crédito para opções com taxas de juros mais baixas."
+  },
+  {
+    "id": 54,
+    "description": "Evite usar o cheque especial; as taxas podem ser altas e se acumular rapidamente."
+  },
+  {
+    "id": 55,
+    "description": "Ao receber dinheiro inesperado, como um bônus ou presente, reserve uma parte para seus objetivos financeiros."
+  },
+  {
+    "id": 56,
+    "description": "Considere a opção de comprar itens usados, especialmente se não houver diferença significativa na qualidade."
+  },
+  {
+    "id": 57,
+    "description": "Ao planejar uma grande compra, pesquise e aguarde vendas ou promoções para obter um melhor negócio."
+  },
+  {
+    "id": 58,
+    "description": "Evite compromissos financeiros de longo prazo sem uma análise cuidadosa; avalie os impactos a longo prazo."
+  },
+  {
+    "id": 59,
+    "description": "Aprenda a fazer pequenos reparos domésticos; isso pode economizar dinheiro em chamadas de serviços."
+  },
+  {
+    "id": 60,
+    "description": "Ao receber contas médicas, verifique a precisão dos itens cobrados e negocie descontos se necessário."
+  },
+  {
+    "id": 61,
+    "description": "Revise os benefícios oferecidos por seu empregador e aproveite ao máximo, como planos de saúde e programas de bem-estar."
+  },
+  {
+    "id": 62,
+    "description": "Ao investir, mantenha uma perspectiva de longo prazo; evite reações impulsivas a flutuações de curto prazo."
+  },
+  {
+    "id": 63,
+    "description": "Evite empréstimos de amigos ou familiares sempre que possível para preservar relacionamentos pessoais."
+  },
+  {
+    "id": 64,
+    "description": "Mantenha registros organizados de recibos e despesas para facilitar a preparação de declarações de impostos."
+  },
+  {
+    "id": 65,
+    "description": "Ao comprar seguros, obtenha várias cotações para garantir que está obtendo a melhor cobertura pelo preço mais baixo."
+  },
+  {
+    "id": 66,
+    "description": "Participe de grupos ou comunidades online que compartilham dicas e experiências sobre finanças pessoais."
+  },
+  {
+    "id": 67,
+    "description": "Ao planejar férias, reserve com antecedência para obter tarifas mais baixas em voos e acomodações."
+  },
+  {
+    "id": 68,
+    "description": "Ao renovar seguros, questione a necessidade de coberturas adicionais e ajuste conforme necessário."
+  },
+  {
+    "id": 69,
+    "description": "Aprenda sobre investimentos em ações antes de entrar no mercado; conhecimento é chave para o sucesso."
+  },
+  {
+    "id": 70,
+    "description": "Ao receber uma promoção ou aumento salarial, mantenha seu padrão de vida atual e economize a diferença."
+  },
+  {
+    "id": 71,
+    "description": "Evite retirar dinheiro do fundo de aposentadoria antes do prazo; isso pode resultar em penalidades e impostos."
+  },
+  {
+    "id": 72,
+    "description": "Ao investir em imóveis, pesquise a localização e o mercado para tomar decisões informadas."
+  },
+  {
+    "id": 73,
+    "description": "Considere a possibilidade de investir em energia renovável para economizar a longo prazo em contas de serviços públicos."
+  },
+  {
+    "id": 74,
+    "description": "Ao adquirir um veículo, pesquise e negocie o preço antes de comprar."
+  },
+  {
+    "id": 75,
+    "description": "Ao usar cartões de crédito, priorize pagamentos para os de juros mais altos."
+  },
+  {
+    "id": 76,
+    "description": "Considere a possibilidade de comprar mantimentos a granel para economizar dinheiro a longo prazo."
+  },
+  {
+    "id": 77,
+    "description": "Ao investir em educação, avalie a relação custo-benefício do curso em relação às oportunidades de carreira."
+  },
+  {
+    "id": 78,
+    "description": "Evite cair em esquemas de enriquecimento rápido; invista sabiamente e com cautela."
+  },
+  {
+    "id": 79,
+    "description": "Ao fazer doações, pesquise organizações de caridade para garantir que seu dinheiro seja bem utilizado."
+  },
+  {
+    "id": 80,
+    "description": "Ao receber um aumento, destine uma parte para investimentos a longo prazo."
+  },
+  {
+    "id": 81,
+    "description": "Considere a possibilidade de criar uma conta separada para gastos pessoais e despesas compartilhadas."
+  },
+  {
+    "id": 82,
+    "description": "Ao comprar online, use extensões de navegador que buscam cupons e descontos automaticamente."
+  },
+  {
+    "id": 83,
+    "description": "Evite fazer empréstimos para férias; planeje e economize com antecedência para viagens."
+  },
+  {
+    "id": 84,
+    "description": "Ao escolher uma hipoteca, compare taxas e condições para obter o melhor negócio."
+  },
+  {
+    "id": 85,
+    "description": "Ao receber uma herança, avalie cuidadosamente as opções de investimento antes de decidir."
+  }
+]
