@@ -11,6 +11,7 @@ function ImageAnimation({
   isAdvice,
   height,
   width,
+  congrats,
 }: any) {
   const [randomAdvice, setRandomAdvice] = useState<string | null>(null);
   const { hide } = useHide();

@@ -27,6 +27,7 @@ import ImageAnimation from "../../components/ImageAnimation";
 import chatAnimation from "@/public/chatAnimation.json";
 import slipPaid from "./slipPaid.json";
 import sliptNotPaid from "./slipNotPaid.json";
+import congrats from "./congrats.gif";
 function Slips() {
   const [info, setInfo] = useState(false);
   const [openNew, setOpenNew] = useState(false);
@@ -34,10 +35,22 @@ function Slips() {
   const { slip, setSlip } = useSlip();
   const [filter, setFilter] = useState("");
   const [showFilter, setShowFilter] = useState(false);
+  const [animation, setAnimation] = useState(false);
+
   useEffect(() => {
     fetchDataAndSetSlips(setSlip);
   }, []);
   const isTodayDate = slip.filter((item) => isToday(parseISO(item.date)));
+
+  useEffect(() => {
+    if (animation) {
+      const timeoutId = setTimeout(() => {
+        setAnimation(false);
+      }, 1600);
+
+      return () => clearTimeout(timeoutId);
+    }
+  }, [animation]);
 
   return (
     <div className="px-4   custom:px-48  lg:px-60 pb-4  ">
@@ -47,6 +60,16 @@ function Slips() {
         text={"Precisa de ajuda? Entre em contato!"}
         iNeedHelp={true}
       />
+
+      {animation && (
+        <div className="h-screen w-full fixed flex justify-center items-center z-50 top-0 left-0 bg-black opacity-75">
+          {" "}
+          <div className="flex flex-col items-center justify-center text-white">
+            <Image src={congrats} alt="congrats" />
+            <p>Parabéns, sua conta foi paga. 🎉</p>
+          </div>
+        </div>
+      )}
 
       <div className="mt-20 p-4 w-full  rounded-2xl custom:w-96 lg:w-1/3 flex flex-col bg-white     overflow-auto    ">
         {" "}
@@ -186,6 +209,9 @@ function Slips() {
                               fetchDataAndSetSlips,
                               setSlip
                             );
+                            if (!item.paid) {
+                              setAnimation(true);
+                            }
                           }}
                           size={28}
                           className={`${
