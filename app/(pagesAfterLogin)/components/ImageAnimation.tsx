@@ -21,7 +21,7 @@ function ImageAnimation({
   }, []);
 
   if (hide) {
-    return;
+    return null;
   }
   if (!text && !isAdvice) {
     return (

@@ -4,6 +4,7 @@ import { getClickedBill } from "../../datas/BillFunctions/clickedOnGear";
 import { myBills } from "../page";
 import { FaArrowDown } from "react-icons/fa6";
 import { PageWrapperModal } from "../../emotion/page-wrapperModal";
+import { useHide } from "@/app/context/HideDivContext";
 
 function Details({
   setDetailsAboutThisBill,
@@ -11,6 +12,7 @@ function Details({
   setDetailsAboutThisBill: Dispatch<SetStateAction<boolean>>;
 }) {
   const [details, setDetails] = useState<myBills | null>();
+  const {setHide} = useHide()
   useEffect(() => {
     const bill = getClickedBill();
     setDetails(bill);
@@ -24,7 +26,10 @@ function Details({
               Informações da sua despesa
             </p>
             <p
-              onClick={() => setDetailsAboutThisBill(false)}
+              onClick={() => {
+                setDetailsAboutThisBill(false)
+                setHide(false)
+              }}
               className="text-end cursor-pointer hover:opacity-75 text-xl"
             >
               X
