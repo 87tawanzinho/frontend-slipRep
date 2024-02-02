@@ -31,7 +31,6 @@ import { getToDown, setToDown } from "../datas/toDown";
 import Image from "next/image";
 import personAnimation from "@/public/AnimationMoney.json";
 import ImageAnimation from "../components/ImageAnimation";
-import { useHide } from "@/app/context/HideDivContext";
 
 function PageHome() {
   const [bills, setBills] = useState<myBills[]>([]);
@@ -49,7 +48,6 @@ function PageHome() {
   const [infoAboutTotal, setInfoAboutTotal] = useState(false);
   const [detailsAboutThisBill, setDetailsAboutThisBill] = useState(false);
   let { slip } = useSlip();
-  const {setHide} = useHide()
   const toDown = getToDown();
   const billsAll = bills
     .filter((bill) => bill.paid)
@@ -270,7 +268,6 @@ function PageHome() {
                               <div className={`flex gap-1 items-center `}>
                                 <FaEye
                                   onClick={() => {
-                                    setHide(true)
                                     setDetailsAboutThisBill(true);
                                     setClickedBill(bill);
                                   }}
@@ -319,7 +316,6 @@ function PageHome() {
                                 onClick={() => {
                                   setClickedBill(bill);
                                   setConfigBillModal(true);
-                                  setHide(true)
                                 }}
                               />
                             </div>
