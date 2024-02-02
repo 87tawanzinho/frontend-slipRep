@@ -57,7 +57,6 @@ function MyExpenses({ text, span, income, setData }: Expenses) {
 
   return (
     <div className="bg-white w-11/12 lg:w-auto rounded-2xl mt-10 p-2 lg:p-12">
-    
       {!openInput && (
         <PageWrapper>
           <div className="text-sm lg:text-lg  flex flex-col lg:flex-row gap-2 items-center">
@@ -94,7 +93,6 @@ function MyExpenses({ text, span, income, setData }: Expenses) {
       {openInput && (
         <PageWrapper>
           <div className="flex flex-col lg:flex-row  justify-normal lg:justify-between gap-2 lg:gap-24  items-center  p-2 ">
-           
             <div className="flex flex-col gap-3">
               <p className="font-sans text-[13px] w-60 ">
                 Defina uma renda mensal para poder se{" "}
@@ -109,7 +107,7 @@ function MyExpenses({ text, span, income, setData }: Expenses) {
               />
               <div className="flex gap-2 items-center">
                 <button
-                  className=" rounded-full bg-sky-400 text-white hover:bg-sky-300 "
+                  className=" rounded-full bg-emerald-400 text-white hover:bg-emerald-300 "
                   onClick={handleChangeNumberIncomeOrTickets}
                 >
                   <IoCheckmark size={24} />
@@ -122,7 +120,7 @@ function MyExpenses({ text, span, income, setData }: Expenses) {
                 </button>
               </div>
               {warningIncome && (
-                <p className="open-sans text-sm text-sky-500">
+                <p className="open-sans text-sm text-emerald-500">
                   {warningIncome}
                 </p>
               )}
@@ -131,8 +129,7 @@ function MyExpenses({ text, span, income, setData }: Expenses) {
             <div className="flex flex-col items-center justify-center text-center   ">
               <GiMoneyStack size={80} />
               <p className="text-[13px] lg:w-96 break-words w-full   ">
-                Sua saúde financeira é muito importante, por tanto, lembre-se de
-                guardar uma parte do que você ganha todos os meses.
+                Lembre-se de guardar uma parte do que você ganha todos os meses.
               </p>
             </div>
           </div>
