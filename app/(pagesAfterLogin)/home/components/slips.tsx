@@ -14,7 +14,7 @@ import { PiTrashSimpleThin } from "react-icons/pi";
 import { FiTrash } from "react-icons/fi";
 import { removeSlip } from "../../datas/SlipFunctions/removeSlip";
 import { format, isToday, parseISO } from "date-fns";
-import { CiBarcode, CiWarning } from "react-icons/ci";
+import { CiBarcode, CiUndo, CiWarning } from "react-icons/ci";
 import { MdDone } from "react-icons/md";
 import { changePaidSlip } from "../../datas/SlipFunctions/paidSlip";
 import { Reveal } from "../../emotion/Reveal";
@@ -28,6 +28,7 @@ import chatAnimation from "@/public/chatAnimation.json";
 import slipPaid from "./slipPaid.json";
 import sliptNotPaid from "./slipNotPaid.json";
 import congrats from "./congrats.gif";
+import { LiaUndoAltSolid } from "react-icons/lia";
 function Slips() {
   const [info, setInfo] = useState(false);
   const [openNew, setOpenNew] = useState(false);
@@ -202,22 +203,37 @@ function Slips() {
                           size={28}
                           className="  bg-red-400 text-white p-1  rounded-full cursor-pointer hover:opacity-40"
                         />
-                        <MdDone
-                          onClick={() => {
-                            changePaidSlip(
-                              item._id,
-                              fetchDataAndSetSlips,
-                              setSlip
-                            );
-                            if (!item.paid) {
-                              setAnimation(true);
-                            }
-                          }}
-                          size={28}
-                          className={`${
-                            !item.paid ? "bg-yellow-600" : "bg-black"
-                          } p-1 rounded-full text-white cursor-pointer hover:opacity-40`}
-                        />
+                        {!item.paid ? (
+                          <MdDone
+                            onClick={() => {
+                              changePaidSlip(
+                                item._id,
+                                fetchDataAndSetSlips,
+                                setSlip
+                              );
+                              if (!item.paid) {
+                                setAnimation(true);
+                              }
+                            }}
+                            size={28}
+                            className={`${"bg-emerald-600"} p-1 rounded-full text-white cursor-pointer hover:opacity-40`}
+                          />
+                        ) : (
+                          <LiaUndoAltSolid
+                            onClick={() => {
+                              changePaidSlip(
+                                item._id,
+                                fetchDataAndSetSlips,
+                                setSlip
+                              );
+                              if (!item.paid) {
+                                setAnimation(true);
+                              }
+                            }}
+                            size={28}
+                            className={`${"bg-emerald-600"} p-1 rounded-full text-white cursor-pointer hover:opacity-40`}
+                          />
+                        )}
                       </div>
                     </div>
 
