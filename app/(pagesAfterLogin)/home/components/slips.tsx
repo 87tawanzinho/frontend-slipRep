@@ -62,11 +62,11 @@ function Slips() {
       />
 
       {animation && (
-        <div className="h-screen w-full fixed flex justify-center items-center z-50 top-0 left-0 bg-black opacity-75">
+        <div className="h-screen w-full fixed flex justify-center items-center z-50 top-0 left-0 bg-black bg-opacity-95">
           {" "}
           <div className="flex flex-col items-center justify-center text-white">
             <Image src={congrats} alt="congrats" />
-            <p>Parabéns, sua conta foi paga. 🎉</p>
+            <p className="text-lg ">Parabéns, sua conta foi paga. 🎉</p>
           </div>
         </div>
       )}
