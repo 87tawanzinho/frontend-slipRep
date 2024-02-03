@@ -24,7 +24,7 @@ function ImageAnimation({
     return (
       <div
         className={`flex flex-col items-center justify-center text-center rounded-lg z-0 ${
-          hide ? "opacity-0" : " opacity-100"
+          hide ? "opacity-0 absolute" : " opacity-100"
         }`}
       >
         <Player
@@ -45,8 +45,8 @@ function ImageAnimation({
   }
   return (
     <div
-      className={`flex flex-col items-center justify-center text-center rounded-lg z-0 ${
-        hide ? "opacity-0" : "opacity-100"
+      className={`flex flex-col items-center justify-center text-center rounded-lg z-10 ${
+        hide ? "opacity-0 absolute" : "opacity-100"
       }`}
     >
       <Player
