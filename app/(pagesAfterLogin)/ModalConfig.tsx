@@ -43,8 +43,8 @@ function ModalConfig({ type, setConfigModal, allBillsData }: typeConfig) {
     return (
       <>
         {data?._id ? (
-          <div className=" flex items-center justify-center h-full top-0 left-0 fixed w-full bg-black bg-opacity-20 z-50">
-            <div className=" rounded shadow-2xl bg-white w-11/12 lg:w-4/12 h-auto relative text-[14px]">
+          <div className=" flex items-center justify-center h-full top-0 left-0 fixed w-full bg-black bg-opacity-75 ">
+            <div className=" rounded  bg-white w-11/12 lg:w-4/12 h-auto relative text-[14px]">
               <div className="bg-emerald-800 text-white p-2 flex justify-between items-center">
                 <p className="text-center text-lg text-gray-100 ">
                   Configuração da Despesa

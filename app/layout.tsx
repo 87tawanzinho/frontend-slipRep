@@ -10,6 +10,7 @@ import "./globals.css";
 import { Reveal } from "./(pagesAfterLogin)/emotion/Reveal";
 import { SlipProvider } from "./context/DataContext";
 import { HideDivContextProvider } from "./context/HideDivContext";
+import { Theme } from "@radix-ui/themes";
 
 const inter = Poppins({ subsets: ["latin"], weight: ["400"] });
 
@@ -27,9 +28,11 @@ export default function RootLayout({
     <html lang="en">
       <SlipProvider>
         <HideDivContextProvider>
-          <body className={inter.className}>
-            <Reveal>{children}</Reveal>
-          </body>
+          <Theme>
+            <body className={inter.className}>
+              <Reveal>{children}</Reveal>
+            </body>
+          </Theme>
         </HideDivContextProvider>
       </SlipProvider>
     </html>
