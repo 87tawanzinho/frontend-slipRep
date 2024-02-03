@@ -253,14 +253,14 @@ function PageHome() {
                             className={`flex justify-between
                          items-center mt-2 h-auto text-[13px] lg:text-[15px] border p-1  rounded  ${
                            bill.paid && "bg-emerald-100 transition-all "
-                         }   ${hide && "opacity-0"} `}
+                         }   `}
                             key={bill._id}
                           >
                             <div
                               className={`w-1/3 lg:w-1/4 flex   overflow-auto justify-start items-center relative   hover:transition-all
                           hover:text-black  cursor-pointer hover:opacity-75
                         
-                            `}
+                            ${hide && "opacity-0"}`}
                               onClick={() => {}}
                             >
                               <span className="font-bold text-[11px]   mr-2  py-1 n  ">

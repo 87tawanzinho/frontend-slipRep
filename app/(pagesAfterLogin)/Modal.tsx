@@ -112,166 +112,164 @@ function Modal({ setopenNew, income, setData, info, setOpenInfo }: ModalProps) {
   };
 
   return (
-    <Theme>
-      <div>
-        {" "}
-        <div className=" flex items-center justify-center h-screen top-0 left-0 fixed w-full bg-black bg-opacity-20 z-50">
-          <div className="shadow-2xl bg-white w-11/12 flex flex-col pb-8 justify-center  lg:w-9/12 h-auto  relative">
-            <div
-              className={`flex gap-2 items-center ${
-                income === "Bills" ? "bg-emerald-900" : "bg-red-900"
-              } p-2 px-8 text-white`}
+    <div>
+      {" "}
+      <div className=" flex items-center justify-center h-screen top-0 left-0 fixed w-full bg-black bg-opacity-20 z-50">
+        <div className="shadow-2xl bg-white w-11/12 flex flex-col pb-8 justify-center  lg:w-9/12 h-auto  relative">
+          <div
+            className={`flex gap-2 items-center ${
+              income === "Bills" ? "bg-emerald-900" : "bg-red-900"
+            } p-2 px-8 text-white`}
+          >
+            <p className="text-xl">
+              {income === "Bills" ? "Nova Despesa" : "Novo Boleto"}
+            </p>
+
+            <ImInfo
+              className="cursor-pointer hover:opacity-75"
+              size={18}
+              onClick={() => {
+                setOpenInfo(!info);
+                setHide(false);
+              }}
+            />
+
+            <p
+              className="max-w-min absolute end-4 text-2xl text-white cursor-pointer hover:opacity-75"
+              onClick={() => {
+                setopenNew(false);
+                setHide(false);
+              }}
             >
-              <p className="text-xl">
-                {income === "Bills" ? "Nova Despesa" : "Novo Boleto"}
-              </p>
-
-              <ImInfo
-                className="cursor-pointer hover:opacity-75"
-                size={18}
-                onClick={() => {
-                  setOpenInfo(!info);
-                  setHide(false);
-                }}
-              />
-
-              <p
-                className="max-w-min absolute end-4 text-2xl text-white cursor-pointer hover:opacity-75"
-                onClick={() => {
-                  setopenNew(false);
-                  setHide(false);
-                }}
-              >
-                X
-              </p>
-            </div>
-            <div className="flex  flex-col gap-4 flex-wrap px-8">
-              <div className="flex gap-0 lg:gap-4 flex-wrap">
-                <div className="flex flex-col mt-4 text-gray-700">
-                  <span>
-                    {income === "Bills" ? "Nome da despesa" : "Nome da empresa"}
-                  </span>
-                  <TextField.Input
-                    variant={`soft`}
-                    color={`${income === "Bills" ? "green" : "red"}`}
-                    placeholder="Digite aqui.."
-                    type="text"
-                    className={`${income !== "Bills" && "border-red-400"} `}
-                    name="description"
-                    onChange={(e) =>
-                      setNewPay(
-                        (prev) =>
-                          ({
-                            ...prev,
-                            [e.target.name]: e.target.value,
-                          } as newPay)
-                      )
-                    }
-                  />
-                </div>
-
-                <div className="flex flex-col mt-4">
-                  <span>Valor</span>
-                  <TextField.Input
-                    variant={`soft`}
-                    color={`${income === "Bills" ? "green" : "red"}`}
-                    type="number"
-                    placeholder="00,00"
-                    className={`${income !== "Bills" && "border-red-400"} `}
-                    name="price"
-                    onChange={(e) =>
-                      setNewPay(
-                        (prev) =>
-                          ({
-                            ...prev,
-                            [e.target.name]: e.target.value,
-                          } as newPay)
-                      )
-                    }
-                  />
-                </div>
-
-                <div className="flex flex-col mt-4">
-                  <span>Data de Pagamento</span>
-                  <TextField.Input
-                    variant="surface"
-                    color={`${income === "Bills" ? "green" : "red"}`}
-                    type="date"
-                    placeholder="Custo"
-                    name="date"
-                    onChange={(e) =>
-                      setNewPay(
-                        (prev) =>
-                          ({
-                            ...prev,
-                            [e.target.name]: e.target.value,
-                          } as newPay)
-                      )
-                    }
-                  />
-                </div>
-              </div>
-
-              {income === "Bills" ? (
-                <TextArea
-                  color="green"
-                  variant="soft"
-                  placeholder="Observação"
-                  className="w-64  "
-                  name="observation"
+              X
+            </p>
+          </div>
+          <div className="flex  flex-col gap-4 flex-wrap px-8">
+            <div className="flex gap-0 lg:gap-4 flex-wrap">
+              <div className="flex flex-col mt-4 text-gray-700">
+                <span>
+                  {income === "Bills" ? "Nome da despesa" : "Nome da empresa"}
+                </span>
+                <TextField.Input
+                  variant={`soft`}
+                  color={`${income === "Bills" ? "green" : "red"}`}
+                  placeholder="Digite aqui.."
+                  type="text"
+                  className={`${income !== "Bills" && "border-red-400"} `}
+                  name="description"
                   onChange={(e) =>
                     setNewPay(
                       (prev) =>
-                        ({ ...prev, [e.target.name]: e.target.value } as newPay)
+                        ({
+                          ...prev,
+                          [e.target.name]: e.target.value,
+                        } as newPay)
                     )
                   }
                 />
-              ) : (
-                <TextArea
+              </div>
+
+              <div className="flex flex-col mt-4">
+                <span>Valor</span>
+                <TextField.Input
                   variant={`soft`}
-                  color={`red`}
-                  placeholder="Codigo de Barras"
-                  className="w-64 border-red-400"
-                  name="code"
+                  color={`${income === "Bills" ? "green" : "red"}`}
+                  type="number"
+                  placeholder="00,00"
+                  className={`${income !== "Bills" && "border-red-400"} `}
+                  name="price"
                   onChange={(e) =>
                     setNewPay(
                       (prev) =>
-                        ({ ...prev, [e.target.name]: e.target.value } as newPay)
+                        ({
+                          ...prev,
+                          [e.target.name]: e.target.value,
+                        } as newPay)
                     )
                   }
+                />
+              </div>
+
+              <div className="flex flex-col mt-4">
+                <span>Data de Pagamento</span>
+                <TextField.Input
+                  variant="surface"
+                  color={`${income === "Bills" ? "green" : "red"}`}
+                  type="date"
+                  placeholder="Custo"
+                  name="date"
+                  onChange={(e) =>
+                    setNewPay(
+                      (prev) =>
+                        ({
+                          ...prev,
+                          [e.target.name]: e.target.value,
+                        } as newPay)
+                    )
+                  }
+                />
+              </div>
+            </div>
+
+            {income === "Bills" ? (
+              <TextArea
+                color="green"
+                variant="soft"
+                placeholder="Observação"
+                className="w-64  "
+                name="observation"
+                onChange={(e) =>
+                  setNewPay(
+                    (prev) =>
+                      ({ ...prev, [e.target.name]: e.target.value } as newPay)
+                  )
+                }
+              />
+            ) : (
+              <TextArea
+                variant={`soft`}
+                color={`red`}
+                placeholder="Codigo de Barras"
+                className="w-64 border-red-400"
+                name="code"
+                onChange={(e) =>
+                  setNewPay(
+                    (prev) =>
+                      ({ ...prev, [e.target.name]: e.target.value } as newPay)
+                  )
+                }
+              />
+            )}
+            {warning && <p className="text-sm">{warning}</p>}
+            <PageWrapper>
+              {info && (
+                <HowWorksThis
+                  text={`${
+                    income === "Bills"
+                      ? "Aqui você definirá suas despesas; certifique-se de preencher todos os dados. O campo de observação não é obrigatório, mas pode ser útil em caso de lembretes adicionais."
+                      : "Aqui você definirá seus boletos; certifique-se de preencher todos os dados. No dia do pagamento você poderia copiar o codigo."
+                  }`}
                 />
               )}
-              {warning && <p className="text-sm">{warning}</p>}
-              <PageWrapper>
-                {info && (
-                  <HowWorksThis
-                    text={`${
-                      income === "Bills"
-                        ? "Aqui você definirá suas despesas; certifique-se de preencher todos os dados. O campo de observação não é obrigatório, mas pode ser útil em caso de lembretes adicionais."
-                        : "Aqui você definirá seus boletos; certifique-se de preencher todos os dados. No dia do pagamento você poderia copiar o codigo."
-                    }`}
-                  />
-                )}
-              </PageWrapper>
+            </PageWrapper>
 
-              <div className="flex justify-center mt-10">
-                <button disabled={click}>
-                  <MdDone
-                    onClick={() => {
-                      newCost();
-                    }}
-                    className={`${
-                      income === "Bills" ? "bg-emerald-400" : "bg-red-400"
-                    } rounded-full text-white cursor-pointer hover:bg-black transition-all`}
-                    size={80}
-                  />
-                </button>
-              </div>
+            <div className="flex justify-center mt-10">
+              <button disabled={click}>
+                <MdDone
+                  onClick={() => {
+                    newCost();
+                  }}
+                  className={`${
+                    income === "Bills" ? "bg-emerald-400" : "bg-red-400"
+                  } rounded-full text-white cursor-pointer hover:bg-black transition-all`}
+                  size={80}
+                />
+              </button>
             </div>
           </div>
         </div>
       </div>
-    </Theme>
+    </div>
   );
 }
 
