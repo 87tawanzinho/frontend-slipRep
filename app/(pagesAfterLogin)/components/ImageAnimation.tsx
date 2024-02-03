@@ -60,7 +60,7 @@ function ImageAnimation({
       {iNeedHelp && (
         <Link
           href={"https://api.whatsapp.com/send?phone=5575981975144"}
-          className="w-full lg:w-auto"
+          className="w-full lg:w-auto flex items-center justify-center"
           target="_blank"
         >
           <button className="flex items-center justify-center gap-2 bg-emerald-950 w-7/12 lg:w-48 hover:bg-emerald-600 text-white mt-4 rounded-lg p-2">
