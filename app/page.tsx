@@ -43,8 +43,16 @@ export default function Home() {
         </Text>
       </Box>
 
-      <Flex direction={{ initial: "column", sm: "row" }} justify={"between"}>
-        <Flex direction={"column"} style={{ maxWidth: 400 }} gap={"2"}>
+      <Flex
+        direction={{ initial: "column", sm: "row" }}
+        align={"center"}
+        justify={"between"}
+      >
+        <Flex
+          direction={"column"}
+          style={{ width: 400, maxWidth: "100%" }}
+          gap={"2"}
+        >
           <p className="mt-10  text-xl font-bold">Se conectar</p>
 
           <p className="mt-4">Usuário</p>
@@ -53,12 +61,16 @@ export default function Home() {
           <p>Senha</p>
           <TextField.Input size={"3"} />
 
-          <Button size={"4"} style={{ cursor: "pointer" }}>
+          <Button
+            size={"4"}
+            style={{ cursor: "pointer" }}
+            onClick={handleSignUp}
+          >
             Entrar
           </Button>
 
           <Link
-            href={"*"}
+            href={"/sign-up"}
             underline="always"
             color="brown"
             style={{ marginTop: "10px" }}
@@ -66,13 +78,14 @@ export default function Home() {
             Ainda não sou um membro
           </Link>
         </Flex>
+
         <Player
           src={HomeLottie}
           autoplay
           loop
           style={{
             height: "400px",
-            width: "400px",
+            width: "300px",
           }}
         ></Player>
       </Flex>
