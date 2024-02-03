@@ -18,6 +18,7 @@ import { FaRightLeft } from "react-icons/fa6";
 import { TbMoneybag } from "react-icons/tb";
 import { GiMoneyStack } from "react-icons/gi";
 import { useHide } from "@/app/context/HideDivContext";
+import { TextField } from "@radix-ui/themes";
 
 interface Expenses {
   text: string;
@@ -99,7 +100,7 @@ function MyExpenses({ text, span, income, setData }: Expenses) {
                 <span className="italic">organizar</span>.. quanto você quer
                 gastar por mês?
               </p>
-              <input
+              <TextField.Input
                 type="number"
                 placeholder="0000,00"
                 className="h-8 bg-gray-100 rounded-lg w-60"

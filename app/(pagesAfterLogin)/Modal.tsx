@@ -151,7 +151,6 @@ function Modal({ setopenNew, income, setData, info, setOpenInfo }: ModalProps) {
                   {income === "Bills" ? "Nome da despesa" : "Nome da empresa"}
                 </span>
                 <TextField.Input
-                  variant={`soft`}
                   color={`${income === "Bills" ? "green" : "red"}`}
                   placeholder="Digite aqui.."
                   type="text"
@@ -172,7 +171,6 @@ function Modal({ setopenNew, income, setData, info, setOpenInfo }: ModalProps) {
               <div className="flex flex-col mt-4">
                 <span>Valor</span>
                 <TextField.Input
-                  variant={`soft`}
                   color={`${income === "Bills" ? "green" : "red"}`}
                   type="number"
                   placeholder="00,00"
@@ -193,7 +191,6 @@ function Modal({ setopenNew, income, setData, info, setOpenInfo }: ModalProps) {
               <div className="flex flex-col mt-4">
                 <span>Data de Pagamento</span>
                 <TextField.Input
-                  variant="surface"
                   color={`${income === "Bills" ? "green" : "red"}`}
                   type="date"
                   placeholder="Custo"
@@ -214,7 +211,6 @@ function Modal({ setopenNew, income, setData, info, setOpenInfo }: ModalProps) {
             {income === "Bills" ? (
               <TextArea
                 color="green"
-                variant="soft"
                 placeholder="Observação"
                 className="w-64  "
                 name="observation"
@@ -227,7 +223,6 @@ function Modal({ setopenNew, income, setData, info, setOpenInfo }: ModalProps) {
               />
             ) : (
               <TextArea
-                variant={`soft`}
                 color={`red`}
                 placeholder="Codigo de Barras"
                 className="w-64 border-red-400"

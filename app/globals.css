@@ -14,10 +14,6 @@ body {
   background: linear-gradient(to bottom right, #e0dedd, #e0dedd9c);
 }
 
-input[type="date"] {
-  background: rgb(243, 243, 243);
-}
-
 input,
 textarea {
   background: #ffffff;
