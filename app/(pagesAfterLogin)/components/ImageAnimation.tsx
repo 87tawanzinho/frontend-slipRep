@@ -4,6 +4,7 @@ import { Player, Controls } from "@lottiefiles/react-lottie-player";
 import advices from "@/app/(pagesAfterLogin)/components/advicesAboutFinance.json";
 import { useHide } from "@/app/context/HideDivContext";
 import { Button } from "@radix-ui/themes";
+import { FaWhatsapp } from "react-icons/fa6";
 
 function ImageAnimation({
   image,
@@ -58,12 +59,13 @@ function ImageAnimation({
 
       {iNeedHelp && (
         <Link
-          href={"https://www.linkedin.com/in/thiago-tawan/"}
+          href={"https://api.whatsapp.com/send?phone=5575981975144"}
           className="w-full lg:w-auto"
           target="_blank"
         >
-          <button className="bg-sky-400 w-7/12 lg:w-48 hover:bg-emerald-600 text-white mt-4 rounded-lg p-2">
-            Linkedin
+          <button className="flex items-center justify-center gap-2 bg-emerald-950 w-7/12 lg:w-48 hover:bg-emerald-600 text-white mt-4 rounded-lg p-2">
+            Whatsapp
+            <FaWhatsapp size={20} />
           </button>
         </Link>
       )}
