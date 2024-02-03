@@ -139,9 +139,7 @@ function PageHome() {
               total={total}
               totalAboutAll={totalAboutAll}
             />
-            <div className="py-12">
-              <ImageAnimation image={personAnimation} isAdvice={true} />
-            </div>
+
             <ItensExpenses
               type="Bills"
               thereBillsToPayToday={thereBillsToPayToday}
