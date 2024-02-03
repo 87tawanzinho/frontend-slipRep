@@ -44,18 +44,21 @@ function SignUpPage() {
 
           <p>E-mail</p>
           <TextField.Input
+            color="green"
             size={"3"}
             onChange={(e) => setEmail(e.target.value)}
           />
 
           <p>Usuário</p>
           <TextField.Input
+            color="green"
             size={"3"}
             onChange={(e) => setName(e.target.value)}
           />
 
           <p>Senha</p>
           <TextField.Input
+            color="green"
             type="password"
             size={"3"}
             onChange={(e) => setPassword(e.target.value)}
@@ -63,6 +66,7 @@ function SignUpPage() {
 
           <p>Confirmar sua senha</p>
           <TextField.Input
+            color="green"
             type="password"
             size={"3"}
             onChange={(e) => setConfirmPassword(e.target.value)}
@@ -70,6 +74,7 @@ function SignUpPage() {
 
           {warning && warning}
           <Button
+            color="green"
             size={"4"}
             style={{ cursor: "pointer" }}
             onClick={handleSignUp}

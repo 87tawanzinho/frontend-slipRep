@@ -57,12 +57,14 @@ export default function Home() {
 
           <p className="mt-4">Usuário</p>
           <TextField.Input
+            color="green"
             size={"3"}
             onChange={(e) => setName(e.target.value)}
           />
 
           <p>Senha</p>
           <TextField.Input
+            color="green"
             type="password"
             size={"3"}
             onChange={(e) => setPassword(e.target.value)}
@@ -71,6 +73,7 @@ export default function Home() {
           {warning && warning}
           <Button
             size={"4"}
+            color="green"
             style={{ cursor: "pointer" }}
             onClick={handleSignUp}
           >
