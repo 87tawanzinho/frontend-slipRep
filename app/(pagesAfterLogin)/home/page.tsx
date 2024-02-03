@@ -326,15 +326,6 @@ function PageHome() {
                                 </div>
                               </div>
                             )}
-                            {configBillModal && (
-                              <PageWrapperModal>
-                                <ModalConfig
-                                  type="Bill"
-                                  setConfigModal={setConfigBillModal}
-                                  allBillsData={setBills}
-                                />
-                              </PageWrapperModal>
-                            )}
                           </div>
                         </PageWrapperModal>
                       ))
@@ -353,8 +344,19 @@ function PageHome() {
               }
             />
           </main>
+
           {detailsAboutThisBill && (
             <Details setDetailsAboutThisBill={setDetailsAboutThisBill} />
+          )}
+
+          {configBillModal && (
+            <PageWrapperModal>
+              <ModalConfig
+                type="Bill"
+                setConfigModal={setConfigBillModal}
+                allBillsData={setBills}
+              />
+            </PageWrapperModal>
           )}
 
           <Slips />

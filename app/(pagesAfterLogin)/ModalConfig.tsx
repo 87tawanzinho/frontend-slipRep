@@ -27,7 +27,7 @@ function ModalConfig({ type, setConfigModal, allBillsData }: typeConfig) {
     useEffect(() => {
       const clickedBill = getClickedBill();
       setData(clickedBill);
-    }, []);
+    }, [data]);
 
     const handleValueOfInputs = (e: React.ChangeEvent<HTMLInputElement>) => {
       const { name, value } = e.target;
@@ -43,7 +43,7 @@ function ModalConfig({ type, setConfigModal, allBillsData }: typeConfig) {
     return (
       <>
         {data?._id ? (
-          <div className=" flex items-center justify-center h-full top-0 left-0 fixed w-full bg-black bg-opacity-75 ">
+          <div className="h-full w-full fixed top-0 left-0 text-black z-50 bg-opacity-40 bg-black flex justify-center items-center">
             <div className=" rounded  bg-white w-11/12 lg:w-4/12 h-auto relative text-[14px]">
               <div className="bg-emerald-800 text-white p-2 flex justify-between items-center">
                 <p className="text-center text-lg text-gray-100 ">
