@@ -154,6 +154,7 @@ function Modal({ setopenNew, income, setData, info, setOpenInfo }: ModalProps) {
                   <TextField.Input
                     variant={`soft`}
                     color={`${income === "Bills" ? "green" : "red"}`}
+                    placeholder="Digite aqui.."
                     type="text"
                     className={`${income !== "Bills" && "border-red-400"} `}
                     name="description"
