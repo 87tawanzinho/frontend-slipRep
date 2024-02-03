@@ -253,7 +253,7 @@ function PageHome() {
                         <PageWrapperModal key={bill._id}>
                           <div
                             className={`flex justify-between
-                         items-center mt-2 text-[13px] lg:text-[15px] border p-1  rounded  ${
+                         items-center mt-2 h-auto text-[13px] lg:text-[15px] border p-1  rounded  ${
                            bill.paid && "bg-emerald-100 transition-all "
                          } `}
                             key={bill._id}
@@ -264,7 +264,7 @@ function PageHome() {
                             `}
                               onClick={() => {}}
                             >
-                              <span className="font-bold text-[11px] w-[1px] mr-4 py-1   ">
+                              <span className="font-bold text-[11px]   mr-2  py-1 n  ">
                                 {index + 1}
                               </span>
                               <div className={`flex gap-1 items-center `}>
