@@ -27,7 +27,7 @@ function ModalConfig({ type, setConfigModal, allBillsData }: typeConfig) {
     useEffect(() => {
       const clickedBill = getClickedBill();
       setData(clickedBill);
-    }, [data]);
+    }, []);
 
     const handleValueOfInputs = (e: React.ChangeEvent<HTMLInputElement>) => {
       const { name, value } = e.target;
