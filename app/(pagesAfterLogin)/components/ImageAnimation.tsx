@@ -31,8 +31,8 @@ function ImageAnimation({
           loop
           src={image}
           style={{
-            height: height ? height : "300px",
-            width: width ? width : "300px",
+            height: height ? height : "150px",
+            width: width ? width : "150px",
           }}
         >
           <Controls
