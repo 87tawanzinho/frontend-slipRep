@@ -3,6 +3,7 @@ import React, { useEffect, useMemo, useState } from "react";
 import { Player, Controls } from "@lottiefiles/react-lottie-player";
 import advices from "@/app/(pagesAfterLogin)/components/advicesAboutFinance.json";
 import { useHide } from "@/app/context/HideDivContext";
+import { Button } from "@radix-ui/themes";
 
 function ImageAnimation({
   image,
@@ -61,9 +62,13 @@ function ImageAnimation({
           className="w-full lg:w-auto"
           target="_blank"
         >
-          <button className="bg-sky-400 w-7/12 lg:w-48 hover:bg-emerald-600 text-white mt-4 rounded-lg p-2">
+          <Button
+            size={"3"}
+            color="blue"
+            style={{ marginTop: "12px", cursor: "pointer" }}
+          >
             Linkedin
-          </button>
+          </Button>
         </Link>
       )}
     </div>

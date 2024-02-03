@@ -22,9 +22,7 @@ function ItensExpenses({
   const { hide } = useHide();
   return (
     <div
-      className={`${
-        hide ? "bg-none" : "bg-white"
-      } w-11/12 lg:w-9/12 max-h-[20rem] overflow-auto rounded-lg  mt-10 h-full p-4 `}
+      className={`bg-white w-11/12 lg:w-9/12 max-h-[20rem] overflow-auto rounded-lg  mt-10 h-full p-4 `}
     >
       <div>
         {" "}

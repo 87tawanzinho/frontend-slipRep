@@ -48,7 +48,7 @@ function PageHome() {
   const [totalAboutAll, setTotalAboutAll] = useState(0);
   const [infoAboutTotal, setInfoAboutTotal] = useState(false);
   const [detailsAboutThisBill, setDetailsAboutThisBill] = useState(false);
-  const { setHide } = useHide();
+  const { hide, setHide } = useHide();
   let { slip } = useSlip();
   const toDown = getToDown();
   const billsAll = bills
@@ -255,12 +255,13 @@ function PageHome() {
                             className={`flex justify-between
                          items-center mt-2 h-auto text-[13px] lg:text-[15px] border p-1  rounded  ${
                            bill.paid && "bg-emerald-100 transition-all "
-                         } `}
+                         }   ${hide && "opacity-0"} `}
                             key={bill._id}
                           >
                             <div
                               className={`w-1/3 lg:w-1/4 flex   overflow-auto justify-start items-center relative   hover:transition-all
                           hover:text-black  cursor-pointer hover:opacity-75
+                        
                             `}
                               onClick={() => {}}
                             >
@@ -276,7 +277,7 @@ function PageHome() {
                                   }}
                                   size={14}
                                 />
-                                <p className="text-[11px] lg:text-[14px] text-nowrap ">
+                                <p className="text-[11px] lg:text-[14px] text-nowrap  ">
                                   {bill.name}
                                 </p>
                               </div>

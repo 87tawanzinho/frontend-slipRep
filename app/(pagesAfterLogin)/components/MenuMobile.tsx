@@ -13,15 +13,13 @@ function MenuMobile() {
   const { hide } = useHide();
   return (
     <nav
-      className={`flex fixed lg:hidden px-2 bg-gradient-to-r from-zinc-700  via-black to-black text-white p-2  justify-between items-center text-xl w-full top-0 ${
-        hide ? "z-10" : "z-50"
-      } `}
+      className={`flex  fixed lg:hidden px-2 bg-gradient-to-r from-zinc-700  via-black to-black text-white p-2  justify-between items-center text-xl w-full top-0 z-50`}
     >
       <h2 className="font-sans italic">Monify</h2>
       <IoMdMenu size={40} onClick={() => setOpenMenu(true)} />
 
       {openMenu && (
-        <div className="h-screen w-full absolute top-0 left-0 text-zinc-900 bg-black bg-opacity-20 flex ">
+        <div className="h-screen w-full z-50 fixed top-0 left-0 text-zinc-900 bg-black bg-opacity-20 flex ">
           <PageWrapperModal>
             <div className="bg-white h-full w-11/12 p-4">
               <div className="flex justify-between px-4 items-center">
