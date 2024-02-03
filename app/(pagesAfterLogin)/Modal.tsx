@@ -195,7 +195,7 @@ function Modal({ setopenNew, income, setData, info, setOpenInfo }: ModalProps) {
                   <span>Data de Pagamento</span>
                   <TextField.Input
                     variant="surface"
-                    color="green"
+                    color={`${income === "Bills" ? "green" : "red"}`}
                     type="date"
                     placeholder="Custo"
                     name="date"
