@@ -27,12 +27,11 @@ function ImageAnimation({
     return (
       <div className="flex flex-col items-center justify-center text-center rounded-lg z-0">
         <Player
-          autoplay
           loop
           src={image}
           style={{
-            height: height ? height : "150px",
-            width: width ? width : "150px",
+            height: height ? height : "120px",
+            width: width ? width : "120px",
           }}
         >
           <Controls

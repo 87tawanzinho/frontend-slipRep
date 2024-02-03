@@ -28,11 +28,9 @@ export default function RootLayout({
     <html lang="en">
       <SlipProvider>
         <HideDivContextProvider>
-          <Theme>
-            <body className={inter.className}>
-              <Reveal>{children}</Reveal>
-            </body>
-          </Theme>
+          <body className={inter.className}>
+            <Reveal>{children}</Reveal>
+          </body>
         </HideDivContextProvider>
       </SlipProvider>
     </html>
