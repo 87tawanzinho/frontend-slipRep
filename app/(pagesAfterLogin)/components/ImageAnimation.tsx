@@ -1,5 +1,5 @@
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { Player, Controls } from "@lottiefiles/react-lottie-player";
 import advices from "@/app/(pagesAfterLogin)/components/advicesAboutFinance.json";
 import { useHide } from "@/app/context/HideDivContext";
@@ -13,37 +13,13 @@ function ImageAnimation({
   width,
   congrats,
 }: any) {
-  const [randomAdvice, setRandomAdvice] = useState<string | null>(null);
   const { hide } = useHide();
-  useEffect(() => {
+
+  const randomAdvice = useMemo(() => {
     const randomIndex = Math.floor(Math.random() * advices.length);
-    setRandomAdvice(advices[randomIndex].description);
+    return advices[randomIndex].description;
   }, []);
 
-  if (!text && !isAdvice) {
-    return (
-      <div
-        className={`flex flex-col items-center justify-center text-center rounded-lg z-0 ${
-          hide ? "opacity-0 absolute" : " opacity-100"
-        }`}
-      >
-        <Player
-          loop
-          autoplay
-          src={image}
-          style={{
-            height: height ? height : "300px",
-            width: width ? width : "300px",
-          }}
-        >
-          <Controls
-            visible={false}
-            buttons={["play", "repeat", "frame", "debug"]}
-          />
-        </Player>
-      </div>
-    );
-  }
   return (
     <div
       className={`flex flex-col items-center justify-center text-center rounded-lg z-10 ${
@@ -55,8 +31,8 @@ function ImageAnimation({
         loop
         src={image}
         style={{
-          height: height ? height : "150px",
-          width: width ? width : "150px",
+          height: height || "150px",
+          width: width || "150px",
         }}
       >
         <Controls
@@ -70,7 +46,11 @@ function ImageAnimation({
           {randomAdvice}
         </p>
       ) : (
-        <p className="break-words bg-emerald-700 text-white rounded p-1 px-2 w-11/12 lg:w-auto">
+        <p
+          className={`break-words bg-emerald-700 text-white rounded p-1 px-2 w-11/12 lg:w-auto  ${
+            !text && "hidden"
+          }`}
+        >
           {text}
         </p>
       )}
