@@ -4,13 +4,18 @@ import React, { useState } from "react";
 import Avatar from "./Avatar";
 import NameOfClient from "../datas/name";
 import { usePathname } from "next/navigation";
+import { useHide } from "@/app/context/HideDivContext";
 
 function MenuPC() {
   const path = usePathname();
   const [newDivWhenHover, setNewDivWhenHover] = useState(false);
-
+  const { hide } = useHide();
   return (
-    <nav className="hidden fixed lg:flex z-50  lg:flex-row-reverse bg-gradient-to-r from-zinc-700  via-black to-black justify-between px-24 p-4 items-center w-full top-0  text-gray-100">
+    <nav
+      className={`hidden fixed lg:flex ${
+        hide ? "z-0" : "z-50"
+      }  lg:flex-row-reverse bg-gradient-to-r from-zinc-700  via-black to-black justify-between px-24 p-4 items-center w-full top-0  text-gray-100`}
+    >
       <div className="flex gap-8 items-center">
         <div>
           <Link

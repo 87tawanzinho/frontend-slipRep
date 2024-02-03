@@ -6,11 +6,17 @@ import Avatar from "./Avatar";
 import Link from "next/link";
 import { justName } from "../datas/name";
 import { PageWrapperModal } from "../emotion/page-wrapperModal";
+import { useHide } from "@/app/context/HideDivContext";
 function MenuMobile() {
   const name = justName();
   const [openMenu, setOpenMenu] = useState(false);
+  const { hide } = useHide();
   return (
-    <nav className="flex fixed lg:hidden px-2 bg-gradient-to-r from-zinc-700  via-black to-black text-white p-2  justify-between items-center text-xl w-full top-0 z-50 ">
+    <nav
+      className={`flex fixed lg:hidden px-2 bg-gradient-to-r from-zinc-700  via-black to-black text-white p-2  justify-between items-center text-xl w-full top-0 ${
+        hide ? "z-0" : "z-50"
+      } `}
+    >
       <h2 className="font-sans italic">Monify</h2>
       <IoMdMenu size={40} onClick={() => setOpenMenu(true)} />
 
