@@ -62,15 +62,9 @@ function ImageAnimation({
           className="w-full lg:w-auto"
           target="_blank"
         >
-          <Button
-            size={"2"}
-            color="blue"
-            radius="small"
-            className="w-7/12 lg:w-40"
-            style={{ marginTop: "12px", cursor: "pointer" }}
-          >
+          <button className="bg-sky-400 w-7/12 lg:w-48 hover:bg-emerald-600 text-white mt-4 rounded-lg p-2">
             Linkedin
-          </Button>
+          </button>
         </Link>
       )}
     </div>
