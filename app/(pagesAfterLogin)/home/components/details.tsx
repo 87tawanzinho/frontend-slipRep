@@ -19,7 +19,7 @@ function Details({
   }, [details]);
   return (
     <PageWrapperModal>
-      <div className="h-full w-full fixed top-0 left-0 text-black z-50  bg-black flex justify-center items-center">
+      <div className="h-full w-full fixed top-0 left-0 text-black z-50 bg-opacity-75 bg-black flex justify-center items-center">
         <div className="bg-white  h-auto w-11/12 lg:w-7/12   text-sm relative ">
           <div className="bg-emerald-800  text-white p-2 flex justify-between items-center">
             <p className="text-center text-lg text-gray-100 ">
