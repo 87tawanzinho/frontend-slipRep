@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import "@radix-ui/themes/styles.css";
 import {
   Inter,
   Open_Sans,
@@ -29,7 +30,9 @@ export default function RootLayout({
       <SlipProvider>
         <HideDivContextProvider>
           <body className={inter.className}>
-            <Reveal>{children}</Reveal>
+            <Reveal>
+              <Theme>{children}</Theme>
+            </Reveal>
           </body>
         </HideDivContextProvider>
       </SlipProvider>
