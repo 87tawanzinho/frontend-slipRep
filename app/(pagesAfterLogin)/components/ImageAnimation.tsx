@@ -56,7 +56,7 @@ function ImageAnimation({
         src={image}
         style={{
           height: height ? height : "150px",
-          width: width ? width : "15px",
+          width: width ? width : "150px",
         }}
       >
         <Controls
