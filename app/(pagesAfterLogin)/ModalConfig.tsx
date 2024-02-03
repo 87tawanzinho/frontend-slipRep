@@ -144,6 +144,7 @@ function ModalConfig({ type, setConfigModal, allBillsData }: typeConfig) {
                             inputsToConfirm?.interest,
                             inputsToConfirm?.date
                           );
+                          setHide(false);
                         }}
                       >
                         Pagar
