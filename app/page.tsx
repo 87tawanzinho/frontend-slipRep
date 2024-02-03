@@ -56,11 +56,19 @@ export default function Home() {
           <p className="mt-10  text-xl font-bold">Se conectar</p>
 
           <p className="mt-4">Usuário</p>
-          <TextField.Input size={"3"} />
+          <TextField.Input
+            size={"3"}
+            onChange={(e) => setName(e.target.value)}
+          />
 
           <p>Senha</p>
-          <TextField.Input size={"3"} />
+          <TextField.Input
+            type="password"
+            size={"3"}
+            onChange={(e) => setPassword(e.target.value)}
+          />
 
+          {warning && warning}
           <Button
             size={"4"}
             style={{ cursor: "pointer" }}

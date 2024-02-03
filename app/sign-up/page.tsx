@@ -3,8 +3,8 @@ import React, { useState } from "react";
 import { GiBurningBook } from "react-icons/gi";
 import { instance } from "../axios/instance";
 import { useRouter } from "next/navigation";
-import Link from "next/link";
-import { Button, TextField } from "@radix-ui/themes";
+import { Box, Button, Flex, Text, TextField, Link } from "@radix-ui/themes";
+import { Player } from "@lottiefiles/react-lottie-player";
 function SignUpPage() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -27,67 +27,66 @@ function SignUpPage() {
   };
 
   return (
-    <main className="flex flex-col justify-center items-center h-screen bg-white  ">
-      <div className="h-full  mt-4 w-11/12 lg:w-7/12 border-b-2  flex flex-col justify-center items-center">
-        <h2 className="text-xl">Monify</h2>
-        <div className="">
+    <main className="h-screen flex flex-col pt-10 items-center bg-white p-4 lg:p-20 ">
+      <Box>
+        <Text size={"6"} className="px-0 ">
+          <span className="text-zinc-600 font-bold">M</span>onify
+        </Text>
+      </Box>
+
+      <Flex align={"center"} justify={"center"}>
+        <Flex
+          direction={"column"}
+          style={{ width: 300, maxWidth: "100%" }}
+          gap={"2"}
+        >
+          <p className="mt-10  text-xl font-bold">Se Registrar</p>
+
           <p>E-mail</p>
           <TextField.Input
-            variant="surface"
-            type="text"
-            className="border-none"
+            size={"3"}
             onChange={(e) => setEmail(e.target.value)}
           />
-        </div>
 
-        <div>
           <p>Usuário</p>
           <TextField.Input
-            variant="surface"
-            type="text"
-            className="border-none"
+            size={"3"}
             onChange={(e) => setName(e.target.value)}
           />
-        </div>
 
-        <div>
           <p>Senha</p>
           <TextField.Input
-            variant="surface"
             type="password"
-            className="border-none"
+            size={"3"}
             onChange={(e) => setPassword(e.target.value)}
           />
-        </div>
 
-        <div>
-          <p>Confirmar Senha</p>
+          <p>Confirmar sua senha</p>
           <TextField.Input
-            variant="surface"
             type="password"
-            className="border-none"
+            size={"3"}
             onChange={(e) => setConfirmPassword(e.target.value)}
           />
-        </div>
 
-        <Button
-          variant="solid"
-          style={{ marginTop: "20px", cursor: "pointer" }}
-          className="w-24"
-          onClick={handleSignUp}
-        >
-          Registrar
-        </Button>
-        {warning && <p className="text-sm mt-2">{warning}</p>}
+          {warning && warning}
+          <Button
+            size={"4"}
+            style={{ cursor: "pointer" }}
+            onClick={handleSignUp}
+          >
+            Registrar
+          </Button>
 
-        <div className="">
-          <Link href={"/"}>
-            <p className="text-gray-700 mt-4 border-b-2 border-gray-700 hover:opacity-75 ">
-              Tela de Login
-            </p>
+          <Link
+            href={"/"}
+            underline="always"
+            color="brown"
+            style={{ marginTop: "10px" }}
+          >
+            Já tenho uma conta
           </Link>
-        </div>
-      </div>
+        </Flex>
+      </Flex>
     </main>
   );
 }
