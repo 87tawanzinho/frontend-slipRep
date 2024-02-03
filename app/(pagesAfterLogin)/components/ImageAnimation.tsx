@@ -29,10 +29,11 @@ function ImageAnimation({
       >
         <Player
           loop
+          autoplay
           src={image}
           style={{
-            height: height ? height : "120px",
-            width: width ? width : "120px",
+            height: height ? height : "300px",
+            width: width ? width : "300px",
           }}
         >
           <Controls
@@ -54,8 +55,8 @@ function ImageAnimation({
         loop
         src={image}
         style={{
-          height: height ? height : "300px",
-          width: width ? width : "300px",
+          height: height ? height : "150px",
+          width: width ? width : "15px",
         }}
       >
         <Controls
