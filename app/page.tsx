@@ -3,8 +3,10 @@ import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import { instance } from "./axios/instance";
 import { jwtDecode } from "jwt-decode";
-import Link from "next/link";
 import { Reveal } from "./(pagesAfterLogin)/emotion/Reveal";
+import { Box, Button, Flex, Text, TextField, Link } from "@radix-ui/themes";
+import { Player } from "@lottiefiles/react-lottie-player";
+import HomeLottie from "@/public/animationHome.json";
 export default function Home() {
   const router = useRouter();
   const [name, setName] = useState("");
@@ -34,63 +36,62 @@ export default function Home() {
   };
 
   return (
-    <main className="flex flex-col justify-center items-center h-screen py-8 ">
-      <div className="text-center">
-        <h2 className="text-4xl">Monify</h2>
-        <p>a melhor forma de organizar suas contas</p>
-      </div>
+    <main className="h-screen bg-white p-4 lg:p-20 ">
+      <Box>
+        <Text size={"6"} className="px-0 ">
+          <span className="text-zinc-600 font-bold">M</span>onify
+        </Text>
+      </Box>
 
-      <div className="h-80 w-11/12 lg:w-7/12 border-b-2 shadow-2xl mt-4 flex flex-col justify-center items-center">
-        <div>
-          <p>Usuário</p>
-          <input type="text" className="border-none" onChange={(e) => setName(e.target.value)} />
-        </div>
+      <Flex direction={{ initial: "column", sm: "row" }} justify={"between"}>
+        <Flex direction={"column"} style={{ maxWidth: 400 }} gap={"2"}>
+          <p className="mt-10  text-xl font-bold">Se conectar</p>
 
-        <div>
+          <p className="mt-4">Usuário</p>
+          <TextField.Input size={"3"} />
+
           <p>Senha</p>
-          <input
-            type="password"
-            className="border-none"
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </div>
+          <TextField.Input size={"3"} />
 
-        <button
-          className="bg-sky-600 text-white rounded p-1 w-32 mt-4 hover:opacity-75"
-          onClick={handleSignUp}
-        >
-          Entrar
-        </button>
+          <Button size={"4"} style={{ cursor: "pointer" }}>
+            Entrar
+          </Button>
 
-        {warning && (
-          <Reveal>
-            {" "}
-            <p className="text-sm pt-4">{warning}</p>{" "}
-          </Reveal>
-        )}
-
-        <Link href={"/sign-up"}>
-          <p className="text-gray-700 mt-4 border-b-2 border-gray-700 hover:opacity-75">
-            Se cadastrar
-          </p>
-        </Link>
-      </div>
+          <Link
+            href={"*"}
+            underline="always"
+            color="brown"
+            style={{ marginTop: "10px" }}
+          >
+            Ainda não sou um membro
+          </Link>
+        </Flex>
+        <Player
+          src={HomeLottie}
+          autoplay
+          loop
+          style={{
+            height: "400px",
+            width: "400px",
+          }}
+        ></Player>
+      </Flex>
     </main>
   );
-}
 
-interface jwtToken {
-  name: string;
-  id: number;
-  email: string;
-  mensalIncomeBills: string;
-  mensalIncomeTickets: string;
-}
+  interface jwtToken {
+    name: string;
+    id: number;
+    email: string;
+    mensalIncomeBills: string;
+    mensalIncomeTickets: string;
+  }
 
-interface ErrorLogin {
-  response: {
-    data: {
-      message: string;
+  interface ErrorLogin {
+    response: {
+      data: {
+        message: string;
+      };
     };
-  };
+  }
 }

@@ -4,6 +4,7 @@ import { GiBurningBook } from "react-icons/gi";
 import { instance } from "../axios/instance";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { Button, TextField } from "@radix-ui/themes";
 function SignUpPage() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -26,46 +27,57 @@ function SignUpPage() {
   };
 
   return (
-    <main className="flex flex-col justify-center items-center h-screen  ">
-      <div className="text-center">
-        <h2 className="text-4xl">Monify</h2>
-        <p>Seja bem vindo!</p>
-      </div>
-
-      <div className="h-96  mt-4 w-11/12 lg:w-7/12 border-b-2 shadow-2xl  flex flex-col justify-center items-center">
+    <main className="flex flex-col justify-center items-center h-screen bg-white  ">
+      <div className="h-full  mt-4 w-11/12 lg:w-7/12 border-b-2  flex flex-col justify-center items-center">
+        <h2 className="text-xl">Monify</h2>
         <div className="">
           <p>E-mail</p>
-          <input type="text" className="border-none" onChange={(e) => setEmail(e.target.value)} />
+          <TextField.Input
+            variant="surface"
+            type="text"
+            className="border-none"
+            onChange={(e) => setEmail(e.target.value)}
+          />
         </div>
 
         <div>
           <p>Usuário</p>
-          <input type="text" className="border-none" onChange={(e) => setName(e.target.value)} />
+          <TextField.Input
+            variant="surface"
+            type="text"
+            className="border-none"
+            onChange={(e) => setName(e.target.value)}
+          />
         </div>
 
         <div>
           <p>Senha</p>
-          <input
-            type="password" className="border-none"
+          <TextField.Input
+            variant="surface"
+            type="password"
+            className="border-none"
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
 
         <div>
           <p>Confirmar Senha</p>
-          <input
-            type="password" className="border-none"
+          <TextField.Input
+            variant="surface"
+            type="password"
+            className="border-none"
             onChange={(e) => setConfirmPassword(e.target.value)}
           />
         </div>
 
-        <button
-          className="bg-black text-white p-1 w-32 mt-4 hover:opacity-75 rounded"
+        <Button
+          variant="solid"
+          style={{ marginTop: "20px", cursor: "pointer" }}
+          className="w-24"
           onClick={handleSignUp}
         >
-          Se Registrar
-        </button>
-
+          Registrar
+        </Button>
         {warning && <p className="text-sm mt-2">{warning}</p>}
 
         <div className="">

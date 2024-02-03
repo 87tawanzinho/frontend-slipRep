@@ -192,7 +192,7 @@ function PageHome() {
               }
               data={
                 <>
-                  <div className=" py-4  flex gap-2 items-center">
+                  <div className=" py-4  flex gap-2 items-center overflow-none">
                     Contas Gerais <BiDownArrowAlt />
                     <ImInfo
                       className="cursor-pointer hover:opacity-75"
@@ -238,6 +238,7 @@ function PageHome() {
                     <p>Data</p>
                     <p>Valor</p>
                   </div>
+
                   {bills.length > 0 ? (
                     bills
                       .filter((bill) =>
@@ -247,6 +248,7 @@ function PageHome() {
                               .toLowerCase()
                               .includes(filter.toLowerCase())
                       )
+
                       .map((bill, index) => (
                         <PageWrapperModal key={bill._id}>
                           <div
