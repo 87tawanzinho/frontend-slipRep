@@ -63,8 +63,10 @@ function ImageAnimation({
           target="_blank"
         >
           <Button
-            size={"3"}
+            size={"2"}
             color="blue"
+            radius="small"
+            className="w-7/12 lg:w-40"
             style={{ marginTop: "12px", cursor: "pointer" }}
           >
             Linkedin
