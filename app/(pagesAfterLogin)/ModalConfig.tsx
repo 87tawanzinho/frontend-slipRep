@@ -8,6 +8,7 @@ import { removeBill } from "./datas/BillFunctions/removeBill";
 import { getClickedBill } from "./datas/BillFunctions/clickedOnGear";
 import { PageWrapper } from "./emotion/page-wrapper";
 import { PageWrapperUp } from "./emotion/page-wrapper-up";
+import { useHide } from "../context/HideDivContext";
 
 interface typeConfig {
   type: "Bill" | "Slip";
@@ -23,6 +24,7 @@ function ModalConfig({ type, setConfigModal, allBillsData }: typeConfig) {
   const [data, setData] = useState<myBills | null>();
   const [showDivInterestRate, setShowDivInterestRate] = useState(false);
   const [inputsToConfirm, setInputsToConfirm] = useState<interestAndDate>();
+  const { setHide } = useHide();
   if (type === "Bill") {
     useEffect(() => {
       const clickedBill = getClickedBill();
@@ -50,7 +52,10 @@ function ModalConfig({ type, setConfigModal, allBillsData }: typeConfig) {
                   Configuração da Despesa
                 </p>
                 <p
-                  onClick={() => setConfigModal(false)}
+                  onClick={() => {
+                    setConfigModal(false);
+                    setHide(false);
+                  }}
                   className="text-end cursor-pointer hover:opacity-75 text-xl"
                 >
                   X

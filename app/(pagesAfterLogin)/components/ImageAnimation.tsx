@@ -20,12 +20,13 @@ function ImageAnimation({
     setRandomAdvice(advices[randomIndex].description);
   }, []);
 
-  if (hide) {
-    return;
-  }
   if (!text && !isAdvice) {
     return (
-      <div className="flex flex-col items-center justify-center text-center rounded-lg z-0">
+      <div
+        className={`flex flex-col items-center justify-center text-center rounded-lg z-0 ${
+          hide ? "opacity-0" : " opacity-100"
+        }`}
+      >
         <Player
           loop
           src={image}
@@ -43,7 +44,11 @@ function ImageAnimation({
     );
   }
   return (
-    <div className="flex flex-col items-center justify-center text-center rounded-lg z-0">
+    <div
+      className={`flex flex-col items-center justify-center text-center rounded-lg z-0 ${
+        hide ? "opacity-0" : "opacity-100"
+      }`}
+    >
       <Player
         autoplay
         loop

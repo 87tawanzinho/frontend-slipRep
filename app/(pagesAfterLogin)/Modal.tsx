@@ -126,7 +126,10 @@ function Modal({ setopenNew, income, setData, info, setOpenInfo }: ModalProps) {
             <ImInfo
               className="cursor-pointer hover:opacity-75"
               size={18}
-              onClick={() => setOpenInfo(!info)}
+              onClick={() => {
+                setOpenInfo(!info);
+                setHide(false);
+              }}
             />
 
             <p

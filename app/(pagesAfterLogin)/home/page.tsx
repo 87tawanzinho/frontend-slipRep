@@ -31,6 +31,7 @@ import { getToDown, setToDown } from "../datas/toDown";
 import Image from "next/image";
 import personAnimation from "@/public/AnimationMoney.json";
 import ImageAnimation from "../components/ImageAnimation";
+import { useHide } from "@/app/context/HideDivContext";
 
 function PageHome() {
   const [bills, setBills] = useState<myBills[]>([]);
@@ -47,6 +48,7 @@ function PageHome() {
   const [totalAboutAll, setTotalAboutAll] = useState(0);
   const [infoAboutTotal, setInfoAboutTotal] = useState(false);
   const [detailsAboutThisBill, setDetailsAboutThisBill] = useState(false);
+  const { setHide } = useHide();
   let { slip } = useSlip();
   const toDown = getToDown();
   const billsAll = bills
@@ -270,6 +272,7 @@ function PageHome() {
                                   onClick={() => {
                                     setDetailsAboutThisBill(true);
                                     setClickedBill(bill);
+                                    setHide(true);
                                   }}
                                   size={14}
                                 />
@@ -316,6 +319,7 @@ function PageHome() {
                                 onClick={() => {
                                   setClickedBill(bill);
                                   setConfigBillModal(true);
+                                  setHide(true);
                                 }}
                               />
                             </div>
