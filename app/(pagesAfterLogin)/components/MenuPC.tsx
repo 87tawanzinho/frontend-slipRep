@@ -13,7 +13,7 @@ function MenuPC() {
   return (
     <nav
       className={`hidden fixed lg:flex ${
-        hide ? "z-0" : "z-50"
+        hide ? "z-10" : "z-50"
       }  lg:flex-row-reverse bg-gradient-to-r from-zinc-700  via-black to-black justify-between px-24 p-4 items-center w-full top-0  text-gray-100`}
     >
       <div className="flex gap-8 items-center">

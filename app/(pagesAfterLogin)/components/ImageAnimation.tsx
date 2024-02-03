@@ -22,8 +22,8 @@ function ImageAnimation({
 
   return (
     <div
-      className={`flex flex-col items-center justify-center text-center rounded-lg  ${
-        hide ? "z-0" : "z-10"
+      className={`flex flex-col items-center justify-center text-center rounded-lg z-0 ${
+        hide && "absolute hidden"
       }`}
     >
       <Player

@@ -14,7 +14,7 @@ function MenuMobile() {
   return (
     <nav
       className={`flex fixed lg:hidden px-2 bg-gradient-to-r from-zinc-700  via-black to-black text-white p-2  justify-between items-center text-xl w-full top-0 ${
-        hide ? "z-0" : "z-50"
+        hide ? "z-10" : "z-50"
       } `}
     >
       <h2 className="font-sans italic">Monify</h2>
