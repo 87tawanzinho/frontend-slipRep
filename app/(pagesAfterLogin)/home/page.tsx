@@ -327,15 +327,13 @@ function PageHome() {
                               </div>
                             )}
                             {configBillModal && (
-                              <div className="absolute">
-                                <PageWrapperModal>
-                                  <ModalConfig
-                                    type="Bill"
-                                    setConfigModal={setConfigBillModal}
-                                    allBillsData={setBills}
-                                  />
-                                </PageWrapperModal>
-                              </div>
+                              <PageWrapperModal>
+                                <ModalConfig
+                                  type="Bill"
+                                  setConfigModal={setConfigBillModal}
+                                  allBillsData={setBills}
+                                />
+                              </PageWrapperModal>
                             )}
                           </div>
                         </PageWrapperModal>
