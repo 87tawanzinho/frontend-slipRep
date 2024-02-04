@@ -7,6 +7,10 @@ import Link from "next/link";
 import { justName } from "../datas/name";
 import { PageWrapperModal } from "../emotion/page-wrapperModal";
 import { useHide } from "@/app/context/HideDivContext";
+import { FaJava } from "react-icons/fa6";
+import { IoHomeOutline } from "react-icons/io5";
+import { CiLogout } from "react-icons/ci";
+import { PageWrapperUp } from "../emotion/page-wrapper-up";
 function MenuMobile() {
   const name = justName();
   const [openMenu, setOpenMenu] = useState(false);
@@ -19,48 +23,44 @@ function MenuMobile() {
       <IoMdMenu size={40} onClick={() => setOpenMenu(true)} />
 
       {openMenu && (
-        <div className="h-screen w-full z-50 fixed top-0 left-0 text-zinc-900 bg-black bg-opacity-20 flex ">
-          <PageWrapperModal>
-            <div className="bg-white h-full w-11/12 p-4">
-              <div className="flex justify-between px-4 items-center">
-                <h3 className="text-gray-800">Meu Perfil</h3>
+        <div className="h-screen w-full z-50 fixed top-0 left-0 text-gray-700 bg-black bg-opacity-20 flex ">
+          <PageWrapperUp>
+            <div className="bg-white h-full w-4/5 p-4">
+              <div className="flex justify-between  items-center">
+               <div className="flex items-center gap-2">
+               <h3 >Monify</h3>
+               <FaJava />
+               </div>
                 <VscChromeClose onClick={() => setOpenMenu(false)} />
               </div>
 
-              <div className="mt-10 px-10 flex gap-4 items-center text-lg">
-                <Avatar />
-                <p>- {name}</p>
-              </div>
+            
 
               <div className="flex flex-col mt-10 text-lg">
                 <Link
                   href={"/home"}
-                  className="border-b-2 shadow-lg"
+                  className="border-b-2 flex items-center gap-2"
                   onClick={() => setOpenMenu(false)}
                 >
-                  Despesas
+                  <IoHomeOutline />
+                  Despesas Gerais
                 </Link>
-                <Link
-                  href={"/checks"}
-                  className="border-b-2 shadow-lg mt-2"
-                  onClick={() => setOpenMenu(false)}
-                >
-                  Cheques
-                </Link>
+                
                 <Link
                   href={"/"}
-                  className="border-b-2 shadow-lg mt-4"
+                  className="border-b-2  mt-4 flex items-center gap-2"
                   onClick={() => {
                     localStorage.removeItem("name");
                     localStorage.removeItem("incomeBills");
                     localStorage.removeItem("incomeTickets");
                   }}
                 >
+                  <CiLogout />
                   Sair
                 </Link>
               </div>
             </div>
-          </PageWrapperModal>
+          </PageWrapperUp>
         </div>
       )}
     </nav>
