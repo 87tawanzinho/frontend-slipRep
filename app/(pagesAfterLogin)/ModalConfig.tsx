@@ -117,7 +117,7 @@ function ModalConfig({ type, setConfigModal, allBillsData }: typeConfig) {
                             className="hover:cursor-pointer hover:opacity-75 bg-emerald-400 rounded-full p-1 text-white"
                             size={24}
                             onClick={() => {
-                              updateName;
+                              updateName();
                               setHide(false);
                             }}
                           />
