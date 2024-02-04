@@ -259,10 +259,10 @@ function PageHome() {
                             key={bill._id}
                           >
                             <div
-                              className={`w-1/3 lg:w-1/4 flex   overflow-auto justify-start items-center relative   hover:transition-all
+                              className={`w-1/3 lg:w-1/4 flex   overflow-auto justify-start items-center    hover:transition-all
                           hover:text-black  cursor-pointer hover:opacity-75
                         
-                            ${hide && "opacity-0"}`}
+                            `}
                               onClick={() => {}}
                             >
                               <span className="font-bold text-[11px]   mr-2  py-1 n  ">

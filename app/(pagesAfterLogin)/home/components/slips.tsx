@@ -36,7 +36,7 @@ function Slips() {
   const isTodayDate = slip.filter((item) => isToday(parseISO(item.date)));
 
   return (
-    <div className="px-4   custom:px-48  lg:px-60 pb-4 mt-8  ">
+    <div className="px-4   custom:px-58  lg:px-60 pb-4 mt-8  ">
       <ImageAnimation
         image={chatAnimation}
         alt="chat"
