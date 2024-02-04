@@ -91,13 +91,10 @@ export default function Home() {
         </Flex>
 
         <Player
+          className="w-auto lg:w-96  h-auto lg:h-96"
           src={HomeLottie}
           autoplay
           loop
-          style={{
-            height: "400px",
-            width: "300px",
-          }}
         ></Player>
       </Flex>
     </main>
