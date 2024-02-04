@@ -116,7 +116,10 @@ function ModalConfig({ type, setConfigModal, allBillsData }: typeConfig) {
                           <MdOutlineDone
                             className="hover:cursor-pointer hover:opacity-75 bg-emerald-400 rounded-full p-1 text-white"
                             size={24}
-                            onClick={updateName}
+                            onClick={() => {
+                              updateName;
+                              setHide(false);
+                            }}
                           />
                         </button>
                       </div>
@@ -149,6 +152,7 @@ function ModalConfig({ type, setConfigModal, allBillsData }: typeConfig) {
                           fetchDataAndSetBills,
                           allBillsData
                         );
+                        setHide(false);
                       }}
                       className="bg-red-600 text-white h-8 w-48 rounded hover:opacity-75"
                     >
@@ -175,6 +179,7 @@ function ModalConfig({ type, setConfigModal, allBillsData }: typeConfig) {
                     onClick={() => {
                       setConfigModal(false);
                       removeBill(data._id, fetchDataAndSetBills, data, setData);
+                      setHide(false);
                     }}
                   >
                     Remover Pagamento
