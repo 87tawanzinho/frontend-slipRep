@@ -29,7 +29,7 @@ interface Expenses {
 function MyExpenses({ text, span, income, setData }: Expenses) {
   const [openInput, setOpenInput] = useState(false);
   const [openNew, setopenNew] = useState(false);
-  const [value, setValue] = useState(0);
+  const [value, setValue] = useState("");
   const [info, setOpenInfo] = useState(false);
   const [warning, setWarning] = useState("");
   const [hidePrice, setHidePrice] = useState(true);
@@ -40,17 +40,19 @@ function MyExpenses({ text, span, income, setData }: Expenses) {
 
   const handleChangeNumberIncomeOrTickets = async () => {
     setWarningIncome("Registrando sua renda..");
-    if (value <= 999) {
+    const valueAsNumber = parseFloat(value);
+    if (valueAsNumber <= 999) {
       return setWarningIncome("Sua renda precisa ser de pelo menos 1000");
     }
     try {
       const res = await instance.put("/newIncomeBills", {
         name: myName,
-        mensalIncomeBills: value,
+        mensalIncomeBills: valueAsNumber,
       });
       setOpenInput(false);
       setWarningIncome("");
-      localStorage.setItem("incomeBills", value.toString());
+      localStorage.setItem("incomeBills", valueAsNumber.toString());
+      setValue("");
     } catch (error) {
       console.log(error);
     }
@@ -103,12 +105,16 @@ function MyExpenses({ text, span, income, setData }: Expenses) {
               <TextField.Input
                 type="number"
                 placeholder="0000,00"
-                className="h-8 bg-gray-100 rounded-lg w-60"
-                onChange={(e) => setValue(parseFloat(e.target.value))}
+                onChange={(e) => {
+                  setValue(e.target.value);
+                }}
               />
               <div className="flex gap-2 items-center">
                 <button
-                  className=" rounded-full bg-emerald-400 text-white hover:bg-emerald-300 "
+                  disabled={value === ""}
+                  className={` rounded-full bg-emerald-400 text-white hover:bg-emerald-300 ${
+                    value === "" && "opacity-75"
+                  }`}
                   onClick={handleChangeNumberIncomeOrTickets}
                 >
                   <IoCheckmark size={24} />
