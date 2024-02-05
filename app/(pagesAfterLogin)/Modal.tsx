@@ -115,7 +115,7 @@ function Modal({ setopenNew, income, setData, info, setOpenInfo }: ModalProps) {
     <div>
       {" "}
       <div className=" flex items-center justify-center h-screen top-0 left-0 fixed w-full bg-black bg-opacity-20 z-50">
-        <div className="shadow-2xl bg-white w-11/12 flex flex-col pb-8 justify-center  lg:w-9/12 h-auto  relative">
+        <div className="shadow-2xl bg-white w-11/12 pb-8 mt-8 lg:mt-0 flex flex-col  justify-center  lg:w-9/12 h-auto  relative">
           <div
             className={`flex gap-2 items-center ${
               income === "Bills" ? "bg-emerald-900" : "bg-red-900"
