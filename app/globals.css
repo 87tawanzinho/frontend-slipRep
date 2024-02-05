@@ -92,7 +92,7 @@ html:hover,
   }
 }
 
-input {
+input select {
   outline: none;
 }
 
