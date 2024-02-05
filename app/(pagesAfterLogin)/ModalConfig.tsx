@@ -40,7 +40,7 @@ function ModalConfig({ type, setConfigModal, allBillsData }: typeConfig) {
       setData(clickedBill);
     }, [data]);
 
-    const handleValueOfInputs = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleValueOfInputs = (e: any) => {
       const { name, value } = e.target;
 
       setInputsToConfirm((prev: any) => ({
