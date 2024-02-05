@@ -44,6 +44,7 @@ function SignUpPage() {
 
           <p>E-mail</p>
           <TextField.Input
+            style={{ fontSize: 16, color: "#333333" }}
             color="green"
             size={"3"}
             onChange={(e) => setEmail(e.target.value)}
@@ -51,6 +52,7 @@ function SignUpPage() {
 
           <p>Usuário</p>
           <TextField.Input
+            style={{ fontSize: 16, color: "#333333" }}
             color="green"
             size={"3"}
             onChange={(e) => setName(e.target.value)}
@@ -58,6 +60,7 @@ function SignUpPage() {
 
           <p>Senha</p>
           <TextField.Input
+            style={{ fontSize: 16, color: "#333333" }}
             color="green"
             type="password"
             size={"3"}
@@ -66,6 +69,7 @@ function SignUpPage() {
 
           <p>Confirmar sua senha</p>
           <TextField.Input
+            style={{ fontSize: 16, color: "#333333" }}
             color="green"
             type="password"
             size={"3"}

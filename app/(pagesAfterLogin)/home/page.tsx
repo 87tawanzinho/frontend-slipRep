@@ -385,4 +385,5 @@ export interface myBills {
   datePayment?: string;
   totalPriceWithInterest: number;
   observation?: string;
+  paymentMethod?: string;
 }

@@ -11,15 +11,16 @@ import { FaJava } from "react-icons/fa6";
 import { IoHomeOutline } from "react-icons/io5";
 import { CiLogout } from "react-icons/ci";
 import { PageWrapperUp } from "../emotion/page-wrapper-up";
+import Logo from "./Logo";
 function MenuMobile() {
   const name = justName();
   const [openMenu, setOpenMenu] = useState(false);
   const { hide } = useHide();
   return (
     <nav
-      className={`flex  fixed lg:hidden px-2 bg-gradient-to-r from-zinc-700  via-black to-black text-white p-2  justify-between items-center text-xl w-full top-0 z-50`}
+      className={`flex  fixed lg:hidden px-2  bg-black  text-white p-1  justify-between items-center text-xl w-full top-0 z-50`}
     >
-      <h2 className="font-sans italic">Monify</h2>
+      <Logo />
       <IoMdMenu size={40} onClick={() => setOpenMenu(true)} />
 
       {openMenu && (
@@ -27,14 +28,12 @@ function MenuMobile() {
           <PageWrapperUp>
             <div className="bg-white h-full w-4/5 p-4">
               <div className="flex justify-between  items-center">
-               <div className="flex items-center gap-2">
-               <h3 >Monify</h3>
-               <FaJava />
-               </div>
+                <div className="flex items-center gap-2">
+                  <h3>Monify</h3>
+                  <FaJava />
+                </div>
                 <VscChromeClose onClick={() => setOpenMenu(false)} />
               </div>
-
-            
 
               <div className="flex flex-col mt-10 text-lg">
                 <Link
@@ -45,7 +44,7 @@ function MenuMobile() {
                   <IoHomeOutline />
                   Despesas Gerais
                 </Link>
-                
+
                 <Link
                   href={"/"}
                   className="border-b-2  mt-4 flex items-center gap-2"

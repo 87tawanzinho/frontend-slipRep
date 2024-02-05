@@ -82,7 +82,7 @@ function MyExpenses({ text, span, income, setData }: Expenses) {
                 onClick={() => setOpenInput(true)}
               />
               <IoMdAddCircleOutline
-                className="text-red-700 cursor-pointer heart hover:opacity-75"
+                className="text-emerald-900 cursor-pointer heart hover:opacity-75"
                 size={20}
                 onClick={() => {
                   setopenNew(true);
@@ -95,7 +95,7 @@ function MyExpenses({ text, span, income, setData }: Expenses) {
       )}
       {openInput && (
         <PageWrapper>
-          <div className="flex flex-col lg:flex-row  justify-normal lg:justify-between gap-2 lg:gap-24  items-center  p-2 ">
+          <div className="flex flex-col lg:flex-row  justify-normal lg:justify-between gap-2 lg:gap-24   p-1 ">
             <div className="flex flex-col gap-3">
               <p className="font-sans text-[13px] w-60 ">
                 Defina uma renda mensal para poder se{" "}
@@ -103,8 +103,9 @@ function MyExpenses({ text, span, income, setData }: Expenses) {
                 gastar por mês?
               </p>
               <TextField.Input
+                style={{ fontSize: 16, color: "#333333" }}
                 type="number"
-                placeholder="0000,00"
+                placeholder="00,00"
                 onChange={(e) => {
                   setValue(e.target.value);
                 }}

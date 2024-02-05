@@ -7,7 +7,8 @@ export const changePaidBill = async (
   fetchDataAndSetBills: Dispatch<SetStateAction<any>>,
   setBills: Dispatch<SetStateAction<myBills[]>>,
   interest?: number,
-  date?: string
+  date?: string,
+  paymentMethod?: string
 ) => {
   try {
     const name = localStorage.getItem("name");
@@ -15,6 +16,7 @@ export const changePaidBill = async (
       id: id,
       interest: interest,
       date: date,
+      paymentMethod,
     });
     fetchDataAndSetBills(setBills);
   } catch (error) {

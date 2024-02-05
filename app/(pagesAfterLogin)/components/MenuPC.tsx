@@ -4,13 +4,14 @@ import React, { useState } from "react";
 import Avatar from "./Avatar";
 import NameOfClient from "../datas/name";
 import { usePathname } from "next/navigation";
+import Logo from "./Logo";
 
 function MenuPC() {
   const path = usePathname();
   const [newDivWhenHover, setNewDivWhenHover] = useState(false);
 
   return (
-    <nav className="hidden fixed lg:flex z-50  lg:flex-row-reverse bg-gradient-to-r from-zinc-700  via-black to-black justify-between px-24 p-4 items-center w-full top-0  text-gray-100">
+    <nav className="hidden fixed lg:flex z-50  lg:flex-row-reverse bg-black justify-between px-24 p-4 items-center w-full top-0  text-gray-100">
       <div className="flex gap-8 items-center">
         <div>
           <Link
@@ -30,7 +31,7 @@ function MenuPC() {
           <Avatar />
         </div>
       </div>
-      <p className="text-xl font-sans italic">Monify</p>
+      <Logo size={20} text={"text-lg"} />
       {newDivWhenHover && (
         <div
           onMouseLeave={() => setNewDivWhenHover(false)}

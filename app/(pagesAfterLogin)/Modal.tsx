@@ -151,6 +151,7 @@ function Modal({ setopenNew, income, setData, info, setOpenInfo }: ModalProps) {
                   {income === "Bills" ? "Nome da despesa" : "Nome da empresa"}
                 </span>
                 <TextField.Input
+                  style={{ fontSize: 16, color: "#333333" }}
                   color={`${income === "Bills" ? "green" : "red"}`}
                   placeholder="Digite aqui.."
                   type="text"
@@ -170,6 +171,7 @@ function Modal({ setopenNew, income, setData, info, setOpenInfo }: ModalProps) {
               <div className="flex flex-col mt-4">
                 <span>Valor</span>
                 <TextField.Input
+                  style={{ fontSize: 16, color: "#333333" }}
                   color={`${income === "Bills" ? "green" : "red"}`}
                   type="number"
                   placeholder="00,00"
@@ -189,6 +191,7 @@ function Modal({ setopenNew, income, setData, info, setOpenInfo }: ModalProps) {
               <div className="flex flex-col mt-4">
                 <span>Data de Pagamento</span>
                 <TextField.Input
+                  style={{ fontSize: 16, color: "#333333" }}
                   color={`${income === "Bills" ? "green" : "red"}`}
                   type="date"
                   placeholder="Custo"

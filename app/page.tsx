@@ -7,6 +7,7 @@ import { Reveal } from "./(pagesAfterLogin)/emotion/Reveal";
 import { Box, Button, Flex, Text, TextField, Link } from "@radix-ui/themes";
 import { Player } from "@lottiefiles/react-lottie-player";
 import HomeLottie from "@/public/animationHome.json";
+import Logo from "./(pagesAfterLogin)/components/Logo";
 export default function Home() {
   const router = useRouter();
   const [name, setName] = useState("");
@@ -37,11 +38,7 @@ export default function Home() {
 
   return (
     <main className="h-screen bg-white p-4 lg:p-20 ">
-      <Box>
-        <Text size={"6"} className="px-0 ">
-          <span className="text-zinc-600 font-bold">M</span>onify
-        </Text>
-      </Box>
+      <Logo text={"text-2xl"} />
 
       <Flex
         direction={{ initial: "column", sm: "row" }}
@@ -57,6 +54,7 @@ export default function Home() {
 
           <p className="mt-4">Usuário</p>
           <TextField.Input
+            style={{ fontSize: 16, color: "#333333" }}
             color="green"
             size={"3"}
             onChange={(e) => setName(e.target.value)}
@@ -64,6 +62,7 @@ export default function Home() {
 
           <p>Senha</p>
           <TextField.Input
+            style={{ fontSize: 16, color: "#333333" }}
             color="green"
             type="password"
             size={"3"}

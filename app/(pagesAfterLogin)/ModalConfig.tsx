@@ -14,6 +14,7 @@ import { TextField } from "@radix-ui/themes";
 import { instance } from "../axios/instance";
 import { MdOutlineDone } from "react-icons/md";
 import { LiaUndoAltSolid } from "react-icons/lia";
+import Image from "next/image";
 
 interface typeConfig {
   type: "Bill" | "Slip";
@@ -24,6 +25,7 @@ interface typeConfig {
 interface interestAndDate {
   interest: number;
   date: string;
+  paymentMethod: string;
 }
 function ModalConfig({ type, setConfigModal, allBillsData }: typeConfig) {
   const [data, setData] = useState<myBills | null>();
@@ -135,7 +137,9 @@ function ModalConfig({ type, setConfigModal, allBillsData }: typeConfig) {
                       }
                     >
                       {" "}
-                      {data.paid ? "Pago" : "Não pago"}
+                      {data.paid
+                        ? `Pago com ${data.paymentMethod}`
+                        : "Não pago"}
                     </span>{" "}
                   </p>
                 )}
@@ -189,25 +193,49 @@ function ModalConfig({ type, setConfigModal, allBillsData }: typeConfig) {
               {showDivInterestRate && (
                 <PageWrapperUp>
                   <div className=" py-4 px-4 bg-emerald-950 text-white">
-                    <p className="">Valor do Juros</p>
-                    <input
-                      type="number"
-                      name="interest"
-                      defaultValue={0}
-                      onChange={handleValueOfInputs}
-                    />
+                    <div>
+                      <p className="">Valor do Juros</p>
+                      <input
+                        type="number"
+                        name="interest"
+                        defaultValue={0}
+                        onChange={handleValueOfInputs}
+                      />
+                    </div>
+
+                    <div className="mt-2">
+                      <p>Pago com</p>
+
+                      <select
+                        name="paymentMethod"
+                        onChange={handleValueOfInputs}
+                      >
+                        <option value="">Escolher</option>
+                        <option value="Pix">Pix </option>
+                        <option value="Boleto">Boleto</option>
+                        <option value="Banco Nubank">Banco Nubank</option>
+                        <option value="Banco Inter">Banco Inter</option>
+                        <option value="Banco itáu">Banco Itaú</option>
+                      </select>
+                    </div>
+
                     <p className="mt-2">Data do Pagamento</p>
+
                     <div className="flex gap-2">
                       <input
                         type="date"
                         name="date"
                         onChange={handleValueOfInputs}
                       />
+
                       <button
                         className="bg-emerald-400 text-white rounded w-32 hover:opacity-75"
                         onClick={() => {
-                          if (inputsToConfirm?.date === undefined) {
-                            return alert("Qual a data que você pagou?");
+                          if (
+                            inputsToConfirm?.date === undefined ||
+                            inputsToConfirm.paymentMethod === undefined
+                          ) {
+                            return alert("Preencha tudo.");
                           }
                           setConfigModal(false);
                           changePaidBill(
@@ -215,7 +243,8 @@ function ModalConfig({ type, setConfigModal, allBillsData }: typeConfig) {
                             fetchDataAndSetBills,
                             allBillsData,
                             inputsToConfirm?.interest,
-                            inputsToConfirm?.date
+                            inputsToConfirm?.date,
+                            inputsToConfirm.paymentMethod
                           );
                           setHide(false);
                         }}

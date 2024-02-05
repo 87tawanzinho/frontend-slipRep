@@ -47,7 +47,11 @@ function Details({
               <div className="flex items-center">
                 <p className="mt-4 text-gray-700">Status</p>
               </div>
-              <p>{details?.paid ? "Pago" : "Não pago"}</p>
+              <p>
+                {details?.paid
+                  ? `Pago com ${details.paymentMethod}`
+                  : "Não pago"}
+              </p>
 
               <p className="mt-4 text-gray-700">Juros</p>
               <p>{details?.interest ? details.interest : "Não definido"}</p>
