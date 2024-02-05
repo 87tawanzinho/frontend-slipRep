@@ -12,6 +12,7 @@ import { IoHomeOutline } from "react-icons/io5";
 import { CiLogout } from "react-icons/ci";
 import { PageWrapperUp } from "../emotion/page-wrapper-up";
 import Logo from "./Logo";
+import { TbReport } from "react-icons/tb";
 function MenuMobile() {
   const name = justName();
   const [openMenu, setOpenMenu] = useState(false);
@@ -35,7 +36,7 @@ function MenuMobile() {
                 <VscChromeClose onClick={() => setOpenMenu(false)} />
               </div>
 
-              <div className="flex flex-col mt-10 text-lg">
+              <div className="flex flex-col mt-10 text-lg gap-3">
                 <Link
                   href={"/home"}
                   className="border-b-2 flex items-center gap-2"
@@ -46,8 +47,17 @@ function MenuMobile() {
                 </Link>
 
                 <Link
+                  href={"/MonthlyReports"}
+                  className="border-b-2 flex items-center gap-2"
+                  onClick={() => setOpenMenu(false)}
+                >
+                  <TbReport />
+                  Relatórios Mensais
+                </Link>
+
+                <Link
                   href={"/"}
-                  className="border-b-2  mt-4 flex items-center gap-2"
+                  className="border-b-2   flex items-center gap-2"
                   onClick={() => {
                     localStorage.removeItem("name");
                     localStorage.removeItem("incomeBills");

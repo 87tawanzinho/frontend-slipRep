@@ -37,7 +37,11 @@ function MenuPC() {
           onMouseLeave={() => setNewDivWhenHover(false)}
           className="absolute top-16 bg-white w-64 text-black rounded-lg end-8 h-60 text-center"
         >
-          <div className="hover:opacity-75">
+          <div className="hover:opacity-75 mt-2">
+            <Link href={"/MonthlyReports"}>Relatórios Mensais</Link>
+          </div>
+
+          <div className="hover:opacity-75 absolute bottom-2 pt-2 left-0 right-0 border-t-2">
             <Link
               href={"/"}
               className=""
