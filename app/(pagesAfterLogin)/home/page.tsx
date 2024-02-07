@@ -4,7 +4,7 @@ import MyExpenses from "./components/MyExpenses";
 import ItensExpenses from "./components/ItensExpenses";
 import IncomeBills from "../datas/incomeBills";
 import { format, isToday, parseISO } from "date-fns";
-import { fetchDataAndSetBills } from "../datas/BillFunctions/takeBills";
+import { fetchDataAndSetBills } from "../datas/BillFunctions/takeBillsPerMonthly";
 import { BiDownArrowAlt } from "react-icons/bi";
 import { CiWarning } from "react-icons/ci";
 import Loading from "../loading";

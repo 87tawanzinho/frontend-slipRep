@@ -5,7 +5,7 @@ import { PageWrapper } from "./emotion/page-wrapper";
 import HowWorksThis from "./home/components/HowWorksTotal";
 import { MdDone } from "react-icons/md";
 import { instance } from "../axios/instance";
-import { fetchDataAndSetBills } from "./datas/BillFunctions/takeBills";
+import { fetchDataAndSetBills } from "./datas/BillFunctions/takeBillsPerMonthly";
 import { fetchDataAndSetSlips } from "./datas/BillFunctions/takeSlips";
 import { useHide } from "../context/HideDivContext";
 import { composeEventHandlers } from "@radix-ui/primitive";

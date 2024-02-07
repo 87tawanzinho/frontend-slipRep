@@ -1,6 +1,6 @@
 "use client";
 import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
-import { fetchDataAndSetBills } from "./datas/BillFunctions/takeBills";
+import { fetchDataAndSetBills } from "./datas/BillFunctions/takeBillsPerMonthly";
 import { myBills } from "./home/page";
 import Loading from "./loading";
 import { changePaidBill } from "./datas/BillFunctions/paidBill";
