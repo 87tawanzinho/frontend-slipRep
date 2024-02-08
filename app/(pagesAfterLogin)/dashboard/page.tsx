@@ -4,10 +4,14 @@ import React, { useEffect, useState } from "react";
 import { FaEye } from "react-icons/fa6";
 import { myBills } from "../home/page";
 import { MonthNames, getMonthNameInPortuguese } from "./components/translate";
+import Details from "../home/components/details";
+import { setClickedBill } from "../datas/BillFunctions/clickedOnGear";
 
 function page() {
   const [month, takeMonth] = useState<keyof MonthNames>("January");
   const [billsByMonth, setBillsByMonth] = useState<myBills[] | null>();
+  const [details, setDetails] = useState(false);
+  const [detailsAboutThisBill, setDetailsAboutThisBill] = useState<myBills>();
   const takeSlipsByMonth = async () => {
     const name = localStorage.getItem("name");
     const bills = await instance.get(`showBillsByFilter/${name}/${month}/2024`);
@@ -44,23 +48,37 @@ function page() {
       </div>
 
       {!billsByMonth?.length ? (
-        <p>Não há nada no mês de {getMonthNameInPortuguese(month)}</p>
+        <p className="mt-10">
+          Não há nada no mês de {getMonthNameInPortuguese(month)}
+        </p>
       ) : (
-        <div className="flex gap-2 flex-wrap  items-center mt-10">
+        <div className="flex gap-2 items-center overflow-x-auto w-11/12 lg:w-7/12 mt-10">
           {billsByMonth.map((bill) => (
-            <div className="bg-emerald-950 h-32 overflow-auto w-40 relative rounded-lg px-2 py-2 text-white">
+            <div
+              key={bill._id}
+              className="bg-emerald-950 h-32  w-40 relative rounded-lg px-2 py-2 text-white flex-shrink-0"
+            >
               <div className="flex justify-between items-center ">
                 <h2 className="text-white">{bill.name}</h2>
-                <FaEye className="text-emerald-200 cursor-pointer hover:opacity-75" />
+                <FaEye
+                  onClick={() => {
+                    setDetails(true);
+                    setClickedBill(bill);
+                  }}
+                  className="text-emerald-200 cursor-pointer hover:opacity-75"
+                />
               </div>
-              <div className="flex justify-between gap-8 items-center text-[12px] absolute bottom-2">
-                <p>{bill.date}</p>
-                <p>R${bill.price}</p>
+
+              <div className="flex justify-between  items-center text-[12px] ">
+                <p className="absolute left-2 bottom-2">{bill.date}</p>
+                <p className="absolute right-2 bottom-2">R${bill.price}</p>
               </div>
             </div>
           ))}
         </div>
       )}
+
+      {details && <Details setDetailsAboutThisBill={setDetails} />}
     </div>
   );
 }
