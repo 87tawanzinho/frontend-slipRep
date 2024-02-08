@@ -8,8 +8,8 @@ interface ItensExpenses {
   data: ReactNode;
   total: number;
   type: "Bills" | "Tickets";
-  payToday: ReactNode;
-  thereBillsToPayToday: boolean;
+  payToday?: ReactNode;
+  thereBillsToPayToday?: boolean;
 }
 function ItensExpenses({
   data,

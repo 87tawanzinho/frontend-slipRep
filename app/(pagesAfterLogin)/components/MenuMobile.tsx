@@ -47,12 +47,12 @@ function MenuMobile() {
                 </Link>
 
                 <Link
-                  href={"/MonthlyReports"}
+                  href={"/dashboard"}
                   className="border-b-2 flex items-center gap-2"
                   onClick={() => setOpenMenu(false)}
                 >
                   <TbReport />
-                  Relatórios Mensais
+                  Informações Gerais
                 </Link>
 
                 <Link
